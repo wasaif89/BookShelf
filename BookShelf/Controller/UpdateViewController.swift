@@ -1,16 +1,15 @@
 //
-//  AddBookViewController.swift
+//  UpdateViewController.swift
 //  BookShelf
 //
-//  Created by Abu FaisaL on 09/05/1443 AH.
+//  Created by Abu FaisaL on 10/05/1443 AH.
 //
-
-import UIKit
 
 import UIKit
 import Firebase
+import FirebaseStorage
 import FirebaseFirestore
-class AddBookViewController: UIViewController {
+class UpdateViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameLabelTextField: UITextField!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -19,8 +18,8 @@ class AddBookViewController: UIViewController {
     @IBOutlet weak var sectionTextField: UITextField!
     @IBOutlet weak var bookStausLabel: UILabel!
     @IBOutlet weak var bookStatusTextField: UITextField!
-    @IBOutlet weak var addBtn: UIButton!
-    @IBOutlet weak var addImageBook: UIImageView!
+    @IBOutlet weak var updateBtn: UIButton!
+    @IBOutlet weak var updateImageBook: UIImageView!
     var image: UIImage? = nil
     let db = Firestore.firestore()
     var user:User!
@@ -57,21 +56,21 @@ class AddBookViewController: UIViewController {
             bookStatusTextField.layer.cornerRadius = 10
             bookStatusTextField.layer.borderWidth = 1
             bookStatusTextField.layer.borderColor = UIColor.red.cgColor
-            addBtn.layer.cornerRadius = 10
-            addBtn.layer.borderWidth = 1
-            addBtn.layer.borderColor = UIColor.red.cgColor
+            updateBtn.layer.cornerRadius = 10
+            updateBtn.layer.borderWidth = 1
+            updateBtn.layer.borderColor = UIColor.red.cgColor
       }
     func shadow(){
-        addBtn.layer.shadowColor = UIColor.black.cgColor
-        addBtn.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
-        addBtn.layer.shadowRadius = 8
-        addBtn.layer.shadowOpacity = 0.5
-        addBtn.layer.masksToBounds = false
+        updateBtn.layer.shadowColor = UIColor.black.cgColor
+        updateBtn.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
+        updateBtn.layer.shadowRadius = 8
+        updateBtn.layer.shadowOpacity = 0.5
+        updateBtn.layer.masksToBounds = false
     }
     @IBAction func addImage(_ sender: UIButton) {
         self.imagePicker.present(from: self.view)
     }
-    @IBAction func addPressed(_ sender: UIButton) {
+    @IBAction func updatePressed(_ sender: UIButton) {
         self.book = Book.init(name: self.nameLabelTextField.text!, description: self.descriptionTextView.text!, section: self.sectionTextField.text!, bookStatus: self.bookStatusTextField.text!, price: "14")
         self.saveBook(self.book)
     }
@@ -92,14 +91,10 @@ class AddBookViewController: UIViewController {
            }
        }
 }
-extension AddBookViewController:ImagePickerDelegate{
+extension UpdateViewController:ImagePickerDelegate{
     func didSelect(image: UIImage?) {
             if let image = image{
-                addImageBook.image = image
+                updateImageBook.image = image
             }
     }
 }
-    
-
-
-

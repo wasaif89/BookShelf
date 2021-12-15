@@ -32,6 +32,7 @@ class ProfileViewController: UIViewController {
             emailLabel.layer.borderWidth = 1
             emailLabel.layer.borderColor =  UIColor(red:208/255, green:44/255, blue:166/255, alpha: 100).cgColor
         }
+    // get infrmation data user from firebase
         func readUsers(){
              if  let user = Auth.auth().currentUser?.uid{
                  let docRef = db.collection("Users").document(user)
