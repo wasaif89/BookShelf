@@ -10,6 +10,6 @@ struct Book {
     let name:String?
     let description:String?
     let section:String?
-    let bookStatus:String
+    let bookStatus:String?
     let price:String?
 }

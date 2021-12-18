@@ -6,8 +6,6 @@
 //
 
 import UIKit
-
-import UIKit
 import Firebase
 import FirebaseFirestore
 class AddBookViewController: UIViewController {
@@ -19,6 +17,11 @@ class AddBookViewController: UIViewController {
     @IBOutlet weak var sectionTextField: UITextField!
     @IBOutlet weak var bookStausLabel: UILabel!
     @IBOutlet weak var bookStatusTextField: UITextField!
+    @IBOutlet weak var pricesLabel: UILabel!
+    
+    @IBOutlet weak var pricesTextField: UITextField!
+    
+    
     @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var addImageBook: UIImageView!
     var image: UIImage? = nil
@@ -33,30 +36,26 @@ class AddBookViewController: UIViewController {
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
     }
         func cornerRadius(){
-            nameLabel.layer.cornerRadius = 10
-            nameLabel.layer.borderWidth = 1
-            nameLabel.layer.borderColor = UIColor.red.cgColor
+           
             nameLabelTextField.layer.cornerRadius = 10
             nameLabelTextField.layer.borderWidth = 1
             nameLabelTextField.layer.borderColor = UIColor.red.cgColor
-            descriptionLabel.layer.cornerRadius = 10
-            descriptionLabel.layer.borderWidth = 1
-            descriptionLabel.layer.borderColor = UIColor.red.cgColor
+            
             descriptionTextView.layer.cornerRadius = 10
             descriptionTextView.layer.borderWidth = 1
             descriptionTextView.layer.borderColor = UIColor.red.cgColor
-            sectionLabel.layer.cornerRadius = 10
-            sectionLabel.layer.borderWidth = 1
-            sectionLabel.layer.borderColor = UIColor.red.cgColor
+            
             sectionTextField.layer.cornerRadius = 10
             sectionTextField.layer.borderWidth = 1
             sectionTextField.layer.borderColor = UIColor.red.cgColor
-            bookStausLabel.layer.cornerRadius = 10
-            bookStausLabel.layer.borderWidth = 1
-            bookStausLabel.layer.borderColor = UIColor.red.cgColor
+           
             bookStatusTextField.layer.cornerRadius = 10
             bookStatusTextField.layer.borderWidth = 1
             bookStatusTextField.layer.borderColor = UIColor.red.cgColor
+          pricesTextField.layer.cornerRadius = 10
+            pricesTextField.layer.borderWidth = 1
+           pricesTextField.layer.borderColor = UIColor.red.cgColor
+            
             addBtn.layer.cornerRadius = 10
             addBtn.layer.borderWidth = 1
             addBtn.layer.borderColor = UIColor.red.cgColor
@@ -72,7 +71,7 @@ class AddBookViewController: UIViewController {
         self.imagePicker.present(from: self.view)
     }
     @IBAction func addPressed(_ sender: UIButton) {
-        self.book = Book.init(name: self.nameLabelTextField.text!, description: self.descriptionTextView.text!, section: self.sectionTextField.text!, bookStatus: self.bookStatusTextField.text!, price: "14")
+        self.book = Book.init(name: self.nameLabelTextField.text!, description: self.descriptionTextView.text!, section: self.sectionTextField.text!, bookStatus: self.bookStatusTextField.text!, price: self.pricesTextField.text!)
         self.saveBook(self.book)
     }
     func saveBook(_ book: Book) {
@@ -81,9 +80,10 @@ class AddBookViewController: UIViewController {
             "description": book.description,
             "section":book.section,
             "bookStatus":book.bookStatus,
-            "price":book.price
+            "price":book.price,
+            "userToken":Auth.auth().currentUser!.uid
            ]
-        db.collection("Book").document(Auth.auth().currentUser!.uid).setData(docData) { err in
+        db.collection("Book").document().setData(docData) { err in
                if let err = err {
                    print("Error writing document: \(err)")
                } else {
@@ -99,7 +99,5 @@ extension AddBookViewController:ImagePickerDelegate{
             }
     }
 }
-    
-
 
 
