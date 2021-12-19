@@ -39,32 +39,52 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
            print("error")
         }
     }
-
-
     func readBook(){
-         if  let user = Auth.auth().currentUser?.uid{
-             let docRef = db.collection("Book").document(user)
-             docRef.getDocument { (document, error) in
-                 if let document = document, document.exists {
-                    if let error = error {
-                        print(error.localizedDescription)
+            db.collection("Book").addSnapshotListener { (querySnapshot, error) in
+                guard let documents = querySnapshot?.documents else {
+                        print("Error fetching documents: \(error!)")
                         return
-                    }
-                     let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                     let name = document.data()?["name"] as? String
-                    let description = document.data()?["description"] as? String
-                    let price = document.data()?["price"] as? String
-                     print(name)
-                    let books  = Book.init(name: name, description: description, section: nil, bookStatus: nil, price: price)
-                    self.book.append(books)
-                     print("Document data")
-                    self.tabelView.reloadData()
-                 } else {
-                    print("Document does not exist\(error?.localizedDescription)")
-                 }
-             }
-         }
-     }
+            }
+                for doc in documents{
+                    if (doc.data()["userToken"] as? String == Auth.auth().currentUser?.uid) {
+                            let name = doc.data()["name"] as? String
+                            let description = doc.data()["description"] as? String
+                        let price = doc.data()["price"] as? String
+                        let books  = Book.init(name: name, description: description, section: nil, bookStatus: nil, price: price)
+                             self.book.append(books)
+                            print("Document data")
+                               
+                        }
+                }
+                self.tabelView.reloadData()
+            }
+        }
+//
+//
+//    func readBook(){
+//         if  let user = Auth.auth().currentUser?.uid{
+//             let docRef = db.collection("Book").document(user)
+//             docRef.getDocument { (document, error) in
+//                 if let document = document, document.exists {
+//                    if let error = error {
+//                        print(error.localizedDescription)
+//                        return
+//                    }
+//                     let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+//                     let name = document.data()?["name"] as? String
+//                    let description = document.data()?["description"] as? String
+//                    let price = document.data()?["price"] as? String
+//                     print(name)
+//                    let books  = Book.init(name: name, description: description, section: nil, bookStatus: nil, price: price)
+//                    self.book.append(books)
+//                     print("Document data")
+//                    self.tabelView.reloadData()
+//                 } else {
+//                    print("Document does not exist\(error?.localizedDescription)")
+//                 }
+//             }
+//         }
+//     }
 }
 
 

@@ -52,6 +52,7 @@ class LoginViewController: UIViewController {
                 guard let self = self else { return }
                 if error == nil{
                     print("Login Successful")
+                    self.performSegue(withIdentifier: "GoToTabBarLogin", sender: self)
                 }else{
                     print("error\(error?.localizedDescription)")
                 }
@@ -59,5 +60,3 @@ class LoginViewController: UIViewController {
         }
     }
     
-
-

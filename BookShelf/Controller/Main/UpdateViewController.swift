@@ -63,7 +63,7 @@ class UpdateViewController: UIViewController {
         self.imagePicker.present(from: self.view)
     }
     @IBAction func updatePressed(_ sender: UIButton) {
-        self.book = Book.init(name: self.nameLabelTextField.text!, description: self.descriptionTextView.text!, section: self.sectionTextField.text!, bookStatus: self.bookStatusTextField.text!, price: "14")
+        self.book = Book.init(name: self.nameLabelTextField.text!, description: self.descriptionTextView.text!, section: nil, bookStatus: nil, price: "14")
         self.saveBook(self.book)
     }
     func saveBook(_ book: Book) {

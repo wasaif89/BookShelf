@@ -52,8 +52,8 @@ class SignUpViewController: UIViewController {
                     if error == nil{
                         self.user = User.init(name: self.userNameTextField.text!, email: self.emailTextField.text!)
                         self.saveUser(self.user)
-                  
                         print("Sign Up Successful")
+                        self.performSegue(withIdentifier: "GoToTabBarSignUp", sender: self)
                     }else{
                         print("Error\(error?.localizedDescription)")
                     }
