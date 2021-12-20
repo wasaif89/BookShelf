@@ -29,6 +29,18 @@ class IslmicTabelVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
         
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "islamicSgeue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "islamicSgeue" {
+                if let indexPath = tabelView.indexPathForSelectedRow {
+                    let destinationController = segue.destination as! BookDetails
+                  //  destinationController.Name = self.book[indexPath.row]
+                }
+            }
+        }
     func readBook(){
         db.collection("Book").addSnapshotListener { (querySnapshot, error) in
                     guard let documents = querySnapshot?.documents else {

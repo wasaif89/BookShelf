@@ -18,6 +18,10 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
     @IBOutlet weak var comintTF: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    var Name:String
+    var Descripition:String
+    var Status:String
+    var Price:String
     let db = Firestore.firestore()
     var user:User!
     var book:Book!
@@ -29,6 +33,10 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.dataSource = self
+        bookName.text = Name
+        bookDescripiton.text = Descripition
+        bookStatus.text = Status
+        bookPrices.text = Price
         
         cornerRadius()
         shadow()
