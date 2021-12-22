@@ -31,14 +31,14 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
         let selectRow = book[indexPath.row]
         print(selectRow)
     }
-     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            book.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else  {
-           print("error")
-        }
-    }
+//     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            book.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        } else  {
+//           print("error")
+//        }
+//    }
     func readBook(){
             db.collection("Book").addSnapshotListener { (querySnapshot, error) in
                 guard let documents = querySnapshot?.documents else {

@@ -36,7 +36,7 @@ class IslmicTabelVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "islamicSgeue" {
                 if let indexPath = tabelView.indexPathForSelectedRow {
-                    let destinationController = segue.destination as! BookDetails
+                 // // let destinationController = segue.destination as! BookDetails
                   //  destinationController.Name = self.book[indexPath.row]
                 }
             }
