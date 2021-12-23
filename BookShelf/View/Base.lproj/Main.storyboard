@@ -663,7 +663,7 @@
                                                     <constraint firstAttribute="height" constant="300" id="XGg-dg-9Gz"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ComintCell" rowHeight="120" id="PIh-Zm-9Hx" customClass="ComintCell" customModule="BookShelf" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ComintCell" rowHeight="120" id="PIh-Zm-9Hx" customClass="CommentCell" customModule="BookShelf" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="44.5" width="334" height="120"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PIh-Zm-9Hx" id="6HV-I9-MRO">

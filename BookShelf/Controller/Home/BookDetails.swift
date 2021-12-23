@@ -119,7 +119,7 @@ func shadow(){
        return comments.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ComintCell") as! ComintCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ComintCell") as! CommentCell
         cell.userName.text = Auth.auth().currentUser?.email
         cell.comment.text = comments[indexPath.row].comment
         return cell

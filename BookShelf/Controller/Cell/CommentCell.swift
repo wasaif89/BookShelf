@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ComintCell: UITableViewCell {
+class CommentCell: UITableViewCell {
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var comment: UILabel!
     override func awakeFromNib() {
