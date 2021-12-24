@@ -16,19 +16,19 @@ class HomeViewController: UIViewController {
     var lMenuShowing = true
     
     @IBOutlet weak var islamicBtn: UIButton!
-    @IBOutlet weak var plitcalBtn: UIButton!
+    @IBOutlet weak var educationalBtn: UIButton!
     @IBOutlet weak var chlidrensBtn: UIButton!
     @IBOutlet weak var cookBtn: UIButton!
-    @IBOutlet weak var publicBtn: UIButton!
+    @IBOutlet weak var otherBooksBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         L_SlideView.layer.shadowOpacity = 2
         islamicBtn.setButton()
-        plitcalBtn.setButton()
+        educationalBtn.setButton()
         chlidrensBtn.setButton()
         cookBtn.setButton()
-        publicBtn.setButton()
+        otherBooksBtn.setButton()
     }
     @IBAction func R_SlideMenu(_ sender: Any) {
         if (rMenuShowing){

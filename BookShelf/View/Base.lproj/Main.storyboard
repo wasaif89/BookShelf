@@ -864,7 +864,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXA-m3-MMJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-259" y="1509"/>
+            <point key="canvasLocation" x="-259" y="1499"/>
         </scene>
         <!--Basket TabelVC-->
         <scene sceneID="8pb-7e-ceZ">
@@ -1548,7 +1548,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title=" Politcal Books">
+                                        <buttonConfiguration key="configuration" style="plain" title=" EducationalBooks">
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -1572,7 +1572,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Public Books">
+                                        <buttonConfiguration key="configuration" style="plain" title="Other Books">
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -1618,9 +1618,9 @@
                         <outlet property="R_SlideView" destination="ymP-s5-r9R" id="jKw-Pg-njb"/>
                         <outlet property="chlidrensBtn" destination="otS-lN-gqZ" id="Kii-iK-Wj9"/>
                         <outlet property="cookBtn" destination="L33-Gr-UeC" id="R3k-2G-SKt"/>
+                        <outlet property="educationalBtn" destination="pUE-2M-erT" id="MDr-w8-eWc"/>
                         <outlet property="islamicBtn" destination="HY4-P2-6Hg" id="mZa-o9-4wM"/>
-                        <outlet property="plitcalBtn" destination="pUE-2M-erT" id="MDr-w8-eWc"/>
-                        <outlet property="publicBtn" destination="sBh-Yl-tk1" id="L6x-c3-aQg"/>
+                        <outlet property="otherBooksBtn" destination="sBh-Yl-tk1" id="L6x-c3-aQg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M1g-Pe-oUd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1896,7 +1896,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gbx-6M-Jvq"/>
+        <segue reference="c5N-Kh-iOf"/>
         <segue reference="CZe-qd-f2C"/>
     </inferredMetricsTieBreakers>
     <resources>
