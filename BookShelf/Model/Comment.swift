@@ -8,5 +8,6 @@
 import Foundation
 struct Comment{
     let comment:String?
+    let bookID:String?
     
 }

@@ -58,5 +58,5 @@ class IslmicTabelVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
                     }
             self.tabelView.reloadData()
                 }
-            }
+        }
 }

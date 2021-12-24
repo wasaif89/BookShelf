@@ -79,7 +79,6 @@ func shadow(){
     addBasketBtn.layer.shadowOpacity = 0.5
     addBasketBtn.layer.masksToBounds = false
 
-
     sendBtn.layer.shadowColor = UIColor.black.cgColor
     sendBtn.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
     sendBtn.layer.shadowRadius = 8
@@ -131,16 +130,16 @@ func shadow(){
                             return
                 }
                     for doc in documents{
-                        if (doc.data()["userToken"] as? String == Auth.auth().currentUser?.uid) {
+                       // if (doc.documentID as? String == )
                                 let comment = doc.data()["comment"] as? String
 
-                            let commints = Comment.init(comment: comment)
+                        let commints = Comment.init(comment: comment, bookID: nil)
                                 self.comments.append(commints)
                             }
-                    }
+                    
             self.tableView.reloadData()
                 }
-            }
+    }
 
     @IBAction func addBasketPressed(_ sender: UIButton) {
 //        self.basket = Basket.init(book: [Book.init(name: <#T##String?#>, description: <#T##String?#>, section: <#T##String?#>, bookStatus: <#T##String?#>, price: <#T##String?#>)], user: [User.init(name: , email: <#T##String?#>)])
@@ -148,8 +147,9 @@ func shadow(){
     }
 
     @IBAction func sendPressed(_ sender: UIButton) {
-        self.comment  =  Comment.init(comment: self.comintTF.text!)
+        self.comment  =  Comment.init(comment: self.comintTF.text!, bookID: nil)
         self.saveComment(self.comment)
 
     }
 }
+

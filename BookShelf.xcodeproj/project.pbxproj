@@ -12,13 +12,13 @@
 		6D4BB434276DF9AF00534E6D /* IslmicBooksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB433276DF9AF00534E6D /* IslmicBooksCell.swift */; };
 		6D4BB436276DF9F400534E6D /* ChildrensBooksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB435276DF9F400534E6D /* ChildrensBooksCell.swift */; };
 		6D4BB438276DFA1600534E6D /* CookBooksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB437276DFA1600534E6D /* CookBooksCell.swift */; };
-		6D4BB43A276DFA5700534E6D /* PoliticalBooksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB439276DFA5600534E6D /* PoliticalBooksCell.swift */; };
+		6D4BB43A276DFA5700534E6D /* EducationalBooksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB439276DFA5600534E6D /* EducationalBooksCell.swift */; };
 		6D4BB43C276DFE8400534E6D /* IslmicTabelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB43B276DFE8400534E6D /* IslmicTabelVC.swift */; };
 		6D4BB43E276DFEB300534E6D /* ChildernTabelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB43D276DFEB300534E6D /* ChildernTabelVC.swift */; };
-		6D4BB440276DFED700534E6D /* CookTabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB43F276DFED700534E6D /* CookTabelViewController.swift */; };
-		6D4BB442276DFEF500534E6D /* PolitcalTabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB441276DFEF500534E6D /* PolitcalTabelViewController.swift */; };
-		6D4BB448276DFFE600534E6D /* PublicBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB447276DFFE600534E6D /* PublicBookCell.swift */; };
-		6D4BB44A276E013F00534E6D /* PublicTabelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB449276E013F00534E6D /* PublicTabelVC.swift */; };
+		6D4BB440276DFED700534E6D /* CookTabelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB43F276DFED700534E6D /* CookTabelVC.swift */; };
+		6D4BB442276DFEF500534E6D /* EducationalTabelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB441276DFEF500534E6D /* EducationalTabelVC.swift */; };
+		6D4BB448276DFFE600534E6D /* OtherBooksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB447276DFFE600534E6D /* OtherBooksCell.swift */; };
+		6D4BB44A276E013F00534E6D /* OtherBooksTabelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB449276E013F00534E6D /* OtherBooksTabelVC.swift */; };
 		6D7A3508276914BD001521BC /* BookTabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7A3507276914BC001521BC /* BookTabelViewController.swift */; };
 		6D7A350A2769159C001521BC /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7A35092769159C001521BC /* UpdateViewController.swift */; };
 		6D7A350C27691606001521BC /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7A350B27691606001521BC /* BookCell.swift */; };
@@ -42,6 +42,7 @@
 		6DA1B4C3276E19AF00F8936F /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1B4C2276E19AF00F8936F /* CommentCell.swift */; };
 		6DA1B4C5276E568400F8936F /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1B4C4276E568400F8936F /* Basket.swift */; };
 		6DA1B4C7276E62B800F8936F /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1B4C6276E62B800F8936F /* Comment.swift */; };
+		6DC9A2F52775FCE000E21F7A /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC9A2F42775FCE000E21F7A /* TabBarVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,13 +51,13 @@
 		6D4BB433276DF9AF00534E6D /* IslmicBooksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IslmicBooksCell.swift; sourceTree = "<group>"; };
 		6D4BB435276DF9F400534E6D /* ChildrensBooksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildrensBooksCell.swift; sourceTree = "<group>"; };
 		6D4BB437276DFA1600534E6D /* CookBooksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookBooksCell.swift; sourceTree = "<group>"; };
-		6D4BB439276DFA5600534E6D /* PoliticalBooksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticalBooksCell.swift; sourceTree = "<group>"; };
+		6D4BB439276DFA5600534E6D /* EducationalBooksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationalBooksCell.swift; sourceTree = "<group>"; };
 		6D4BB43B276DFE8400534E6D /* IslmicTabelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IslmicTabelVC.swift; sourceTree = "<group>"; };
 		6D4BB43D276DFEB300534E6D /* ChildernTabelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildernTabelVC.swift; sourceTree = "<group>"; };
-		6D4BB43F276DFED700534E6D /* CookTabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTabelViewController.swift; sourceTree = "<group>"; };
-		6D4BB441276DFEF500534E6D /* PolitcalTabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolitcalTabelViewController.swift; sourceTree = "<group>"; };
-		6D4BB447276DFFE600534E6D /* PublicBookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicBookCell.swift; sourceTree = "<group>"; };
-		6D4BB449276E013F00534E6D /* PublicTabelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTabelVC.swift; sourceTree = "<group>"; };
+		6D4BB43F276DFED700534E6D /* CookTabelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookTabelVC.swift; sourceTree = "<group>"; };
+		6D4BB441276DFEF500534E6D /* EducationalTabelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationalTabelVC.swift; sourceTree = "<group>"; };
+		6D4BB447276DFFE600534E6D /* OtherBooksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherBooksCell.swift; sourceTree = "<group>"; };
+		6D4BB449276E013F00534E6D /* OtherBooksTabelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherBooksTabelVC.swift; sourceTree = "<group>"; };
 		6D7A3507276914BC001521BC /* BookTabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTabelViewController.swift; sourceTree = "<group>"; };
 		6D7A35092769159C001521BC /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
 		6D7A350B27691606001521BC /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
@@ -82,6 +83,7 @@
 		6DA1B4C2276E19AF00F8936F /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		6DA1B4C4276E568400F8936F /* Basket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
 		6DA1B4C6276E62B800F8936F /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		6DC9A2F42775FCE000E21F7A /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		72FB71187F4E56358D96ADE2 /* Pods_BookShelf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookShelf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A4CD8C0E229C19708F91755 /* Pods-BookShelf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookShelf.debug.xcconfig"; path = "Target Support Files/Pods-BookShelf/Pods-BookShelf.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,9 +114,9 @@
 				6D4BB431276DE1C200534E6D /* HomeViewController.swift */,
 				6D4BB43B276DFE8400534E6D /* IslmicTabelVC.swift */,
 				6D4BB43D276DFEB300534E6D /* ChildernTabelVC.swift */,
-				6D4BB43F276DFED700534E6D /* CookTabelViewController.swift */,
-				6D4BB441276DFEF500534E6D /* PolitcalTabelViewController.swift */,
-				6D4BB449276E013F00534E6D /* PublicTabelVC.swift */,
+				6D4BB43F276DFED700534E6D /* CookTabelVC.swift */,
+				6D4BB441276DFEF500534E6D /* EducationalTabelVC.swift */,
+				6D4BB449276E013F00534E6D /* OtherBooksTabelVC.swift */,
 				6DA1B4BE276E174100F8936F /* BasketTabelVC.swift */,
 				6DA1B4C0276E197800F8936F /* BookDetails.swift */,
 			);
@@ -137,6 +139,7 @@
 				6D830C482767CABE0098C828 /* AddBookViewController.swift */,
 				6D7A3507276914BC001521BC /* BookTabelViewController.swift */,
 				6D7A35092769159C001521BC /* UpdateViewController.swift */,
+				6DC9A2F42775FCE000E21F7A /* TabBarVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -157,8 +160,8 @@
 				6D4BB433276DF9AF00534E6D /* IslmicBooksCell.swift */,
 				6D4BB435276DF9F400534E6D /* ChildrensBooksCell.swift */,
 				6D4BB437276DFA1600534E6D /* CookBooksCell.swift */,
-				6D4BB439276DFA5600534E6D /* PoliticalBooksCell.swift */,
-				6D4BB447276DFFE600534E6D /* PublicBookCell.swift */,
+				6D4BB439276DFA5600534E6D /* EducationalBooksCell.swift */,
+				6D4BB447276DFFE600534E6D /* OtherBooksCell.swift */,
 				6DA1B4BC276E16FD00F8936F /* BasketCell.swift */,
 				6DA1B4C2276E19AF00F8936F /* CommentCell.swift */,
 			);
@@ -186,8 +189,8 @@
 		6D7B52DE276642A3000AF939 /* BookShelf */ = {
 			isa = PBXGroup;
 			children = (
-				6D7B52F727665027000AF939 /* Model */,
 				6D7B52F927665CC0000AF939 /* Components */,
+				6D7B52F727665027000AF939 /* Model */,
 				6D7B52F62766500B000AF939 /* View */,
 				6D7B52F827665040000AF939 /* Controller */,
 				6D7B52EB276642AD000AF939 /* Assets.xcassets */,
@@ -201,6 +204,7 @@
 		6D7B52F62766500B000AF939 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6D7A350627691421001521BC /* Cell */,
 				6D7B52E5276642A3000AF939 /* Main.storyboard */,
 				6D7B52ED276642AD000AF939 /* LaunchScreen.storyboard */,
 			);
@@ -225,7 +229,6 @@
 				6D4BB445276DFF1B00534E6D /* Main */,
 				6D4BB444276DFF1100534E6D /* Auth */,
 				6D4BB443276DFF0200534E6D /* Home */,
-				6D7A350627691421001521BC /* Cell */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -369,12 +372,12 @@
 				6D830C492767CABF0098C828 /* AddBookViewController.swift in Sources */,
 				6D7A350E276916EC001521BC /* Book.swift in Sources */,
 				6D7B5307276662F2000AF939 /* SignUpViewController.swift in Sources */,
-				6D4BB442276DFEF500534E6D /* PolitcalTabelViewController.swift in Sources */,
-				6D4BB44A276E013F00534E6D /* PublicTabelVC.swift in Sources */,
-				6D4BB440276DFED700534E6D /* CookTabelViewController.swift in Sources */,
+				6D4BB442276DFEF500534E6D /* EducationalTabelVC.swift in Sources */,
+				6D4BB44A276E013F00534E6D /* OtherBooksTabelVC.swift in Sources */,
+				6D4BB440276DFED700534E6D /* CookTabelVC.swift in Sources */,
 				6DA1B4C5276E568400F8936F /* Basket.swift in Sources */,
 				6D4BB438276DFA1600534E6D /* CookBooksCell.swift in Sources */,
-				6D4BB43A276DFA5700534E6D /* PoliticalBooksCell.swift in Sources */,
+				6D4BB43A276DFA5700534E6D /* EducationalBooksCell.swift in Sources */,
 				6D7B52E0276642A3000AF939 /* AppDelegate.swift in Sources */,
 				6DA1B4BF276E174100F8936F /* BasketTabelVC.swift in Sources */,
 				6D4BB432276DE1C200534E6D /* HomeViewController.swift in Sources */,
@@ -385,7 +388,7 @@
 				6D7B530B27668322000AF939 /* User.swift in Sources */,
 				6D7B530327665FB9000AF939 /* ImagePicker.swift in Sources */,
 				6D7A3508276914BD001521BC /* BookTabelViewController.swift in Sources */,
-				6D4BB448276DFFE600534E6D /* PublicBookCell.swift in Sources */,
+				6D4BB448276DFFE600534E6D /* OtherBooksCell.swift in Sources */,
 				6D830C472767C0A80098C828 /* ProfileViewController.swift in Sources */,
 				6D7B52EA276642A3000AF939 /* BookShelf.xcdatamodeld in Sources */,
 				6DA1B4C7276E62B800F8936F /* Comment.swift in Sources */,
@@ -393,6 +396,7 @@
 				6DA1B4BD276E16FD00F8936F /* BasketCell.swift in Sources */,
 				6D7A350A2769159C001521BC /* UpdateViewController.swift in Sources */,
 				6D4BB434276DF9AF00534E6D /* IslmicBooksCell.swift in Sources */,
+				6DC9A2F52775FCE000E21F7A /* TabBarVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

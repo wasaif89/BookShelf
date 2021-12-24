@@ -17,7 +17,6 @@ class SignUpViewController: UIViewController {
     
     let db = Firestore.firestore()
     var user:User!
-       
     
     override func viewDidLoad() {
             super.viewDidLoad()

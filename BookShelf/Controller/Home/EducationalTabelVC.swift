@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
-class PolitcalTabelViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class EducationalTabelVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var tabelView: UITableView!
     let db = Firestore.firestore()
     var book = [Book]()
@@ -23,7 +23,7 @@ class PolitcalTabelViewController: UIViewController,UITableViewDelegate,UITableV
        return book.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PoliticalBooksCell") as! PoliticalBooksCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EducationalBooksCell") as! EducationalBooksCell
         cell.nameBook.text = book[indexPath.row].name
         cell.statusBook.text = book[indexPath.row].bookStatus
         cell.priceBook.text = book[indexPath.row].price
@@ -37,7 +37,7 @@ class PolitcalTabelViewController: UIViewController,UITableViewDelegate,UITableV
                             return
                 }
                     for doc in documents{
-                            if (doc.data()["section"] as? String == "Politcal Book") {
+                            if (doc.data()["section"] as? String == "Educational Book") {
                                 let name = doc.data()["name"] as? String
                                 let status = doc.data()["bookStatus"] as? String
                                 let price = doc.data()["price"] as? String
@@ -47,5 +47,5 @@ class PolitcalTabelViewController: UIViewController,UITableViewDelegate,UITableV
                     }
             self.tabelView.reloadData()
                 }
-            }
+        }
 }

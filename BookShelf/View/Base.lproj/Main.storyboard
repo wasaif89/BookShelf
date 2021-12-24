@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KDY-xN-3Pe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a3l-HN-6VR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -420,7 +420,7 @@
         <!--Public Books-->
         <scene sceneID="zsL-2D-l42">
             <objects>
-                <viewController id="nMT-mc-bO4" customClass="PublicTabelVC" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nMT-mc-bO4" customClass="OtherBooksTabelVC" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xdt-ZH-yT0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -429,7 +429,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PublicBookCell" rowHeight="300" id="6xm-fy-OuT" customClass="PublicBookCell" customModule="BookShelf" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PublicBookCell" rowHeight="300" id="6xm-fy-OuT" customClass="OtherBooksCell" customModule="BookShelf" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6xm-fy-OuT" id="4GD-xh-wVu">
@@ -508,7 +508,7 @@
                     <navigationItem key="navigationItem" title="Public Books" id="eLW-OX-yyX"/>
                     <connections>
                         <outlet property="tabelView" destination="Ai8-RM-aXc" id="EIJ-FR-Dji"/>
-                        <segue destination="Gh7-QY-IYY" kind="show" identifier="publicSegue" id="gbx-6M-Jvq"/>
+                        <segue destination="Gh7-QY-IYY" kind="show" identifier="otherBookSegue" id="gbx-6M-Jvq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sFd-rm-iNd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -728,7 +728,7 @@
                                                     <action selector="sendPressed:" destination="Gh7-QY-IYY" eventType="touchUpInside" id="wbp-zD-9kU"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNe-dU-O6U">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNe-dU-O6U">
                                                 <rect key="frame" x="20" y="125" width="80" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="QiN-nb-qwj"/>
@@ -743,7 +743,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descrption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTR-Np-j4N">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descrption:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTR-Np-j4N">
                                                 <rect key="frame" x="20" y="176" width="85" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="85" id="1wX-IL-7nY"/>
@@ -758,7 +758,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kld-3O-6Qp">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kld-3O-6Qp">
                                                 <rect key="frame" x="20" y="227" width="95" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="95" id="hBy-m5-QhB"/>
@@ -773,7 +773,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hkH-OB-TFQ">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hkH-OB-TFQ">
                                                 <rect key="frame" x="20" y="278" width="40" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="gDZ-p7-JiI"/>
@@ -945,7 +945,7 @@
         <!--Politcal Books-->
         <scene sceneID="NcT-s4-iNN">
             <objects>
-                <viewController id="wEz-wT-nvb" customClass="PolitcalTabelViewController" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wEz-wT-nvb" customClass="EducationalTabelVC" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qVL-y6-8g4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -954,7 +954,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PoliticalBooksCell" rowHeight="300" id="Ogz-s2-20W" customClass="PoliticalBooksCell" customModule="BookShelf" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PoliticalBooksCell" rowHeight="300" id="Ogz-s2-20W" customClass="EducationalBooksCell" customModule="BookShelf" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ogz-s2-20W" id="G9W-Gm-HiX">
@@ -1033,7 +1033,7 @@
                     <navigationItem key="navigationItem" title="Politcal Books" id="NcW-sc-lZN"/>
                     <connections>
                         <outlet property="tabelView" destination="zcC-xv-wbA" id="ve4-Uq-haZ"/>
-                        <segue destination="Gh7-QY-IYY" kind="show" identifier="policticalSegue" id="c5N-Kh-iOf"/>
+                        <segue destination="Gh7-QY-IYY" kind="show" identifier="EducationalSegue" id="c5N-Kh-iOf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rw6-Ck-Hfg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1043,7 +1043,7 @@
         <!--Cook Books-->
         <scene sceneID="DEw-vm-7aw">
             <objects>
-                <viewController id="RYm-Nk-IZ5" customClass="CookTabelViewController" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RYm-Nk-IZ5" customClass="CookTabelVC" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="213-gH-dh6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

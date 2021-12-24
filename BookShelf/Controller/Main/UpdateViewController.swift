@@ -82,11 +82,11 @@ class UpdateViewController: UIViewController {
                }
            }
        }
-}
+  }
 extension UpdateViewController:ImagePickerDelegate{
     func didSelect(image: UIImage?) {
             if let image = image{
                 updateImageBook.image = image
-            }
-    }
+     }
+  }
 }

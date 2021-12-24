@@ -10,15 +10,11 @@ import Firebase
 import FirebaseFirestore
 
 class ProfileViewController: UIViewController {
-    
     @IBOutlet weak var nameLabel: UILabel!
-    
     @IBOutlet weak var emailLabel: UILabel!
-    
     var user = [User]()
     let db = Firestore.firestore()
-    
-    
+   
     override func viewDidLoad() {
             super.viewDidLoad()
             readUsers()
@@ -49,5 +45,5 @@ class ProfileViewController: UIViewController {
                  }
              }
          }
+    }
 
-}

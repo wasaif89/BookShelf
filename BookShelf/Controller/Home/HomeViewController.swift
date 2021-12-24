@@ -21,8 +21,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var cookBtn: UIButton!
     @IBOutlet weak var publicBtn: UIButton!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         L_SlideView.layer.shadowOpacity = 2
@@ -60,7 +58,6 @@ class HomeViewController: UIViewController {
        )}
         lMenuShowing = !lMenuShowing
     }
- 
 }
 extension UIButton{
     func setButton(){
@@ -69,7 +66,4 @@ extension UIButton{
         self.layer.shadowOpacity = 1.0
         self.layer.shadowRadius = 0.0
     }
-    
-    
-    
 }

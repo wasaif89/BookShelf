@@ -13,7 +13,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var forgetBtn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
     
-    
     override func viewDidLoad() {
             super.viewDidLoad()
             cornerRadius()

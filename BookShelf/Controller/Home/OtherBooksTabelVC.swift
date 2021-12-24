@@ -1,15 +1,8 @@
-//
-//  CookTabelViewController.swift
-//  BookShelf
-//
-//  Created by Abu FaisaL on 14/05/1443 AH.
-//
 
 import UIKit
 import Firebase
 import FirebaseFirestore
-
-class CookTabelViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class OtherBooksTabelVC: UIViewController ,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var tabelView: UITableView!
     let db = Firestore.firestore()
     var book = [Book]()
@@ -23,7 +16,7 @@ class CookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
        return book.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CookBooksCell") as! CookBooksCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OtherBookCell") as! OtherBooksCell
         cell.nameBook.text = book[indexPath.row].name
         cell.statusBook.text = book[indexPath.row].bookStatus
         cell.priceBook.text = book[indexPath.row].price
@@ -37,7 +30,7 @@ class CookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
                             return
                 }
                     for doc in documents{
-                            if (doc.data()["section"] as? String == "Cook Book") {
+                            if (doc.data()["section"] as? String == "Other Book") {
                                 let name = doc.data()["name"] as? String
                                 let status = doc.data()["bookStatus"] as? String
                                 let price = doc.data()["price"] as? String
@@ -45,7 +38,7 @@ class CookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
                                 self.book.append(books)
                             }
                     }
-            self.tabelView.reloadData()
+         self.tabelView.reloadData()
                 }
             }
 }
