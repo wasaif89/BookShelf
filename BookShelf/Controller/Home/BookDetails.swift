@@ -123,6 +123,7 @@ func shadow(){
         cell.comment.text = comments[indexPath.row].comment
         return cell
     }
+  
     func readComment(){
         db.collection("comment").addSnapshotListener { (querySnapshot, error) in
                     guard let documents = querySnapshot?.documents else {
@@ -130,12 +131,13 @@ func shadow(){
                             return
                 }
                     for doc in documents{
-                       // if (doc.documentID as? String == )
-                                let comment = doc.data()["comment"] as? String
-
-                        let commints = Comment.init(comment: comment, bookID: nil)
-                                self.comments.append(commints)
-                            }
+                        if (doc.data()["bookID"] as? String == "bookID" ){
+                            let comment = doc.data()["comment"] as? String
+                            
+                         let commints = Comment.init(comment: comment, bookID: nil)
+                                 self.comments.append(commints)
+                        }
+                    }
                     
             self.tableView.reloadData()
                 }

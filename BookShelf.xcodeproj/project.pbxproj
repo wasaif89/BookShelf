@@ -43,6 +43,8 @@
 		6DA1B4C5276E568400F8936F /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1B4C4276E568400F8936F /* Basket.swift */; };
 		6DA1B4C7276E62B800F8936F /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1B4C6276E62B800F8936F /* Comment.swift */; };
 		6DC9A2F52775FCE000E21F7A /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC9A2F42775FCE000E21F7A /* TabBarVC.swift */; };
+		6DC9A2F727764A4500E21F7A /* OrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC9A2F627764A4500E21F7A /* OrderVC.swift */; };
+		6DC9A2F927764A8D00E21F7A /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC9A2F827764A8D00E21F7A /* OrderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +86,8 @@
 		6DA1B4C4276E568400F8936F /* Basket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
 		6DA1B4C6276E62B800F8936F /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		6DC9A2F42775FCE000E21F7A /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		6DC9A2F627764A4500E21F7A /* OrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderVC.swift; sourceTree = "<group>"; };
+		6DC9A2F827764A8D00E21F7A /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		72FB71187F4E56358D96ADE2 /* Pods_BookShelf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookShelf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A4CD8C0E229C19708F91755 /* Pods-BookShelf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookShelf.debug.xcconfig"; path = "Target Support Files/Pods-BookShelf/Pods-BookShelf.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +144,7 @@
 				6D7A3507276914BC001521BC /* BookTabelViewController.swift */,
 				6D7A35092769159C001521BC /* UpdateViewController.swift */,
 				6DC9A2F42775FCE000E21F7A /* TabBarVC.swift */,
+				6DC9A2F627764A4500E21F7A /* OrderVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 		6D7A350627691421001521BC /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				6DC9A2F827764A8D00E21F7A /* OrderCell.swift */,
 				6D7A350B27691606001521BC /* BookCell.swift */,
 				6D4BB433276DF9AF00534E6D /* IslmicBooksCell.swift */,
 				6D4BB435276DF9F400534E6D /* ChildrensBooksCell.swift */,
@@ -367,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DA1B4C3276E19AF00F8936F /* CommentCell.swift in Sources */,
+				6DC9A2F927764A8D00E21F7A /* OrderCell.swift in Sources */,
 				6D4BB43E276DFEB300534E6D /* ChildernTabelVC.swift in Sources */,
 				6D7B5305276662D4000AF939 /* LoginViewController.swift in Sources */,
 				6D830C492767CABF0098C828 /* AddBookViewController.swift in Sources */,
@@ -395,6 +402,7 @@
 				6D4BB43C276DFE8400534E6D /* IslmicTabelVC.swift in Sources */,
 				6DA1B4BD276E16FD00F8936F /* BasketCell.swift in Sources */,
 				6D7A350A2769159C001521BC /* UpdateViewController.swift in Sources */,
+				6DC9A2F727764A4500E21F7A /* OrderVC.swift in Sources */,
 				6D4BB434276DF9AF00534E6D /* IslmicBooksCell.swift in Sources */,
 				6DC9A2F52775FCE000E21F7A /* TabBarVC.swift in Sources */,
 			);
