@@ -87,8 +87,8 @@ func shadow(){
 }
     func saveBasket(_ basket: Basket) {
            let docData: [String: Any] = [
-            "book":basket.book,
-            "user":basket.user,
+            "bookName":basket.bookName ,
+            "prices":basket.prices ,
             "userToken":Auth.auth().currentUser!.uid
            ]
         db.collection("Basket").document().setData(docData) { err in
@@ -100,7 +100,7 @@ func shadow(){
            }
        }
 
-    func saveComment(_ comment: Comment) {
+    func addComment(_ comment: Comment) {
            let docData: [String: Any] = [
             "comment":comment.comment,
             "userToken":Auth.auth().currentUser!.uid
@@ -131,12 +131,12 @@ func shadow(){
                             return
                 }
                     for doc in documents{
-                        if (doc.data()["bookID"] as? String == "bookID" ){
+//                        if (doc.data()["bookID"] as? String == "bookID" ){
                             let comment = doc.data()["comment"] as? String
                             
                          let commints = Comment.init(comment: comment, bookID: nil)
                                  self.comments.append(commints)
-                        }
+//                        }
                     }
                     
             self.tableView.reloadData()
@@ -144,13 +144,12 @@ func shadow(){
     }
 
     @IBAction func addBasketPressed(_ sender: UIButton) {
-//        self.basket = Basket.init(book: [Book.init(name: <#T##String?#>, description: <#T##String?#>, section: <#T##String?#>, bookStatus: <#T##String?#>, price: <#T##String?#>)], user: [User.init(name: , email: <#T##String?#>)])
-//        self.saveBook(self.basket)
+        self.basket = Basket.init(bookName: self.bookName.text!, prices: self.bookPrices.text!)
     }
 
     @IBAction func sendPressed(_ sender: UIButton) {
         self.comment  =  Comment.init(comment: self.comintTF.text!, bookID: nil)
-        self.saveComment(self.comment)
+        self.addComment(self.comment)
 
     }
 }

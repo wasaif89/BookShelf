@@ -274,10 +274,10 @@
             </objects>
             <point key="canvasLocation" x="2590" y="610"/>
         </scene>
-        <!--View Controller-->
+        <!--Buy ConfirmationVC-->
         <scene sceneID="JhX-Bg-25T">
             <objects>
-                <viewController id="zOX-ta-q5q" sceneMemberID="viewController">
+                <viewController id="zOX-ta-q5q" customClass="BuyConfirmationVC" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7zJ-yn-m50">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -343,7 +343,7 @@
                                                     <constraint firstAttribute="height" constant="400" id="rIr-9J-nnj"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="141" id="Wvy-Np-Xx0">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BuyConfirmationCell" rowHeight="141" id="Wvy-Np-Xx0" customClass="BuyConfirmationCell" customModule="BookShelf" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="44.5" width="374" height="141"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wvy-Np-Xx0" id="nu7-lw-ln5">
@@ -396,6 +396,10 @@
                                                                 <constraint firstItem="HtN-lE-vDi" firstAttribute="top" secondItem="aJj-oh-pMX" secondAttribute="bottom" constant="30" id="yL7-bS-38s"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="bookName" destination="9J6-M9-vMW" id="NhS-3O-gNt"/>
+                                                            <outlet property="prices" destination="eDe-Lw-XJK" id="zSe-9T-x8P"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
@@ -416,13 +420,22 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oug-su-Lbi">
-                                                <rect key="frame" x="40" y="700" width="334" height="60"/>
+                                                <rect key="frame" x="40" y="755.5" width="334" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="gHG-Ii-UO4"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Buy"/>
+                                                <connections>
+                                                    <action selector="buyPressed:" destination="zOX-ta-q5q" eventType="touchUpInside" id="Ka0-DY-R6C"/>
+                                                </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pyment When Recieving" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNV-xm-Xho">
+                                                <rect key="frame" x="20" y="695" width="374" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <color key="textColor" red="1" green="0.0" blue="0.12105407899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -430,6 +443,7 @@
                                             <constraint firstItem="OiD-7P-fBc" firstAttribute="leading" secondItem="hOp-QL-MPm" secondAttribute="leading" constant="20" id="79Q-7i-VkP"/>
                                             <constraint firstItem="UYa-Ud-Ji6" firstAttribute="top" secondItem="Dy8-Wr-jx1" secondAttribute="top" id="7hv-yl-kWg"/>
                                             <constraint firstItem="YAR-KV-BVB" firstAttribute="top" secondItem="e3K-gX-k7P" secondAttribute="top" id="8vx-87-eK7"/>
+                                            <constraint firstItem="kNV-xm-Xho" firstAttribute="leading" secondItem="hOp-QL-MPm" secondAttribute="leading" constant="20" id="8x5-ZX-JfL"/>
                                             <constraint firstAttribute="height" constant="840" id="ACX-S9-9qO"/>
                                             <constraint firstItem="dAS-Nm-p3e" firstAttribute="leading" secondItem="hOp-QL-MPm" secondAttribute="leading" constant="20" id="AjP-wP-sN8"/>
                                             <constraint firstItem="UYa-Ud-Ji6" firstAttribute="bottom" secondItem="Dy8-Wr-jx1" secondAttribute="bottom" id="B3W-c6-59K"/>
@@ -443,6 +457,7 @@
                                             <constraint firstItem="F9T-xB-tyA" firstAttribute="leading" secondItem="OiD-7P-fBc" secondAttribute="trailing" constant="20" id="Mld-yT-YGE"/>
                                             <constraint firstAttribute="trailing" secondItem="8ER-zh-6SI" secondAttribute="trailing" constant="20" id="MoF-GQ-5Qx"/>
                                             <constraint firstItem="YAR-KV-BVB" firstAttribute="leading" secondItem="e3K-gX-k7P" secondAttribute="trailing" constant="20" id="O8p-5R-ocn"/>
+                                            <constraint firstAttribute="trailing" secondItem="kNV-xm-Xho" secondAttribute="trailing" constant="20" id="RHP-X1-EgO"/>
                                             <constraint firstItem="8ER-zh-6SI" firstAttribute="bottom" secondItem="dAS-Nm-p3e" secondAttribute="bottom" id="RXC-2e-yZG"/>
                                             <constraint firstAttribute="trailing" secondItem="iv7-JI-50n" secondAttribute="trailing" constant="20" id="Zc0-Kg-pQI"/>
                                             <constraint firstAttribute="trailing" secondItem="UYa-Ud-Ji6" secondAttribute="trailing" constant="20" id="ap8-9A-aQB"/>
@@ -452,9 +467,10 @@
                                             <constraint firstItem="e3K-gX-k7P" firstAttribute="leading" secondItem="hOp-QL-MPm" secondAttribute="leading" constant="20" id="l8W-TD-H0p"/>
                                             <constraint firstItem="iv7-JI-50n" firstAttribute="leading" secondItem="hOp-QL-MPm" secondAttribute="leading" constant="20" id="mAU-FT-8d8"/>
                                             <constraint firstItem="iv7-JI-50n" firstAttribute="top" secondItem="Dy8-Wr-jx1" secondAttribute="bottom" constant="40" id="mtg-0v-JOF"/>
+                                            <constraint firstItem="Oug-su-Lbi" firstAttribute="top" secondItem="kNV-xm-Xho" secondAttribute="bottom" constant="39" id="qCq-Yl-l3Q"/>
                                             <constraint firstItem="Dy8-Wr-jx1" firstAttribute="top" secondItem="dAS-Nm-p3e" secondAttribute="bottom" constant="20" id="sXa-tL-rPM"/>
-                                            <constraint firstItem="Oug-su-Lbi" firstAttribute="top" secondItem="iv7-JI-50n" secondAttribute="bottom" constant="40" id="sY3-jd-kPG"/>
                                             <constraint firstItem="dAS-Nm-p3e" firstAttribute="top" secondItem="OiD-7P-fBc" secondAttribute="bottom" constant="20" id="tAz-zg-YtC"/>
+                                            <constraint firstItem="kNV-xm-Xho" firstAttribute="top" secondItem="iv7-JI-50n" secondAttribute="bottom" constant="35" id="uFb-yd-mCA"/>
                                             <constraint firstAttribute="trailing" secondItem="F9T-xB-tyA" secondAttribute="trailing" constant="20" id="uRi-Za-SnE"/>
                                             <constraint firstItem="8ER-zh-6SI" firstAttribute="leading" secondItem="dAS-Nm-p3e" secondAttribute="trailing" constant="20" id="v9M-b7-l31"/>
                                         </constraints>
@@ -478,6 +494,14 @@
                             <constraint firstItem="TXk-29-UKp" firstAttribute="leading" secondItem="iRE-cS-WfO" secondAttribute="leading" id="g4e-in-vX3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="address" destination="YAR-KV-BVB" id="5UR-wz-Hed"/>
+                        <outlet property="buyBtn" destination="Oug-su-Lbi" id="zVV-B1-TOM"/>
+                        <outlet property="date" destination="UYa-Ud-Ji6" id="JfL-5D-x2g"/>
+                        <outlet property="name" destination="F9T-xB-tyA" id="AMz-D5-RYr"/>
+                        <outlet property="phoneNumber" destination="8ER-zh-6SI" id="W7E-lY-91l"/>
+                        <outlet property="tableView" destination="iv7-JI-50n" id="4Bw-VF-3en"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhz-L4-VB3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -599,7 +623,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="200" id="lIU-Qg-Oow" customClass="OrderCell" customModule="BookShelf" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderCell" rowHeight="200" id="lIU-Qg-Oow" customClass="OrderCell" customModule="BookShelf" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lIU-Qg-Oow" id="THx-0t-BYF">
@@ -716,12 +740,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="My Order" id="vua-Gr-SOQ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="tKN-qu-Hss" id="szh-Nm-xb0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pz7-MX-Wdk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3402.898550724638" y="2065.8482142857142"/>
         </scene>
-        <!--Public Books-->
+        <!--Other Books-->
         <scene sceneID="zsL-2D-l42">
             <objects>
                 <viewController id="nMT-mc-bO4" customClass="OtherBooksTabelVC" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
@@ -733,7 +760,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PublicBookCell" rowHeight="300" id="6xm-fy-OuT" customClass="OtherBooksCell" customModule="BookShelf" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OtherBookCell" rowHeight="300" id="6xm-fy-OuT" customClass="OtherBooksCell" customModule="BookShelf" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6xm-fy-OuT" id="4GD-xh-wVu">
@@ -809,7 +836,7 @@
                             <constraint firstItem="Ai8-RM-aXc" firstAttribute="leading" secondItem="Pqo-Ot-avS" secondAttribute="leading" id="yTJ-3F-01d"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Public Books" id="eLW-OX-yyX"/>
+                    <navigationItem key="navigationItem" title="Other Books" id="eLW-OX-yyX"/>
                     <connections>
                         <outlet property="tabelView" destination="Ai8-RM-aXc" id="EIJ-FR-Dji"/>
                         <segue destination="Gh7-QY-IYY" kind="show" identifier="otherBookSegue" id="gbx-6M-Jvq"/>
@@ -1179,10 +1206,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wSX-De-KN8">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="635"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="250" id="OcI-1E-G3L" customClass="BasketCell" customModule="BookShelf" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="basketCell" rowHeight="250" id="OcI-1E-G3L" customClass="BasketCell" customModule="BookShelf" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OcI-1E-G3L" id="13E-RI-Yia">
@@ -1201,26 +1228,16 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment When recieving" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udd-rC-g6v">
-                                                    <rect key="frame" x="60" y="165.5" width="294" height="21.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.12105407899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="53z-Xh-rig" secondAttribute="trailing" constant="40" id="Ozf-Md-DTB"/>
-                                                <constraint firstItem="Udd-rC-g6v" firstAttribute="top" secondItem="53z-Xh-rig" secondAttribute="bottom" constant="30" id="PPL-gQ-8qb"/>
                                                 <constraint firstItem="53z-Xh-rig" firstAttribute="centerY" secondItem="13E-RI-Yia" secondAttribute="centerY" id="QGT-3I-rPc"/>
-                                                <constraint firstItem="Udd-rC-g6v" firstAttribute="centerX" secondItem="13E-RI-Yia" secondAttribute="centerX" id="Rww-U6-S4N"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Udd-rC-g6v" secondAttribute="trailing" constant="40" id="Smx-Xa-fYf"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="LAb-aU-C6t" secondAttribute="trailing" constant="40" id="VyF-ZC-mAf"/>
                                                 <constraint firstItem="53z-Xh-rig" firstAttribute="centerX" secondItem="13E-RI-Yia" secondAttribute="centerX" id="XO1-Xz-6Ry"/>
                                                 <constraint firstItem="53z-Xh-rig" firstAttribute="leading" secondItem="13E-RI-Yia" secondAttribute="leadingMargin" constant="40" id="aDG-I8-kWO"/>
                                                 <constraint firstItem="LAb-aU-C6t" firstAttribute="leading" secondItem="13E-RI-Yia" secondAttribute="leadingMargin" constant="40" id="b8g-s5-IfB"/>
                                                 <constraint firstItem="53z-Xh-rig" firstAttribute="top" secondItem="LAb-aU-C6t" secondAttribute="bottom" constant="40" id="cnU-Gw-R3C"/>
                                                 <constraint firstItem="LAb-aU-C6t" firstAttribute="centerX" secondItem="13E-RI-Yia" secondAttribute="centerX" id="cvV-CR-z1d"/>
-                                                <constraint firstItem="Udd-rC-g6v" firstAttribute="leading" secondItem="13E-RI-Yia" secondAttribute="leadingMargin" constant="40" id="mFV-QI-aUj"/>
                                                 <constraint firstItem="LAb-aU-C6t" firstAttribute="top" secondItem="13E-RI-Yia" secondAttribute="topMargin" constant="40" id="tpr-7S-OWN"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1231,22 +1248,36 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lH8-Su-CxN">
+                                <rect key="frame" x="40" y="739" width="334" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="C79-ZO-c76"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="buy confirmation"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aj0-qb-Vcj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="aj0-qb-Vcj" firstAttribute="bottom" secondItem="wSX-De-KN8" secondAttribute="bottom" id="9j8-ip-8Tv"/>
+                            <constraint firstItem="aj0-qb-Vcj" firstAttribute="bottom" secondItem="lH8-Su-CxN" secondAttribute="bottom" constant="73" id="BJL-43-VKG"/>
                             <constraint firstItem="wSX-De-KN8" firstAttribute="top" secondItem="aj0-qb-Vcj" secondAttribute="top" id="J3h-jR-ufz"/>
                             <constraint firstItem="aj0-qb-Vcj" firstAttribute="trailing" secondItem="wSX-De-KN8" secondAttribute="trailing" id="OhP-Co-mmi"/>
+                            <constraint firstItem="lH8-Su-CxN" firstAttribute="leading" secondItem="aj0-qb-Vcj" secondAttribute="leading" constant="40" id="Zzs-bl-aJW"/>
+                            <constraint firstItem="aj0-qb-Vcj" firstAttribute="trailing" secondItem="lH8-Su-CxN" secondAttribute="trailing" constant="40" id="ead-Lc-CxO"/>
                             <constraint firstItem="wSX-De-KN8" firstAttribute="leading" secondItem="aj0-qb-Vcj" secondAttribute="leading" id="pGZ-7A-ogh"/>
+                            <constraint firstItem="lH8-Su-CxN" firstAttribute="top" secondItem="wSX-De-KN8" secondAttribute="bottom" constant="60" id="y1X-bb-SyX"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="wSX-De-KN8" id="SJc-if-qo3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tai-Zf-rtO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1861" y="609"/>
         </scene>
-        <!--Politcal Books-->
+        <!-- Educational Books-->
         <scene sceneID="NcT-s4-iNN">
             <objects>
                 <viewController id="wEz-wT-nvb" customClass="EducationalTabelVC" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
@@ -1258,7 +1289,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PoliticalBooksCell" rowHeight="300" id="Ogz-s2-20W" customClass="EducationalBooksCell" customModule="BookShelf" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EducationalBooksCell" rowHeight="300" id="Ogz-s2-20W" customClass="EducationalBooksCell" customModule="BookShelf" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ogz-s2-20W" id="G9W-Gm-HiX">
@@ -1334,7 +1365,7 @@
                             <constraint firstItem="GND-JW-3Eq" firstAttribute="trailing" secondItem="zcC-xv-wbA" secondAttribute="trailing" id="uXY-Oj-Non"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Politcal Books" id="NcW-sc-lZN"/>
+                    <navigationItem key="navigationItem" title=" Educational Books" id="NcW-sc-lZN"/>
                     <connections>
                         <outlet property="tabelView" destination="zcC-xv-wbA" id="ve4-Uq-haZ"/>
                         <segue destination="Gh7-QY-IYY" kind="show" identifier="EducationalSegue" id="c5N-Kh-iOf"/>
@@ -1852,11 +1883,11 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title=" EducationalBooks">
+                                        <buttonConfiguration key="configuration" style="plain" title="Educational Books">
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="wEz-wT-nvb" kind="show" id="xjL-1C-ZlR"/>
+                                            <segue destination="wEz-wT-nvb" kind="show" id="sgk-E3-Vxu"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="otS-lN-gqZ">
@@ -1880,7 +1911,7 @@
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="nMT-mc-bO4" kind="show" id="bew-tZ-VE5"/>
+                                            <segue destination="nMT-mc-bO4" kind="show" id="XIo-6p-UZP"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L33-Gr-UeC">
@@ -2033,7 +2064,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tEY-t6-Fj2">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tEY-t6-Fj2" customClass="DropDown" customModule="iOSDropDown">
                                                         <rect key="frame" x="0.0" y="250" width="334" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="bet-tF-isR"/>
@@ -2050,7 +2081,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LwG-0j-JPV">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LwG-0j-JPV" customClass="DropDown" customModule="iOSDropDown">
                                                         <rect key="frame" x="0.0" y="320" width="334" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="LVS-Sp-2Sl"/>
@@ -2124,16 +2155,18 @@
                     </view>
                     <navigationItem key="navigationItem" title="Edit" id="eS8-ZY-NKM"/>
                     <connections>
-                        <outlet property="bookStatusTextField" destination="LwG-0j-JPV" id="pKf-7h-m9j"/>
-                        <outlet property="bookStausLabel" destination="flN-7W-nxo" id="g9w-bv-uL3"/>
-                        <outlet property="descriptionLabel" destination="elN-Ag-ssf" id="vnk-lS-Eps"/>
-                        <outlet property="descriptionTextView" destination="8gU-CL-37z" id="jxE-eA-H0F"/>
-                        <outlet property="nameLabel" destination="8oF-qb-784" id="oRR-NS-sPC"/>
-                        <outlet property="nameLabelTextField" destination="fev-WJ-pic" id="2ga-yn-Qm1"/>
-                        <outlet property="sectionLabel" destination="m5D-2O-WXL" id="9KR-8U-KCD"/>
-                        <outlet property="sectionTextField" destination="tEY-t6-Fj2" id="iDs-lb-qNR"/>
-                        <outlet property="updateBtn" destination="2uq-MF-ixI" id="3BP-pz-irl"/>
-                        <outlet property="updateImageBook" destination="rKJ-fL-H3D" id="edq-9e-X2M"/>
+                        <outlet property="bookStatusTextField" destination="LwG-0j-JPV" id="yZR-5s-KTM"/>
+                        <outlet property="bookStausLabel" destination="flN-7W-nxo" id="XzF-ad-KpZ"/>
+                        <outlet property="descriptionLabel" destination="elN-Ag-ssf" id="eVq-lf-Yxc"/>
+                        <outlet property="descriptionTextView" destination="8gU-CL-37z" id="Xog-OT-F9K"/>
+                        <outlet property="nameLabel" destination="8oF-qb-784" id="FiK-Z1-ckt"/>
+                        <outlet property="nameLabelTextField" destination="fev-WJ-pic" id="Dtq-65-Bm2"/>
+                        <outlet property="pricesLabel" destination="IzI-Ca-Kb0" id="jmh-J5-S5Q"/>
+                        <outlet property="pricesTF" destination="oUb-XM-MsP" id="FBp-e7-2r6"/>
+                        <outlet property="sectionLabel" destination="m5D-2O-WXL" id="H7J-zX-2xm"/>
+                        <outlet property="sectionTextField" destination="tEY-t6-Fj2" id="bKx-eF-th7"/>
+                        <outlet property="updateBtn" destination="X3n-rg-eNd" id="AHr-tQ-8Zt"/>
+                        <outlet property="updateImageBook" destination="rKJ-fL-H3D" id="7ZY-vz-Wyi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E5u-z0-gY2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2200,7 +2233,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="c5N-Kh-iOf"/>
+        <segue reference="gbx-6M-Jvq"/>
         <segue reference="CZe-qd-f2C"/>
     </inferredMetricsTieBreakers>
     <resources>

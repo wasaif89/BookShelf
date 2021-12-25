@@ -8,9 +8,6 @@
 import Foundation
 
 struct Basket {
-    var book:[Book] = [Book]()
-    var user:[User] = [User]()
-
+    let bookName:String?
+    let prices:String?
 }
-//var  book1 =  Book(name: <#T##String?#>, description: <#T##String?#>, section: <#T##String?#>, bookStatus: <#T##String?#>, price: <#T##String?#>)
-//var user1  = User.init(name: <#T##String?#>, email: <#T##String?#>)

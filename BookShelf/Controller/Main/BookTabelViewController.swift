@@ -11,6 +11,7 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
     @IBOutlet var tabelView: UITableView!
     let db = Firestore.firestore()
     var book = [Book]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tabelView.dataSource = self
@@ -31,14 +32,24 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
         let selectRow = book[indexPath.row]
         print(selectRow)
     }
-//     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            book.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        } else  {
-//           print("error")
-//        }
-//    }
+    
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+           book.remove(at: indexPath.row)
+           
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            db.collection("Book").document("").delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed!")
+                }
+            }
+        } else  {
+           print("error")
+        }
+    }
+    
     func readBook(){
             db.collection("Book").addSnapshotListener { (querySnapshot, error) in
                 guard let documents = querySnapshot?.documents else {
@@ -59,32 +70,7 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
                 self.tabelView.reloadData()
             }
         }
-//
-//
-//    func readBook(){
-//         if  let user = Auth.auth().currentUser?.uid{
-//             let docRef = db.collection("Book").document(user)
-//             docRef.getDocument { (document, error) in
-//                 if let document = document, document.exists {
-//                    if let error = error {
-//                        print(error.localizedDescription)
-//                        return
-//                    }
-//                     let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-//                     let name = document.data()?["name"] as? String
-//                    let description = document.data()?["description"] as? String
-//                    let price = document.data()?["price"] as? String
-//                     print(name)
-//                    let books  = Book.init(name: name, description: description, section: nil, bookStatus: nil, price: price)
-//                    self.book.append(books)
-//                     print("Document data")
-//                    self.tabelView.reloadData()
-//                 } else {
-//                    print("Document does not exist\(error?.localizedDescription)")
-//                 }
-//             }
-//         }
-//     }
+
 }
 
 
