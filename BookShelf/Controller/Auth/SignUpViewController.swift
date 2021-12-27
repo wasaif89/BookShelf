@@ -13,7 +13,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var userNameTextField: UITextField!
         @IBOutlet weak var emailTextField: UITextField!
         @IBOutlet weak var passwordTextField: UITextField!
-        @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet weak var signUpBtn: UIButton!
     
     let db = Firestore.firestore()
     var user:User!
@@ -33,7 +34,11 @@ class SignUpViewController: UIViewController {
                 passwordTextField.layer.cornerRadius = 20
                 passwordTextField.layer.borderWidth = 1
                 passwordTextField.layer.borderColor = UIColor.red.cgColor
-                signUpBtn.layer.cornerRadius = 20
+                phoneNumberTextField.layer.cornerRadius = 20
+                phoneNumberTextField.layer.borderWidth = 1
+                phoneNumberTextField.layer.borderColor = UIColor.red.cgColor
+       
+        signUpBtn.layer.cornerRadius = 20
                 signUpBtn.layer.borderWidth = 1
                 signUpBtn.layer.borderColor = UIColor.red.cgColor
           }
@@ -49,7 +54,7 @@ class SignUpViewController: UIViewController {
     @IBAction func signUpPressed(_ sender: UIButton) {
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { authResult, error in
                     if error == nil{
-                        self.user = User.init(name: self.userNameTextField.text!, email: self.emailTextField.text!)
+                        self.user = User.init(name: self.userNameTextField.text!, email: self.emailTextField.text!, address: nil, phoneNumber: self.phoneNumberTextField.text!)
                         self.saveUser(self.user)
                         print("Sign Up Successful")
                         self.performSegue(withIdentifier: "GoToTabBarSignUp", sender: self)
@@ -62,7 +67,11 @@ class SignUpViewController: UIViewController {
         func saveUser(_ user: User) {
                let docData: [String: Any] = [
                 "name": user.name,
-                "email": user.email
+                "email": user.email,
+                "phoneNumber": user.phoneNumber,
+                "address": user.address,
+                "time" : Date().timeIntervalSince1970
+        
                ]
                db.collection("Users").document(Auth.auth().currentUser!.uid).setData(docData) { err in
                    if let err = err {

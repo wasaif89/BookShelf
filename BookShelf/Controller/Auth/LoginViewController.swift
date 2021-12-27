@@ -50,12 +50,20 @@ class LoginViewController: UIViewController {
                                , password: passwordTextField.text!) { [weak self] authResult, error in
                 guard let self = self else { return }
                 if error == nil{
-                    print("Login Successful")
-                    self.performSegue(withIdentifier: "GoToTabBarLogin", sender: self)
-                }else{
-                    print("error\(error?.localizedDescription)")
-                }
-            }
+                   print("Login Successful")
+                  self.performSegue(withIdentifier: "GoToTabBarLogin", sender: self)
+              }else{
+                   print("error\(error?.localizedDescription)")
+//             }
+//                    var alertVC = UIAlertController(title: "Welcome back log in success", message: error?.localizedDescription, preferredStyle: .alert)
+//                    alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+//                                      self.present(alertVC, animated: true, completion: nil)
+//                                      }else{
+//                                      var alertVC = UIAlertController(title: "Alert", message: "error", preferredStyle: .alert)
+//                                          alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+//                                                            self.present(alertVC, animated: true, completion: nil)
+//
+                    }
         }
     }
-    
+}

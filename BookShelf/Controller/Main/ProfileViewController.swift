@@ -12,6 +12,8 @@ import FirebaseFirestore
 class ProfileViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     var user = [User]()
     let db = Firestore.firestore()
    
@@ -27,6 +29,12 @@ class ProfileViewController: UIViewController {
             emailLabel.layer.cornerRadius =  15
             emailLabel.layer.borderWidth = 1
             emailLabel.layer.borderColor =  UIColor(red:208/255, green:44/255, blue:166/255, alpha: 100).cgColor
+            phoneNumberLabel.layer.cornerRadius = 15
+            phoneNumberLabel.layer.borderWidth = 1
+            phoneNumberLabel.layer.borderColor =  UIColor(red:208/255, green:44/255, blue:166/255, alpha: 100).cgColor
+            addressLabel.layer.cornerRadius = 15
+            addressLabel.layer.borderWidth = 1
+            addressLabel.layer.borderColor =  UIColor(red:208/255, green:44/255, blue:166/255, alpha: 100).cgColor
         }
     // get infrmation data user from firebase
         func readUsers(){
@@ -37,7 +45,7 @@ class ProfileViewController: UIViewController {
                          let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                          self.nameLabel.text = document.data()?["name"] as? String
                          self.emailLabel.text = document.data()?["email"] as? String
-                        _ = User(name: self.nameLabel.text, email: self.emailLabel.text)
+                         _ = User(name: self.nameLabel.text, email: self.emailLabel.text,address: nil, phoneNumber: self.phoneNumberLabel.text)
                          print("Document data")
                      } else {
                         print("Document does not exist\(error?.localizedDescription)")
