@@ -26,7 +26,7 @@ class UpdateViewController: UIViewController {
     var image: UIImage? = nil
     let db = Firestore.firestore()
     var user:User!
-    var imagePicker: ImagePicker!
+   
     var book:Book!
     override func viewDidLoad() {
         super.viewDidLoad()

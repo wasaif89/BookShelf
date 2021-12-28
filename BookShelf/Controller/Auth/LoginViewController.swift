@@ -5,6 +5,7 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 
 
 class LoginViewController: UIViewController {
@@ -12,11 +13,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var forgetBtn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
-    
+    let locationManager = CLLocationManager()
     override func viewDidLoad() {
             super.viewDidLoad()
             cornerRadius()
             shadow()
+        
         }
             func cornerRadius(){
                 emailTextField.layer.cornerRadius = 20
@@ -51,11 +53,17 @@ class LoginViewController: UIViewController {
                 guard let self = self else { return }
                 if error == nil{
                    print("Login Successful")
-                  self.performSegue(withIdentifier: "GoToTabBarLogin", sender: self)
+                 self.performSegue(withIdentifier: "GoToHomePage", sender: nil)
+                    
               }else{
                    print("error\(error?.localizedDescription)")
+                  
+                      print("Error\(error?.localizedDescription)")
+                      var alertVC = UIAlertController(title: "error", message: error?.localizedDescription, preferredStyle: .alert)
+                      alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                      self.present(alertVC, animated: true, completion: nil)
 //             }
-//                    var alertVC = UIAlertController(title: "Welcome back log in success", message: error?.localizedDescription, preferredStyle: .alert)
+//       var alertVC = UIAlertController(title: "Welcome back log in success", message: error?.localizedDescription, preferredStyle: .alert)
 //                    alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
 //                                      self.present(alertVC, animated: true, completion: nil)
 //                                      }else{
@@ -65,5 +73,16 @@ class LoginViewController: UIViewController {
 //
                     }
         }
+    }
+}
+extension  LoginViewController:CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let loacation = locations.last
+        print("loacation : \(locationManager.location!.coordinate.latitude)")
+        print("loacation : \(locationManager.location!.coordinate.longitude)")
+
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
     }
 }

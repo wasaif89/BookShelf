@@ -7,6 +7,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import CoreLocation
 
 class SignUpViewController: UIViewController {
 
@@ -18,11 +19,15 @@ class SignUpViewController: UIViewController {
     
     let db = Firestore.firestore()
     var user:User!
-    
+    let locationManager = CLLocationManager()
     override func viewDidLoad() {
             super.viewDidLoad()
             cornerRadius()
             shadow()
+                locationManager.delegate = self
+                locationManager.requestAlwaysAuthorization()
+                locationManager.requestWhenInUseAuthorization()
+                locationManager.startUpdatingLocation()
         }
     func cornerRadius(){
                 userNameTextField.layer.cornerRadius = 20
@@ -54,12 +59,18 @@ class SignUpViewController: UIViewController {
     @IBAction func signUpPressed(_ sender: UIButton) {
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { authResult, error in
                     if error == nil{
-                        self.user = User.init(name: self.userNameTextField.text!, email: self.emailTextField.text!, address: nil, phoneNumber: self.phoneNumberTextField.text!)
+                        self.user = User.init(name: self.userNameTextField.text!, email: self.emailTextField.text!, phoneNumber: self.phoneNumberTextField.text!,latitude: self.locationManager.location?.coordinate.latitude,longitude: self.locationManager.location?.coordinate.longitude )
                         self.saveUser(self.user)
                         print("Sign Up Successful")
-                        self.performSegue(withIdentifier: "GoToTabBarSignUp", sender: self)
+                        var alertVC = UIAlertController(title: "Welcome back log in success", message: "Welcome back log in success ", preferredStyle: .alert)
+                            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                            self.present(alertVC, animated: true, completion: nil)
+//                       self.performSegue(withIdentifier: "GoToHomePage", sender: self)
                     }else{
                         print("Error\(error?.localizedDescription)")
+                        var alertVC = UIAlertController(title: "error", message: error?.localizedDescription, preferredStyle: .alert)
+                        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                        self.present(alertVC, animated: true, completion: nil)
                     }
             }
         }
@@ -69,8 +80,9 @@ class SignUpViewController: UIViewController {
                 "name": user.name,
                 "email": user.email,
                 "phoneNumber": user.phoneNumber,
-                "address": user.address,
-                "time" : Date().timeIntervalSince1970
+                "latitude":user.latitude,
+                "longitude":user.longitude,
+                "time" : Date().timeIntervalSinceReferenceDate
         
                ]
                db.collection("Users").document(Auth.auth().currentUser!.uid).setData(docData) { err in
@@ -82,3 +94,15 @@ class SignUpViewController: UIViewController {
                }
            }
     }
+extension  SignUpViewController:CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let loacation = locations.last
+        print("loacation : \(locationManager.location!.coordinate.latitude)")
+        print("loacation : \(locationManager.location!.coordinate.longitude)")
+
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
+    }
+}
+

@@ -29,7 +29,6 @@
 		6D7B52EA276642A3000AF939 /* BookShelf.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D7B52E8276642A3000AF939 /* BookShelf.xcdatamodeld */; };
 		6D7B52EC276642AD000AF939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D7B52EB276642AD000AF939 /* Assets.xcassets */; };
 		6D7B52EF276642AD000AF939 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D7B52ED276642AD000AF939 /* LaunchScreen.storyboard */; };
-		6D7B530327665FB9000AF939 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7B530227665FB9000AF939 /* ImagePicker.swift */; };
 		6D7B5305276662D4000AF939 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7B5304276662D3000AF939 /* LoginViewController.swift */; };
 		6D7B5307276662F2000AF939 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7B5306276662F2000AF939 /* SignUpViewController.swift */; };
 		6D7B53092766715A000AF939 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D7B53082766715A000AF939 /* GoogleService-Info.plist */; };
@@ -76,7 +75,6 @@
 		6D7B52EB276642AD000AF939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D7B52EE276642AD000AF939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D7B52F0276642AD000AF939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6D7B530227665FB9000AF939 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		6D7B5304276662D3000AF939 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6D7B5306276662F2000AF939 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		6D7B53082766715A000AF939 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 		6D4BB445276DFF1B00534E6D /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				6D830C462767C0A80098C828 /* ProfileViewController.swift */,
 				6D830C482767CABE0098C828 /* AddBookViewController.swift */,
 				6D7A3507276914BC001521BC /* BookTabelViewController.swift */,
 				6D7A35092769159C001521BC /* UpdateViewController.swift */,
@@ -254,7 +251,6 @@
 		6D7B52F927665CC0000AF939 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				6D7B530227665FB9000AF939 /* ImagePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -262,6 +258,7 @@
 		6D955659277A35750089FF1C /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				6D830C462767C0A80098C828 /* ProfileViewController.swift */,
 				6D95565A277A35B30089FF1C /* UpdateProfileVC.swift */,
 			);
 			path = Profile;
@@ -414,7 +411,6 @@
 				6D7A350C27691606001521BC /* BookCell.swift in Sources */,
 				6D7B52E2276642A3000AF939 /* SceneDelegate.swift in Sources */,
 				6D7B530B27668322000AF939 /* User.swift in Sources */,
-				6D7B530327665FB9000AF939 /* ImagePicker.swift in Sources */,
 				6D7A3508276914BD001521BC /* BookTabelViewController.swift in Sources */,
 				6D4BB448276DFFE600534E6D /* OtherBooksCell.swift in Sources */,
 				6D95565B277A35B30089FF1C /* UpdateProfileVC.swift in Sources */,
@@ -580,6 +576,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookShelf/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Used to access the Camera";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Application wants to use your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Application wants to use your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -608,6 +607,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookShelf/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Used to access the Camera";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Application wants to use your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Application wants to use your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

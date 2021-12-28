@@ -26,6 +26,8 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         readBasket()
         readUsers()
+        cornerRadius()
+        shadow()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return basket.count
@@ -69,7 +71,7 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
                      self.phoneNumber.text = document.data()?["phoneNumer"] as? String
                      self.address.text = document.data()?["address"] as? String
                      self.date.text = document.data()?["date"] as? String
-                     _ = User(name: self.name.text, email: nil,address: self.address.text, phoneNumber: self.phoneNumber.text)
+                     _ = User(name: self.name.text, email: nil, phoneNumber: self.phoneNumber.text,latitude: nil,longitude: nil)
                      print("Document data")
                  } else {
                     print("Document does not exist\(error?.localizedDescription)")
@@ -92,4 +94,16 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
                }
           }
       }
+    func cornerRadius(){
+        buyBtn.layer.cornerRadius = 20
+        buyBtn.layer.borderWidth = 1
+        buyBtn.layer.borderColor = UIColor.red.cgColor
+}
+func shadow(){
+    buyBtn.layer.shadowColor = UIColor.black.cgColor
+    buyBtn.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
+    buyBtn.layer.shadowRadius = 8
+    buyBtn.layer.shadowOpacity = 0.5
+    buyBtn.layer.masksToBounds = false
+}
 }

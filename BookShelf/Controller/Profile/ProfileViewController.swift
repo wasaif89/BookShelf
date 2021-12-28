@@ -45,7 +45,7 @@ class ProfileViewController: UIViewController {
                          let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                          self.nameLabel.text = document.data()?["name"] as? String
                          self.emailLabel.text = document.data()?["email"] as? String
-                         _ = User(name: self.nameLabel.text, email: self.emailLabel.text,address: nil, phoneNumber: self.phoneNumberLabel.text)
+                         _ = User(name: self.nameLabel.text, email: self.emailLabel.text, phoneNumber: self.phoneNumberLabel.text, latitude: nil,longitude: nil)
                          print("Document data")
                      } else {
                         print("Document does not exist\(error?.localizedDescription)")

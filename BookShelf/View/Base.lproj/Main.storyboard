@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KDY-xN-3Pe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8dS-k7-rxH">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -75,7 +75,7 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="Log in"/>
                                                 <connections>
                                                     <action selector="loginPreesed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MMH-co-0Vf"/>
-                                                    <segue destination="1r2-4D-PmI" kind="show" identifier="GoToTabBarLogin" id="CZe-qd-f2C"/>
+                                                    <segue destination="nwc-0G-XZg" kind="show" identifier="GoToHomePage" id="ZqY-hl-31q"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfB-pp-q9J">
@@ -140,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2214" y="-113"/>
+            <point key="canvasLocation" x="2147.826086956522" y="-113.16964285714285"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="Ycd-R9-7tX">
@@ -213,7 +213,6 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
                                                 <connections>
                                                     <action selector="signUpPressed:" destination="mxW-LO-4YX" eventType="touchUpInside" id="tE2-ly-ojI"/>
-                                                    <segue destination="1r2-4D-PmI" kind="show" identifier="GoToTabBarSignUp" id="2Kc-Zm-O4C"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -261,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Dy-iW-mpN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2945" y="-113"/>
+            <point key="canvasLocation" x="2876.811594202899" y="-113.16964285714285"/>
         </scene>
         <!--Tab BarVC-->
         <scene sceneID="KoW-vk-1nw">
@@ -1624,7 +1623,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="RjF-16-B78">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="wD6-S6-APe">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="wD6-S6-APe">
                             <connections>
                                 <segue destination="mTL-Dg-v4a" kind="show" id="HwE-DP-6C7"/>
                             </connections>
@@ -2080,24 +2079,6 @@
             </objects>
             <point key="canvasLocation" x="-258" y="-113"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="eZ3-ov-Exc">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KDY-xN-3Pe" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NV6-dX-oa7">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="zIT-uf-EUz"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sdC-sF-Rhk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1404" y="-113"/>
-        </scene>
         <!--Edit-->
         <scene sceneID="UaM-T5-6FU">
             <objects>
@@ -2349,10 +2330,28 @@
             </objects>
             <point key="canvasLocation" x="-993" y="-113"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zCw-Ot-xDu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8dS-k7-rxH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mhD-3z-elj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="dnz-4l-C7k"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hAS-bF-bSP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1237.68115942029" y="-113.16964285714285"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="ZqY-hl-31q"/>
         <segue reference="gbx-6M-Jvq"/>
-        <segue reference="2Kc-Zm-O4C"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book" catalog="system" width="128" height="99"/>
