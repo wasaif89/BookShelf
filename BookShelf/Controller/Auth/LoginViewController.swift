@@ -48,52 +48,52 @@ class LoginViewController: UIViewController {
         }
     
     @IBAction func loginPreesed(_ sender: UIButton) {
-//            Auth.auth().signIn(withEmail: emailTextField.text!
-//                               , password: passwordTextField.text!) { [weak self] authResult, error in
-//                guard let self = self else { return }
-//                if error == nil{
-//                   print("Login Successful")
-//                 self.performSegue(withIdentifier: "GoToHomePage", sender: nil)
+            Auth.auth().signIn(withEmail: emailTextField.text!
+                               , password: passwordTextField.text!) { [weak self] authResult, error in
+                guard let self = self else { return }
+                if error == nil{
+                   print("Login Successful")
+                 self.performSegue(withIdentifier: "GoToHomePage", sender: nil)
+
+              }else{
+                   print("error\(error?.localizedDescription)")
+
+                      print("Error\(error?.localizedDescription)")
+                      var alertVC = UIAlertController(title: "error", message: error?.localizedDescription, preferredStyle: .alert)
+                      alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                      self.present(alertVC, animated: true, completion: nil)
+
+
+
+
+                  //             }
+//       var alertVC = UIAlertController(title: "Welcome back log in success", message: error?.localizedDescription, preferredStyle: .alert)
+//                    alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+//                                      self.present(alertVC, animated: true, completion: nil)
+//                                      }else{
+//                                      var alertVC = UIAlertController(title: "Alert", message: "error", preferredStyle: .alert)
+//                                          alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+//                                                            self.present(alertVC, animated: true, completion: nil)
 //
-//              }else{
-//                   print("error\(error?.localizedDescription)")
-//
-//                      print("Error\(error?.localizedDescription)")
-//                      var alertVC = UIAlertController(title: "error", message: error?.localizedDescription, preferredStyle: .alert)
-//                      alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-//                      self.present(alertVC, animated: true, completion: nil)
-//
-//
-//
-//
-//                  //             }
-////       var alertVC = UIAlertController(title: "Welcome back log in success", message: error?.localizedDescription, preferredStyle: .alert)
-////                    alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-////                                      self.present(alertVC, animated: true, completion: nil)
-////                                      }else{
-////                                      var alertVC = UIAlertController(title: "Alert", message: "error", preferredStyle: .alert)
-////                                          alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-////                                                            self.present(alertVC, animated: true, completion: nil)
-////
-//                    }
-//        }
-//    }
-        
-        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!){
-            result , error in
-            if (error == nil) {
-                let profilVC =
-                self.storyboard?.instantiateViewController(withIdentifier: "homePageID") as! HomeViewController
-                self.navigationController?.show(profilVC, sender: self)
-                print(result?.user.email ?? "")
-                print("Login Successful")
-            }else{
-                print(error?.localizedDescription ?? "")
-                print("Error\(error?.localizedDescription)")
-            }
-                
-            }
+                    }
         }
+    }
+        
+//        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!){
+//            result , error in
+//            if (error == nil) {
+//                let profilVC =
+//                self.storyboard?.instantiateViewController(withIdentifier: "homePageID") as! HomeViewController
+//                self.navigationController?.show(profilVC, sender: self)
+//                print(result?.user.email ?? "")
+//                print("Login Successful")
+//            }else{
+//                print(error?.localizedDescription ?? "")
+//                print("Error\(error?.localizedDescription)")
+//            }
+//
+//            }
+//        }
 }
 extension  LoginViewController:CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

@@ -135,6 +135,7 @@
                         <outlet property="forgetBtn" destination="P8d-uU-4Yt" id="Dnt-c3-A7D"/>
                         <outlet property="loginBtn" destination="aQH-Vx-I7R" id="bSW-b2-4u7"/>
                         <outlet property="passwordTextField" destination="oVc-7P-se1" id="MzB-Vy-2sy"/>
+                        <segue destination="nwc-0G-XZg" kind="show" identifier="GoToHomePage" id="627-1h-SaW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -2349,6 +2350,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="627-1h-SaW"/>
         <segue reference="gbx-6M-Jvq"/>
     </inferredMetricsTieBreakers>
     <resources>
