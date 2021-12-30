@@ -64,7 +64,11 @@ class HomeViewController: UIViewController {
         
     }
     
-  
+    @IBAction func goToCategoryButton(_ sender: UIButton) {
+        sender.titleLabel
+        sender.tag
+    }
+    
 }
 extension UIButton{
     func setButton(){
