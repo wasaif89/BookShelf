@@ -58,6 +58,13 @@ class HomeViewController: UIViewController {
        )}
         lMenuShowing = !lMenuShowing
     }
+    
+    @IBAction func profilePressed(_ sender: Any) {
+        
+        
+    }
+    
+  
 }
 extension UIButton{
     func setButton(){

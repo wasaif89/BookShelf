@@ -75,7 +75,6 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="Log in"/>
                                                 <connections>
                                                     <action selector="loginPreesed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MMH-co-0Vf"/>
-                                                    <segue destination="nwc-0G-XZg" kind="show" identifier="GoToHomePage" id="ZqY-hl-31q"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfB-pp-q9J">
@@ -1969,7 +1968,7 @@
         <!--Home-->
         <scene sceneID="ttf-Ex-CJi">
             <objects>
-                <viewController id="nwc-0G-XZg" customClass="HomeViewController" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homePageID" id="nwc-0G-XZg" customClass="HomeViewController" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UOF-B7-bRY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2061,7 +2060,7 @@
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="person.fill" catalog="system" id="n6Y-ff-U3K">
                             <connections>
-                                <action selector="R_SlideMenu:" destination="nwc-0G-XZg" id="pkF-3c-5ep"/>
+                                <action selector="profilePressed:" destination="nwc-0G-XZg" id="5VU-g2-MjM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2350,7 +2349,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZqY-hl-31q"/>
         <segue reference="gbx-6M-Jvq"/>
     </inferredMetricsTieBreakers>
     <resources>
