@@ -89,25 +89,25 @@ class UpdateViewController: UIViewController {
         self.present(picker, animated: true, completion: nil)
     }
     @IBAction func updatePressed(_ sender: UIButton) {
-        self.book = Book.init(name: self.nameLabelTextField.text!, description: self.descriptionTextView.text!, section:self.sectionTextField.text!, bookStatus: self.bookStatusTextField.text!, price: self.pricesTF.text!)
-        self.saveBook(self.book)
+        let washingtonRef = db.collection("Users").document(Auth.auth().currentUser!.uid)
+
+        washingtonRef.updateData([
+            "name":nameLabelTextField.text,
+            "description":descriptionTextView.text ,
+            "section":sectionTextField.text ,
+            "bookStatus":bookStatusTextField.text,
+            "price":pricesTF.text,
+            "BookID": db.collection("Users").document().documentID
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+
     }
-    func saveBook(_ book: Book) {
-           let docData: [String: Any] = [
-            "name": book.name,
-            "description": book.description,
-            "section":book.section,
-            "bookStatus":book.bookStatus,
-            "price":book.price
-           ]
-        db.collection("Book").document(Auth.auth().currentUser!.uid).setData(docData) { err in
-               if let err = err {
-                   print("Error writing document: \(err)")
-               } else {
-                   print("Document successfully written!")
-               }
-           }
-       }
+
   }
 extension UpdateViewController:UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 

@@ -107,6 +107,20 @@ class AddBookViewController: UIViewController {
                     storgeProfileRef.downloadURL(completion:  { (url, error) in
                         if let metaImageUrl = url?.absoluteString{
                            print(metaImageUrl)
+                            
+                            let washingtonRef = self.db.collection("Book").document()
+
+                           washingtonRef.updateData([
+                               "image":metaImageUrl
+
+                          ]) { err in
+                              if let err = err {
+                                    print("Error updating document: \(err)")
+                                } else {
+                                   print("Document successfully updated")
+                               }
+                           }
+                            
                         }
                     })
                 })

@@ -4,7 +4,6 @@
 //
 //  Created by Abu FaisaL on 21/05/1443 AH.
 //
-
 import UIKit
 import Firebase
 import FirebaseFirestore
@@ -38,8 +37,9 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
         cell.prices.text = basket[indexPath.row].prices
         return cell
     }
+    let randomNumber = Double.random(in: 0..<1000000) as? String
     @IBAction func buyPressed(_ sender: Any) {
-        self.order = Order.init(orderNumber: nil, customerID: Auth.auth().currentUser?.uid, bookName: nil, prices: nil)
+        self.order = Order.init(orderNumber: randomNumber, customerID: Auth.auth().currentUser?.uid, bookName: nil, prices: nil)
         self.saveOrder(self.order)
         
     }
@@ -58,7 +58,7 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
                             }
                     }
             self.tableView.reloadData()
-                }
+            }
         }
 
     func readUsers(){
@@ -79,13 +79,14 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
              }
          }
      }
-    func saveOrder(_ order: Order) {
+   func saveOrder(_ order: Order) {
            let docData: [String: Any] = [
             "orderNumber":order.orderNumber,
             "bookName": order.bookName,
             "prices": order.prices,
+            "Date": Date().timeIntervalSinceReferenceDate,
             "userToken":Auth.auth().currentUser?.uid,
-            "bookID":db.collection("Book").document()]
+            "bookID":db.collection("Book").document().documentID]
         db.collection("Order").document().setData(docData) { err in
                if let err = err {
                  print("Error writing document: \(err)")
@@ -105,5 +106,5 @@ func shadow(){
     buyBtn.layer.shadowRadius = 8
     buyBtn.layer.shadowOpacity = 0.5
     buyBtn.layer.masksToBounds = false
-}
+  }
 }

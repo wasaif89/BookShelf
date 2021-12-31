@@ -13,4 +13,5 @@ struct Book {
     let section:String?
     let bookStatus:String?
     let price:String?
+    
 }

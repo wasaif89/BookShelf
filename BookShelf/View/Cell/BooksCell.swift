@@ -7,10 +7,11 @@
 
 import UIKit
 
-class IslmicBooksCell: UITableViewCell {
-    @IBOutlet weak var nameBook: UILabel!
-    @IBOutlet weak var statusBook: UILabel!
-    @IBOutlet weak var priceBook: UILabel!
+class BooksCell: UITableViewCell {
+    @IBOutlet weak var titleBookLabel: UILabel!
+    @IBOutlet weak var bookStatusLabel: UILabel!
+    @IBOutlet weak var priceBookLabel: UILabel!
+    @IBOutlet weak var setionLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }

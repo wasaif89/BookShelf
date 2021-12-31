@@ -28,17 +28,30 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
         cell.priceBook.text = book[indexPath.row].price
         return cell
     }
+    let updateSegueIdentifier = "UpdateViewController"
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == updateSegueIdentifier,
+           let destination =  segue.destination as? UpdateViewController,
+           let BookIndex = tabelView.indexPathForSelectedRow?.row
+        {
+            destination.book = book[BookIndex]
+            
+        }
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tabelView.deselectRow(at: indexPath, animated: true)
         let selectRow = book[indexPath.row]
         print(selectRow)
+        
+    
     }
     
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
            book.remove(at: indexPath.row)
-           
+           let docID = db.collection("Book").document().documentID
             tableView.deleteRows(at: [indexPath], with: .fade)
-            db.collection("Book").document("").delete() { err in
+            db.collection("Book").document(docID).delete() { err in
                 if let err = err {
                     print("Error removing document: \(err)")
                 } else {
@@ -49,6 +62,7 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
            print("error")
         }
     }
+
     
     func readBook(){
             db.collection("Book").addSnapshotListener { (querySnapshot, error) in

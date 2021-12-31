@@ -4,12 +4,15 @@
 //
 //  Created by Abu FaisaL on 14/05/1443 AH.
 //
-
 import UIKit
 import Firebase
 import FirebaseFirestore
-class IslmicTabelVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class BooksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var tabelView: UITableView!
+    let categories = ["Islmic Book","Childern Book","Cook Book","Educational Book","Other Book"]
+    var isSearching = false
+    
+    
     let db = Firestore.firestore()
     var book = [Book]()
     override func viewDidLoad() {
@@ -19,28 +22,36 @@ class IslmicTabelVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
         readBook()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return book.count
-    }
+        
+            return book.count
+        
+      }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "IslmicBooksCell") as! IslmicBooksCell
-        cell.nameBook.text = book[indexPath.row].name
-        cell.statusBook.text = book[indexPath.row].bookStatus
-        cell.priceBook.text = book[indexPath.row].price
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BooksCell") as! BooksCell
+        cell.titleBookLabel.text = book[indexPath.row].name
+        cell.bookStatusLabel.text = book[indexPath.row].bookStatus
+        cell.priceBookLabel.text = book[indexPath.row].price
+        cell.setionLabel.text = book[indexPath.row].section
         
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "islamicSgeue", sender: self)
+        tabelView.deselectRow(at: indexPath, animated: true)
+        let row = indexPath.row
+        print(book[row])
     }
     
+    let BookDetailsSegueIdentifier = "BookDetails"
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "islamicSgeue" {
-                if let indexPath = tabelView.indexPathForSelectedRow {
-                 // // let destinationController = segue.destination as! BookDetails
-                  //  destinationController.Name = self.book[indexPath.row]
-                }
-            }
+        if segue.identifier == BookDetailsSegueIdentifier,
+           let destination =  segue.destination as? BookDetails,
+           let BookIndex = tabelView.indexPathForSelectedRow?.row
+        {
+            destination.book = book[BookIndex]
+            
         }
+    }
+    
     func readBook(){
         db.collection("Book").addSnapshotListener { (querySnapshot, error) in
                     guard let documents = querySnapshot?.documents else {
@@ -48,13 +59,14 @@ class IslmicTabelVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
                             return
                 }
                     for doc in documents{
-                            if (doc.data()["section"] as? String == "Islmic Book") {
+                           
                                 let name = doc.data()["name"] as? String
                                 let status = doc.data()["bookStatus"] as? String
                                 let price = doc.data()["price"] as? String
-                                let books = Book.init(name: name, description: nil, section: nil, bookStatus: status, price: price)
+                                let section = doc.data()["section"] as? String
+                                let books = Book.init(name: name, description: nil, section: section, bookStatus: status, price: price)
                                 self.book.append(books)
-                            }
+                           
                     }
             self.tabelView.reloadData()
                 }
