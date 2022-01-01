@@ -24,10 +24,7 @@ class SignUpViewController: UIViewController {
             super.viewDidLoad()
             cornerRadius()
             shadow()
-                locationManager.delegate = self
-                locationManager.requestAlwaysAuthorization()
-                locationManager.requestWhenInUseAuthorization()
-                locationManager.startUpdatingLocation()
+
         }
     func cornerRadius(){
                 userNameTextField.layer.cornerRadius = 20
@@ -59,7 +56,7 @@ class SignUpViewController: UIViewController {
     @IBAction func signUpPressed(_ sender: UIButton) {
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { authResult, error in
                     if error == nil{
-                        self.user = User.init(name: self.userNameTextField.text!, email: self.emailTextField.text!, phoneNumber: self.phoneNumberTextField.text!,latitude: self.locationManager.location?.coordinate.latitude,longitude: self.locationManager.location?.coordinate.longitude )
+                        self.user = User.init(name: self.userNameTextField.text!, email: self.emailTextField.text!, phoneNumber: self.phoneNumberTextField.text!,latitude: nil,longitude: nil )
                         self.saveUser(self.user)
                         print("Sign Up Successful")
                         var alertVC = UIAlertController(title: "Welcome back log in success", message: "Welcome back log in success ", preferredStyle: .alert)
@@ -95,7 +92,7 @@ class SignUpViewController: UIViewController {
            }
     }
 extension  SignUpViewController:CLLocationManagerDelegate{
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [AnyObject]!) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]!) {
         let loacation = locations.last
         print("loacation : \(locationManager.location!.coordinate.latitude)")
         print("loacation : \(locationManager.location!.coordinate.longitude)")

@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
             super.viewDidLoad()
             cornerRadius()
             shadow()
+      
         
         }
             func cornerRadius(){
@@ -53,7 +54,9 @@ class LoginViewController: UIViewController {
                 guard let self = self else { return }
                 if error == nil{
                    print("Login Successful")
-                 self.performSegue(withIdentifier: "GoToHomePage", sender: nil)
+                    let vc =
+                              self.storyboard?.instantiateViewController(withIdentifier: "homePageID") as! HomeViewController
+                              self.navigationController?.show(vc, sender: self)
 
               }else{
                    print("error\(error?.localizedDescription)")
@@ -82,9 +85,7 @@ class LoginViewController: UIViewController {
 //        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!){
 //            result , error in
 //            if (error == nil) {
-//                let profilVC =
-//                self.storyboard?.instantiateViewController(withIdentifier: "homePageID") as! HomeViewController
-//                self.navigationController?.show(profilVC, sender: self)
+//
 //                print(result?.user.email ?? "")
 //                print("Login Successful")
 //            }else{

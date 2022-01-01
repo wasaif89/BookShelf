@@ -28,8 +28,9 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
         cell.priceBook.text = book[indexPath.row].price
         return cell
     }
-    let updateSegueIdentifier = "UpdateViewController"
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let updateSegueIdentifier = "UpdateSegue"
+     func prepareForSegue(segue: UIStoryboardSegue, sender: Any?) {
+
         if segue.identifier == updateSegueIdentifier,
            let destination =  segue.destination as? UpdateViewController,
            let BookIndex = tabelView.indexPathForSelectedRow?.row
@@ -49,7 +50,8 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
            book.remove(at: indexPath.row)
-           let docID = db.collection("Book").document().documentID
+            let docID = db.collection("Book").document()
+                .documentID
             tableView.deleteRows(at: [indexPath], with: .fade)
             db.collection("Book").document(docID).delete() { err in
                 if let err = err {
@@ -71,6 +73,7 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
                         return
             }
                 for doc in documents{
+             
                     if (doc.data()["userToken"] as? String == Auth.auth().currentUser?.uid) {
                             let name = doc.data()["name"] as? String
                             let description = doc.data()["description"] as? String

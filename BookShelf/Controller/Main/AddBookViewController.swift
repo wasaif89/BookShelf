@@ -126,6 +126,7 @@ class AddBookViewController: UIViewController {
                 })
     }
     func saveBook(_ book: Book) {
+        let documentID = UUID().uuidString
            let docData: [String: Any] = [
             "name": book.name,
             "description": book.description,
@@ -133,8 +134,9 @@ class AddBookViewController: UIViewController {
             "bookStatus":book.bookStatus,
             "price":book.price,
             "userToken":Auth.auth().currentUser?.uid,
-            "bookID":db.collection("Book").document()]
-        db.collection("Book").document().setData(docData) { err in
+            "bookID":documentID
+           ]
+        db.collection("Book").document(documentID).setData(docData) { err in
                if let err = err {
                  print("Error writing document: \(err)")
                } else {

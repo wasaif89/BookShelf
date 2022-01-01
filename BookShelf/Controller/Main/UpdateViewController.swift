@@ -89,15 +89,15 @@ class UpdateViewController: UIViewController {
         self.present(picker, animated: true, completion: nil)
     }
     @IBAction func updatePressed(_ sender: UIButton) {
-        let washingtonRef = db.collection("Users").document(Auth.auth().currentUser!.uid)
-
+        let newDocumentID = UUID().uuidString
+        let washingtonRef = db.collection("Users").document(newDocumentID)
         washingtonRef.updateData([
             "name":nameLabelTextField.text,
             "description":descriptionTextView.text ,
             "section":sectionTextField.text ,
             "bookStatus":bookStatusTextField.text,
             "price":pricesTF.text,
-            "BookID": db.collection("Users").document().documentID
+            "BookID": newDocumentID
         ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")

@@ -56,5 +56,21 @@ class ProfileViewController: UIViewController {
                  }
              }
          }
-    }
+    
+    @IBAction func signOutPressed(_ sender: UIButton) {
+       
+        let firebaseAuth = Auth.auth()
+            do {
+              try firebaseAuth.signOut()
+                print("Sign Out ")
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "homePageID") as! HomeViewController
+                  self.navigationController?.show(vc, sender: self)
+
+            } catch let signOutError as NSError {
+              print ("Error signing out: %@", signOutError)
+                
+            }
+                
+            }
+}
 
