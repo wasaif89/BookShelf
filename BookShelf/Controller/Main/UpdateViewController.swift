@@ -9,8 +9,11 @@ import UIKit
 import Firebase
 import FirebaseStorage
 import FirebaseFirestore
+//import FirebaseFirestoreSwift
 import iOSDropDown
+
 class UpdateViewController: UIViewController {
+
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameLabelTextField: UITextField!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -27,16 +30,23 @@ class UpdateViewController: UIViewController {
     let db = Firestore.firestore()
     var user:User!
    
-    var book:Book!
+    var book:Book?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cornerRadius()
         shadow()
         sectionTextField.optionArray = ["Islmic Book","Childern Book","Cook Book","Educational Book","Other Book"]
         bookStatusTextField.optionArray = ["New","Used"]
+        
+        nameLabelTextField.text = book?.name
+        descriptionTextView.text = book?.description
+        sectionTextField.text = book?.section
+        bookStatusTextField.text = book?.bookStatus
+        pricesTF.text = book?.price
+        print("Selected book \(book?.id)")
 
-      
-    }
+      }
         func cornerRadius(){
            
             nameLabelTextField.layer.cornerRadius = 10
@@ -88,23 +98,54 @@ class UpdateViewController: UIViewController {
         picker.delegate = self
         self.present(picker, animated: true, completion: nil)
     }
+
     @IBAction func updatePressed(_ sender: UIButton) {
-        let newDocumentID = UUID().uuidString
-        let washingtonRef = db.collection("Users").document(newDocumentID)
-        washingtonRef.updateData([
-            "name":nameLabelTextField.text,
-            "description":descriptionTextView.text ,
-            "section":sectionTextField.text ,
-            "bookStatus":bookStatusTextField.text,
-            "price":pricesTF.text,
-            "BookID": newDocumentID
-        ]) { err in
-            if let err = err {
-                print("Error updating document: \(err)")
-            } else {
-                print("Document successfully updated")
-            }
+        let userReference = db.collection("User").document(Auth.auth().currentUser!.uid)
+        guard let imageSelected = self.image else{
+            print("image is nil")
+            return
         }
+        guard let imageData = imageSelected.jpegData(compressionQuality: 0.4)
+        else{ return}
+        let storage = Storage.storage().reference(forURL: "gs://book-29caa.appspot.com")
+          let storgeProfileRef = storage.child(UUID().uuidString)
+          let metadata = StorageMetadata()
+                metadata.contentType = "image/jpeg"
+                storgeProfileRef.putData(imageData,metadata: metadata,completion: { (storgeMetaData, error) in
+                    if error != nil {
+                        print("erorr: \(error?.localizedDescription)")
+                        return
+                    }
+                    storgeProfileRef.downloadURL(completion:  { [self] (url, error) in
+                        if let metaImageUrl = url?.absoluteString{
+                           print(metaImageUrl)
+                            let bookRef = db.collection("Book").document((book?.id)!)
+
+                            bookRef.updateData([
+                                "name":nameLabelTextField.text,
+                                "description":descriptionTextView.text ,
+                                "section":sectionTextField.text ,
+                                "bookStatus":bookStatusTextField.text,
+                                "price":pricesTF.text,
+                                "image":metaImageUrl,
+                                "BookID": book?.id
+                            ])
+                            { err in
+                                if let err = err {
+                                    print("Error updating document: \(err)")
+                                } else {
+                                    print("Document successfully updated")
+                                    self.navigationController?.popViewController(animated: true)
+                                }
+                            }
+                            
+                        }
+                    })
+                })
+        
+    
+        
+
 
     }
 

@@ -7,11 +7,17 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseFirestoreSwift
+import iOSDropDown
 class BooksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var tabelView: UITableView!
-    let categories = ["Islmic Book","Childern Book","Cook Book","Educational Book","Other Book"]
-    var isSearching = false
+    let categories = ["All","Islmic Book","Childern Book","Cook Book","Educational Book","Other Book"]
+    var selectedBook : Book?
     
+        //
+    
+
+    @IBOutlet weak var categoriesTF: DropDown!
     
     let db = Firestore.firestore()
     var book = [Book]()
@@ -19,56 +25,90 @@ class BooksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         super.viewDidLoad()
         tabelView.dataSource = self
         tabelView.delegate = self
+        categoriesTF.optionArray = ["All","Islmic Book","Childern Book","Cook Book","Educational Book","Other Book"]
         readBook()
+        categoriesTF.didSelect { selectedText, index, id in
+            print(selectedText, index, id)
+            self.getBookByCategory(category:selectedText)
+
+        }
     }
+    func getBookByCategory(category: String){
+        print(category)
+        if categoriesTF.text == "All" {
+            db.collection("Book").getDocuments { snapshot,error  in
+                let alldocs = snapshot?.documents
+                alldocs?.forEach({ doc in
+                    do{
+                        self.book = []
+                        let bookData = try doc.data(as: Book.self)
+                        self.book.append(bookData!)
+                        self.tabelView.reloadData()
+                    }catch{
+                        print("error\(error.localizedDescription)")
+                    }
+                })
+            }
+        } else  {
+            db.collection("Book").whereField("section", isEqualTo: category).getDocuments { snapshot, err in
+                let alldocs = snapshot?.documents
+                alldocs?.forEach({ doc in
+                    do{
+                        self.book = []
+                        let bookData = try doc.data(as: Book.self)
+                        self.book.append(bookData!)
+                        self.tabelView.reloadData()
+                    }catch{
+                        print("error\(error.localizedDescription)")
+                    }
+                })
+            }
+        }
+        }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return book.count
         
-            return book.count
-        
-      }
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BooksCell") as! BooksCell
         cell.titleBookLabel.text = book[indexPath.row].name
         cell.bookStatusLabel.text = book[indexPath.row].bookStatus
         cell.priceBookLabel.text = book[indexPath.row].price
         cell.setionLabel.text = book[indexPath.row].section
-        
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         tabelView.deselectRow(at: indexPath, animated: true)
-        let row = indexPath.row
-        print(book[row])
-    }
-    
-    let BookDetailsSegueIdentifier = "BookDetails"
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == BookDetailsSegueIdentifier,
-           let destination =  segue.destination as? BookDetails,
-           let BookIndex = tabelView.indexPathForSelectedRow?.row
-        {
-            destination.book = book[BookIndex]
-            
-        }
+        selectedBook = book[indexPath.row]
+        performSegue(withIdentifier: "BookSgeue", sender: nil)
     }
     
     func readBook(){
-        db.collection("Book").addSnapshotListener { (querySnapshot, error) in
-                    guard let documents = querySnapshot?.documents else {
-                            print("Error fetching documents: \(error!)")
-                            return
-                }
-                    for doc in documents{
-                           
-                                let name = doc.data()["name"] as? String
-                                let status = doc.data()["bookStatus"] as? String
-                                let price = doc.data()["price"] as? String
-                                let section = doc.data()["section"] as? String
-                                let books = Book.init(name: name, description: nil, section: section, bookStatus: status, price: price)
-                                self.book.append(books)
-                           
+        db.collection("Book").addSnapshotListener { [self] (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                print("Error fetching documents: \(error!)")
+                return
+            }
+            for doc in documents{
+                do {
+                    let book = try doc.data(as: Book.self)
+                    if let book = book {
+                        self.book.append(book)
+                        self.tabelView.reloadData()
                     }
-            self.tabelView.reloadData()
+                } catch {
+                    print("error read books \(error.localizedDescription)")
                 }
+            }
         }
+    }
+    
+    let BookDetailsSegueIdentifier = "BookSgeue"
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == BookDetailsSegueIdentifier {
+            let destination =  segue.destination as! BookDetails
+            destination.book = selectedBook
+        }
+    }
 }

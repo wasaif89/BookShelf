@@ -6,6 +6,7 @@
 import UIKit
 import Firebase
 import CoreLocation
+import FirebaseAuth
 
 
 class LoginViewController: UIViewController {

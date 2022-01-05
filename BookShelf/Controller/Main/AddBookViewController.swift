@@ -6,8 +6,11 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
 import FirebaseFirestore
+import FirebaseFirestoreSwift
+import FirebaseStorage
+
 import iOSDropDown
 class AddBookViewController: UIViewController {
 
@@ -87,8 +90,8 @@ class AddBookViewController: UIViewController {
     }
     
     @IBAction func addPressed(_ sender: UIButton) {
-        self.book = Book.init(name: self.nameLabelTextField.text!, description: self.descriptionTextView.text!, section: self.sectionTF.text!, bookStatus: self.bookStatusTF.text!, price: self.pricesTextField.text!)
-        self.saveBook(self.book)
+        
+        let userReference = db.collection("Users").document(Auth.auth().currentUser!.uid)
         guard let imageSelected = self.image else{
             print("image is nil")
             return
@@ -104,45 +107,47 @@ class AddBookViewController: UIViewController {
                         print("erorr: \(error?.localizedDescription)")
                         return
                     }
-                    storgeProfileRef.downloadURL(completion:  { (url, error) in
+                    storgeProfileRef.downloadURL(completion:  { [self] (url, error) in
                         if let metaImageUrl = url?.absoluteString{
                            print(metaImageUrl)
-                            
-                            let washingtonRef = self.db.collection("Book").document()
-
-                           washingtonRef.updateData([
-                               "image":metaImageUrl
-
-                          ]) { err in
-                              if let err = err {
-                                    print("Error updating document: \(err)")
-                                } else {
-                                   print("Document successfully updated")
-                               }
-                           }
+                            self.book = Book.init(name: self.nameLabelTextField.text!, description: self.descriptionTextView.text!, section: self.sectionTF.text!, bookStatus: self.bookStatusTF.text!, image: metaImageUrl, price: self.pricesTextField.text!, user: userReference)
+                            self.saveBook(self.book)
                             
                         }
                     })
                 })
+        
+    
+
     }
     func saveBook(_ book: Book) {
         let documentID = UUID().uuidString
-           let docData: [String: Any] = [
-            "name": book.name,
-            "description": book.description,
-            "section":book.section,
-            "bookStatus":book.bookStatus,
-            "price":book.price,
-            "userToken":Auth.auth().currentUser?.uid,
-            "bookID":documentID
-           ]
-        db.collection("Book").document(documentID).setData(docData) { err in
-               if let err = err {
-                 print("Error writing document: \(err)")
-               } else {
-                 print("Document successfully written!")
-               }
-          }
+        try! db.collection("Book").document(documentID).setData(from: book) { err in
+            if let err = err {
+              print("Error writing document: \(err)")
+            } else {
+              print("Document successfully written!")
+                self.navigationController?.popViewController(animated: true)
+
+            }
+        }
+//           let docData: [String: Any] = [
+//            "name": book.name,
+//            "description": book.description,
+//            "section":book.section,
+//            "bookStatus":book.bookStatus,
+//            "price":book.price,
+//            "userToken":db.collection("Users").document(Auth.auth().currentUser?.uid),
+//            "bookID":documentID
+//           ]
+
+//        db.collection("Book").document(documentID).setData(docData) { err in
+//               if let err = err {
+//                 print("Error writing document: \(err)")
+//               } else {
+//                 print("Document successfully written!")
+//               }
+//          }
       }
  }
   extension AddBookViewController:UIImagePickerControllerDelegate, UINavigationControllerDelegate{

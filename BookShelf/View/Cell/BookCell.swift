@@ -7,6 +7,7 @@
 
 import UIKit
 class BookCell: UITableViewCell {
+    @IBOutlet weak var bookImage: UIImageView!
     @IBOutlet weak var nameBook: UILabel!
     @IBOutlet weak var descriptonBook: UILabel!
     @IBOutlet weak var priceBook: UILabel!

@@ -145,8 +145,8 @@
 		6D4BB445276DFF1B00534E6D /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				6D830C482767CABE0098C828 /* AddBookViewController.swift */,
 				6D7A3507276914BC001521BC /* BookTabelViewController.swift */,
+				6D830C482767CABE0098C828 /* AddBookViewController.swift */,
 				6D7A35092769159C001521BC /* UpdateViewController.swift */,
 				6DC9A2F42775FCE000E21F7A /* TabBarVC.swift */,
 				6DC9A2F627764A4500E21F7A /* OrderVC.swift */,
@@ -202,7 +202,6 @@
 		6D7B52DE276642A3000AF939 /* BookShelf */ = {
 			isa = PBXGroup;
 			children = (
-				6D7B52F927665CC0000AF939 /* Components */,
 				6D7B52F727665027000AF939 /* Model */,
 				6D7B52F62766500B000AF939 /* View */,
 				6D7B52F827665040000AF939 /* Controller */,
@@ -246,13 +245,6 @@
 				6D4BB443276DFF0200534E6D /* Home */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		6D7B52F927665CC0000AF939 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		6D955659277A35750089FF1C /* Profile */ = {

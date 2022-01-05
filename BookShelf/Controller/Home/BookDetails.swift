@@ -6,8 +6,10 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
 import FirebaseFirestore
+import FirebaseFirestoreSwift
+
 class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
 
     @IBOutlet weak var bookName: UILabel!
@@ -18,13 +20,10 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
     @IBOutlet weak var comintTF: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
-//    var Name:String
-//    var Descripition:String
-//    var Status:String
-//    var Price:String
+
     let db = Firestore.firestore()
     var user:User!
-    var book:Book!
+    var book:Book?
     var basket:Basket!
     var comment:Comment!
     var comments = [Comment]()
@@ -33,10 +32,10 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.dataSource = self
-//        bookName.text = Name
-//        bookDescripiton.text = Descripition
-//        bookStatus.text = Status
-//        bookPrices.text = Price
+        bookName.text = book?.name
+        bookDescripiton.text = book?.description
+        bookStatus.text = book?.bookStatus
+        bookPrices.text = book?.price
 
         cornerRadius()
         shadow()
@@ -132,10 +131,22 @@ func shadow(){
                 }
                     for doc in documents{
 //                        if (doc.data()["bookID"] as? String == "bookID" ){
-                            let comment = doc.data()["comment"] as? String
-                            
-                         let commints = Comment.init(comment: comment, bookID: nil)
-                                 self.comments.append(commints)
+//                            let comment = doc.data()["comment"] as? String
+                        let comment = try! doc.data(as: Comment.self)
+//                        comment?.user?.getDocument(completion: { userSnapshot, <#Error?#> in
+//                            // Show to UI
+//                            comment?.comment
+//                            let userProfile = try! userSnapshot?.data(as: User.self)
+//                            userProfile?.name
+//
+//                        })
+//                        comment?.book?.getDocument(completion: { <#DocumentSnapshot?#>, <#Error?#> in
+//                            <#code#>
+//                        })
+//                         let commints = Comment.init(comment: comment, bookID: nil)
+                        if let comment = comment {
+                                 self.comments.append(comment)
+                        }
 //                        }
                     }
                     
@@ -148,7 +159,9 @@ func shadow(){
     }
 
     @IBAction func sendPressed(_ sender: UIButton) {
-        self.comment  =  Comment.init(comment: self.comintTF.text!, bookID: nil)
+//        self.comment  =  Comment.init(comment: self.comintTF.text!, bookID: nil)
+        self.comment  =  Comment(id: nil, comment: self.comintTF.text!, date: Timestamp(date: Date()), book: nil, user: nil)
+
         self.addComment(self.comment)
 
     }

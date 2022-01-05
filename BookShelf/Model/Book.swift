@@ -6,13 +6,17 @@
 //
 
 import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 import UIKit
-struct Book {
+
+struct Book : Codable {
+    @DocumentID var id : String? = ""
     let name:String?
     let description:String?
     let section:String?
     let bookStatus:String?
+    let image:String?
     let price:String?
-
-    
+    let user: DocumentReference?
 }

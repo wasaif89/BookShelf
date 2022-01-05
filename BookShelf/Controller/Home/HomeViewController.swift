@@ -7,16 +7,14 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 class HomeViewController: UIViewController {
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.setHidesBackButton(true, animated: true)
         }
-     
-
-   
+    
     @IBAction func LoginCheck(_ sender: UIBarButtonItem) {
    
         if (Auth.auth().currentUser?.uid != nil){
