@@ -6,10 +6,15 @@
 //
 
 import Foundation
-struct Order{
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+
+struct Order: Codable {
+    @DocumentID var id: String?
     let orderNumber:String?
     let customerID:String?
     let bookName:String?
     let prices:String?
+    let user: DocumentReference? = nil
 }
 

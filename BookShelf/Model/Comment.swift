@@ -6,8 +6,15 @@
 //
 
 import Foundation
-struct Comment{
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+
+struct Comment: Codable {
+    @DocumentID var id: String?
     let comment:String?
-    let bookID:String?
-    
+    let date: Timestamp?
+    let book:DocumentReference?
+    let user: DocumentReference?
+//    let email:String?
+
 }

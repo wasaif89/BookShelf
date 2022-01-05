@@ -145,8 +145,8 @@
 		6D4BB445276DFF1B00534E6D /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				6D830C482767CABE0098C828 /* AddBookViewController.swift */,
 				6D7A3507276914BC001521BC /* BookTabelViewController.swift */,
+				6D830C482767CABE0098C828 /* AddBookViewController.swift */,
 				6D7A35092769159C001521BC /* UpdateViewController.swift */,
 				6DC9A2F42775FCE000E21F7A /* TabBarVC.swift */,
 				6DC9A2F627764A4500E21F7A /* OrderVC.swift */,

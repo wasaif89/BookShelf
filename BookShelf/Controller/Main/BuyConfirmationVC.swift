@@ -5,8 +5,9 @@
 //  Created by Abu FaisaL on 21/05/1443 AH.
 //
 import UIKit
-import Firebase
+import FirebaseAuth
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var tableView: UITableView!
