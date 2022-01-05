@@ -14,13 +14,8 @@ class BooksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     let categories = ["All","Islmic Book","Childern Book","Cook Book","Educational Book","Other Book"]
     var selectedBook : Book?
     
-    @IBAction func filterChangeEvent(_ sender: DropDown) {
-        print("New filter", categories[sender.selectedIndex!])
-
-        getBookByCategory(category:categoriesTF.optionArray[0])
-
-    }
         //
+    
 
     @IBOutlet weak var categoriesTF: DropDown!
     
@@ -32,6 +27,11 @@ class BooksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         tabelView.delegate = self
         categoriesTF.optionArray = ["All","Islmic Book","Childern Book","Cook Book","Educational Book","Other Book"]
         readBook()
+        categoriesTF.didSelect { selectedText, index, id in
+            print(selectedText, index, id)
+            self.getBookByCategory(category:selectedText)
+
+        }
     }
     func getBookByCategory(category: String){
         print(category)

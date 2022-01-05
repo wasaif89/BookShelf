@@ -14,6 +14,7 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
     @IBOutlet var tabelView: UITableView!
     let db = Firestore.firestore()
     var book = [Book]()
+    var bookImages = [UIImage]()
     var selectedBook : Book?
 
     override func viewDidLoad() {
@@ -21,8 +22,10 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
         tabelView.dataSource = self
         tabelView.delegate = self
         readBook()
-
+//        UIImage(data: <#T##Data#>)
     }
+    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return book.count
     }
@@ -31,7 +34,7 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
         cell.nameBook.text = book[indexPath.row].name
         cell.descriptonBook.text = book[indexPath.row].description
         cell.priceBook.text = book[indexPath.row].price
-//        cell.bookImage.image = book[indexPath.row].image
+        cell.bookImage.downloadFromURL(url: URL(string: book[indexPath.row].image))
         return cell
     }
    
@@ -69,10 +72,13 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
                         print("Error fetching documents: \(error!)")
                         return
             }
-            print("Fetch user books")
-                for doc in documents{
+            print("Fetch user books", documents.count)
+            for (index, doc) in documents.enumerated(){
+                    print("Start decode book index:", index)
+
                    do{
                        //???
+                       print("Book document \(doc.documentID)")
                     let bookData = try doc.data(as: Book.self)
                        print("User book", bookData?.name)
                        if let bookData = bookData {

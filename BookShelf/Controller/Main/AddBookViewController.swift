@@ -91,7 +91,7 @@ class AddBookViewController: UIViewController {
     
     @IBAction func addPressed(_ sender: UIButton) {
         
-        let userReference = db.collection("User").document(Auth.auth().currentUser!.uid)
+        let userReference = db.collection("Users").document(Auth.auth().currentUser!.uid)
         guard let imageSelected = self.image else{
             print("image is nil")
             return

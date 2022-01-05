@@ -863,9 +863,6 @@
                                             <rect key="frame" x="82.5" y="13.5" width="311.5" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
-                                            <connections>
-                                                <action selector="filterChangeEvent:" destination="cgH-FQ-ioW" eventType="editingDidEnd" id="Tw3-ib-0Fb"/>
-                                            </connections>
                                         </textField>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>

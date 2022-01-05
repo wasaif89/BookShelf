@@ -46,10 +46,7 @@ class UpdateViewController: UIViewController {
         pricesTF.text = book?.price
         print("Selected book \(book?.id)")
 
-
-
-      
-    }
+      }
         func cornerRadius(){
            
             nameLabelTextField.layer.cornerRadius = 10

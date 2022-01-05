@@ -133,6 +133,16 @@ func shadow(){
 //                        if (doc.data()["bookID"] as? String == "bookID" ){
 //                            let comment = doc.data()["comment"] as? String
                         let comment = try! doc.data(as: Comment.self)
+//                        comment?.user?.getDocument(completion: { userSnapshot, <#Error?#> in
+//                            // Show to UI
+//                            comment?.comment
+//                            let userProfile = try! userSnapshot?.data(as: User.self)
+//                            userProfile?.name
+//
+//                        })
+//                        comment?.book?.getDocument(completion: { <#DocumentSnapshot?#>, <#Error?#> in
+//                            <#code#>
+//                        })
 //                         let commints = Comment.init(comment: comment, bookID: nil)
                         if let comment = comment {
                                  self.comments.append(comment)

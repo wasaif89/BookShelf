@@ -202,7 +202,6 @@
 		6D7B52DE276642A3000AF939 /* BookShelf */ = {
 			isa = PBXGroup;
 			children = (
-				6D7B52F927665CC0000AF939 /* Components */,
 				6D7B52F727665027000AF939 /* Model */,
 				6D7B52F62766500B000AF939 /* View */,
 				6D7B52F827665040000AF939 /* Controller */,
@@ -246,13 +245,6 @@
 				6D4BB443276DFF0200534E6D /* Home */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		6D7B52F927665CC0000AF939 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		6D955659277A35750089FF1C /* Profile */ = {
