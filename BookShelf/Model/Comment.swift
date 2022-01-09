@@ -15,6 +15,7 @@ struct Comment: Codable {
     let date: Timestamp?
     let book:DocumentReference?
     let user: DocumentReference?
+    var byUser: String? = String()
 //    let email:String?
 
 }

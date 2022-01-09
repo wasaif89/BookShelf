@@ -34,13 +34,12 @@ class BooksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
     }
     func getBookByCategory(category: String){
-        print(category)
-        if categoriesTF.text == "All" {
+        self.book.removeAll()
+        if category == "All" {
             db.collection("Book").getDocuments { snapshot,error  in
                 let alldocs = snapshot?.documents
                 alldocs?.forEach({ doc in
                     do{
-                        self.book = []
                         let bookData = try doc.data(as: Book.self)
                         self.book.append(bookData!)
                         self.tabelView.reloadData()
@@ -54,7 +53,6 @@ class BooksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 let alldocs = snapshot?.documents
                 alldocs?.forEach({ doc in
                     do{
-                        self.book = []
                         let bookData = try doc.data(as: Book.self)
                         self.book.append(bookData!)
                         self.tabelView.reloadData()

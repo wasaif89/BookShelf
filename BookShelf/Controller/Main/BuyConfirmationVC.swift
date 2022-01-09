@@ -56,7 +56,7 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
     }
     func readBasket(){
         let userReference = db.collection("Basket").document(Auth.auth().currentUser!.uid)
-        db.collection("Basket").whereField("userToken", isEqualTo: Auth.auth().currentUser?.uid).addSnapshotListener { (querySnapshot, error) in
+        db.collection("Basket").whereField("userToken", isEqualTo: Auth.auth().currentUser?.uid).getDocuments { (querySnapshot, error) in
             self.basket = []
             guard let documents = querySnapshot?.documents else {
                 print("Error fetching documents: \(error!)")
@@ -127,8 +127,34 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
         date2.timeStyle = .full
         let dateTime =  date2.string(from: date)
         print(dateTime)
-        self.order = Order.init(orderNumber: Int.random(in: 0..<10000) , customerID: Auth.auth().currentUser?.email, bookName:"" , prices:"baskets.prices", date: dateTime,userToken: Auth.auth().currentUser?.uid,address: addressTF.text! )
-        self.saveOrder(self.order)
+        basket.forEach { basketOrder in
+            let newOrder = Order(id: nil, orderNumber: Int.random(in: 0..<10000), customerID: Auth.auth().currentUser?.email, bookName: basketOrder.bookName, prices: basketOrder.prices, date: dateTime, userToken: Auth.auth().currentUser?.uid, address: addressTF.text!, user: nil)
+            self.saveOrder(newOrder)
+            let basketIndex = self.basket.firstIndex { basket in
+                return basket.bookName == basketOrder.bookName
+            }
+            guard let basketIndex = basketIndex else {
+                return
+            }
+            // Add book reference to Order custom type
+            
+//            basket.book.delete()
+            self.tableView.deleteRows(at: [IndexPath(row: basketIndex, section: 0)], with: .bottom)
+            self.basket.remove(at: basketIndex)
+
+//            tableView.reloadData()
+
+            
+        }
+        db.collection("Basket").whereField("userToken", isEqualTo: Auth.auth().currentUser?.uid).getDocuments { querySnapshot, err in
+            if err == nil {
+                querySnapshot?.documents.forEach({ basket in
+                    self.db.collection("Basket").document(basket.documentID).delete()
+                })
+            }
+        }
+
+//        self.order = Order.init(orderNumber: Int.random(in: 0..<10000) , customerID: Auth.auth().currentUser?.email, bookName:nil , prices:"baskets.prices", date: dateTime,userToken: Auth.auth().currentUser?.uid,address: addressTF.text! )
         let alert = UIAlertController(title: "Your request has been successfully sent", message: "Your request has been sent successfully, we will contact you to verify the data and send the request", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)

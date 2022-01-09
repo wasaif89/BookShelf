@@ -28,6 +28,7 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
     var comment:Comment!
     var comments = [Comment]()
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -40,6 +41,7 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
         cornerRadius()
         shadow()
         readComment()
+
     }
 
     func cornerRadius(){
@@ -100,58 +102,114 @@ func shadow(){
        }
 
     func addComment(_ comment: Comment) {
-           let docData: [String: Any] = [
-            "comment":comment.comment,
-            "userToken":Auth.auth().currentUser!.uid
-           ]
-        db.collection("comment").document().setData(docData) { err in
-               if let err = err {
-                   print("Error writing document: \(err)")
-               } else {
-                   print("Document successfully written!")
-               }
-           }
-       }
+//           let docData: [String: Any] = [
+//            "comment":comment.comment,
+//            "userToken":Auth.auth().currentUser!.uid
+//           ]
+//        db.collection("comment").document().setData(docData) { err in
+//               if let err = err {
+//                   print("Error writing document: \(err)")
+//               } else {
+//                   print("Document successfully written!")
+//               }
+//           }
+        do {
+            try db.collection("comment").document().setData(from: comment) { err in
+                if err != nil {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+        } catch {
+            
+        }
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return comments.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ComintCell") as! CommentCell
-        cell.userName.text = Auth.auth().currentUser?.uid
+        cell.userName.text = comments[indexPath.row].byUser
         cell.comment.text = comments[indexPath.row].comment
         return cell
     }
   
     func readComment(){
-        db.collection("comment").addSnapshotListener { (querySnapshot, error) in
-                    guard let documents = querySnapshot?.documents else {
-                            print("Error fetching documents: \(error!)")
-                            return
-                }
-                    for doc in documents{
-
-                        let comment = try! doc.data(as: Comment.self)
-                        comment?.user?.getDocument(completion: { userSnapshot, error in
-                            // Show to UI
-                            comment?.comment
-                            let userProfile = try! userSnapshot?.data(as: User.self)
-                            userProfile?.name
-
-                        })
-                        comment?.book?.getDocument(completion: { bookSnapShot, error in
-                            comment?.comment
-                            let nameBook = try! bookSnapShot?.data(as:Book.self)
-                            nameBook?.name
-                        })
-                        if let comment = comment {
-                                 self.comments.append(comment)
-                        }
-//                        }
-                    }
+        guard let bookID = book?.id else {return}
+        let bookReference = db.collection("Book").document(bookID)
+        
+        self.db.collection("comment").whereField("book", isEqualTo: bookReference).addSnapshotListener { commentsDocs, err in
+            self.comments.removeAll()
+            print("Comments for this book", commentsDocs?.documents.count)
+            
+            
+            if err == nil {
+                guard let commentsDocs = commentsDocs?.documents else {return}
+                
+                for comment in commentsDocs {
                     
-            self.tableView.reloadData()
+                    do {
+                        
+                        var comment = try comment.data(as: Comment.self)
+                        comment?.user?.getDocument(completion: { userDoc, err in
+                            if err == nil {
+                                do {
+                                    let commentByUser = try userDoc?.data(as: User.self)
+                                    comment?.byUser = commentByUser?.name
+                                    self.comments.append(comment!)
+                                    self.tableView.reloadData()
+                                } catch {
+                                    print("cannot decode comment by user", error.localizedDescription)
+                                }
+                            }
+                        })
+                        
+                    } catch {
+                        print("Cannot decode comment", error.localizedDescription)
+                    }
                 }
+                
+            }
+        }
+
+
+//        db.collection("comment").addSnapshotListener { (querySnapshot, error) in
+//                    guard let documents = querySnapshot?.documents else {
+//                            print("Error fetching documents: \(error!)")
+//                            return
+//                }
+//            print("total comments", documents.count)
+//                    for doc in documents{
+//
+//                        var comment = try! doc.data(as: Comment.self)
+//                        comment?.user?.getDocument(completion: { userSnapshot, error in
+//                            print(userSnapshot?.exists)
+//                            // Show to UI
+//                            //comment?.comment
+//                            let userProfile = try! userSnapshot?.data(as: User.self)
+//                            //userProfile?.name
+//                            if let commentByUser = userProfile?.name {
+//                            comment?.byUser = commentByUser
+//                                print("Comment ",comment)
+//                                self.comments.append(comment!)
+//                            }
+//
+//                        })
+//
+//                        // No need to fetch book again
+//                        comment?.book?.getDocument(completion: { bookSnapShot, error in
+//                            //comment?.comment
+//                            let nameBook = try! bookSnapShot?.data(as:Book.self)
+//                           // nameBook?.name
+//                        })
+//
+////                        }
+//                    }
+//
+//            self.tableView.reloadData()
+//                }
     }
 
     @IBAction func addBasketPressed(_ sender: UIButton) {
@@ -164,7 +222,11 @@ func shadow(){
     }
 
     @IBAction func sendPressed(_ sender: UIButton) {
-        self.comment  =  Comment(id: nil, comment: self.comintTF.text!, date: Timestamp(date: Date()), book: nil, user: nil)
+        guard let bookID = book?.id else {return}
+        let bookReference = db.collection("Book").document(bookID)
+        let userReference = db.collection("Users").document(Auth.auth().currentUser!.uid)
+        
+        self.comment  =  Comment(id: nil, comment: self.comintTF.text!, date: Timestamp(date: Date()), book: bookReference, user: userReference)
         self.addComment(self.comment)
 
     }

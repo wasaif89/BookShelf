@@ -1021,7 +1021,6 @@
                                             <outlet property="priceBookLabel" destination="Mvh-dC-Bn2" id="9Bq-OJ-Pcl"/>
                                             <outlet property="setionLabel" destination="Kdc-ca-KjI" id="6RB-HM-6Xw"/>
                                             <outlet property="titleBookLabel" destination="VUb-1G-dXD" id="NEn-XG-ol2"/>
-                                            <segue destination="Gh7-QY-IYY" kind="show" identifier="BookSgeue" id="hxV-4X-kTF"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1040,6 +1039,7 @@
                     <connections>
                         <outlet property="categoriesTF" destination="SGa-vF-BU8" id="TMf-SC-8PN"/>
                         <outlet property="tabelView" destination="F4u-F1-nda" id="IKZ-Kg-KRG"/>
+                        <segue destination="Gh7-QY-IYY" kind="show" identifier="BookSgeue" id="5EM-FX-441"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvC-wB-bnC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
