@@ -17,6 +17,8 @@ class LoginViewController: UIViewController {
     let locationManager = CLLocationManager()
     override func viewDidLoad() {
             super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "pic1")!)
+        
             cornerRadius()
             shadow()
       

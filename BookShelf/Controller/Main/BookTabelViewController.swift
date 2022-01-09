@@ -34,9 +34,9 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
         cell.nameBook.text = book[indexPath.row].name
         cell.descriptonBook.text = book[indexPath.row].description
         cell.priceBook.text = book[indexPath.row].price
-        cell.bookImage.downloadFromURL(url: URL(string: book[indexPath.row].image))
+       // cell.bookImage.downloadFromURL(url: URL(string: book[indexPath.row].image!))
         return cell
-    }
+   }
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tabelView.deselectRow(at: indexPath, animated: true)

@@ -11,10 +11,13 @@ import FirebaseFirestoreSwift
 
 struct Order: Codable {
     @DocumentID var id: String?
-    let orderNumber:String?
+    let orderNumber:Int?
     let customerID:String?
     let bookName:String?
     let prices:String?
+    let date:String
+    let userToken:String?
+    let address:String?
     let user: DocumentReference? = nil
 }
 

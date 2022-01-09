@@ -13,7 +13,7 @@ class OrderCell: UITableViewCell {
     @IBOutlet weak var customerID: UILabel!
     @IBOutlet weak var bookName: UILabel!
     @IBOutlet weak var prices: UILabel!
-    
+    @IBOutlet weak var date : UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -128,26 +128,8 @@ class AddBookViewController: UIViewController {
             } else {
               print("Document successfully written!")
                 self.navigationController?.popViewController(animated: true)
-
             }
         }
-//           let docData: [String: Any] = [
-//            "name": book.name,
-//            "description": book.description,
-//            "section":book.section,
-//            "bookStatus":book.bookStatus,
-//            "price":book.price,
-//            "userToken":db.collection("Users").document(Auth.auth().currentUser?.uid),
-//            "bookID":documentID
-//           ]
-
-//        db.collection("Book").document(documentID).setData(docData) { err in
-//               if let err = err {
-//                 print("Error writing document: \(err)")
-//               } else {
-//                 print("Document successfully written!")
-//               }
-//          }
       }
  }
   extension AddBookViewController:UIImagePickerControllerDelegate, UINavigationControllerDelegate{

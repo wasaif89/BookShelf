@@ -29,26 +29,41 @@ class OrderVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.bookName.text = order[indexPath.row].bookName
         cell.prices.text = order[indexPath.row].prices
         cell.customerID.text = order[indexPath.row].customerID
-        cell.orderNumber.text = order[indexPath.row].orderNumber
+        cell.orderNumber.text = "\(order[indexPath.row].orderNumber ?? 0 )"
+        cell.date.text = order[indexPath.row].date
+     
         return cell
     }
     func readOrder(){
-        db.collection("Order").addSnapshotListener { (querySnapshot, error) in
-                    guard let documents = querySnapshot?.documents else {
-                            print("Error fetching documents: \(error!)")
-                            return
-                }
-                    for doc in documents{
-                        if (doc.data()["userToken"] as? String == Auth.auth().currentUser?.uid) {
-                            let bookName = doc.data()["bookName"] as? String
-                            let prices = doc.data()["priceBook"] as? String
-                            let orderNumber = doc.data()["orderNumber"] as? String
-                            let customerID = doc.data()["customerID"] as? String
-                            let orders = Order.init(orderNumber: orderNumber, customerID: customerID, bookName: bookName, prices: prices)
-                                self.order.append(orders)
-                            }
+
+        let userReference = db.collection("Order").document()
+        db.collection("Order").whereField("userToken", isEqualTo:Auth.auth().currentUser!.uid).addSnapshotListener { (querySnapshot, error) in
+                self.order = []
+                guard let documents = querySnapshot?.documents else {
+                        print("Error fetching documents: \(error!)")
+                        return
+            }
+          
+            for (index, doc) in documents.enumerated(){
+               
+
+                   do{
+                      
+                    let orderData = try doc.data(as: Order.self)
+                       
+                       if let orderData = orderData {
+                            
+                        self.order.append(orderData)
+                        }
+                       self.tableView.reloadData()
+
+
+                    }catch let error{
+                        print("Error\(error.localizedDescription)")
                     }
-            self.tableView.reloadData()
-                }
+
+            }
         }
+
+}
 }

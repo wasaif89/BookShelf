@@ -6,8 +6,10 @@
 //
 
 import Foundation
-
-struct Basket {
+import Firebase
+import FirebaseFirestoreSwift
+import FirebaseFirestore
+struct Basket: Codable {
     let bookName:String?
     let prices:String?
 }

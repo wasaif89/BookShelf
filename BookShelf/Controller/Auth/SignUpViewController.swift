@@ -60,7 +60,7 @@ class SignUpViewController: UIViewController {
                         self.user = User.init(name: self.userNameTextField.text!, email: self.emailTextField.text!, phoneNumber: self.phoneNumberTextField.text!,latitude: nil,longitude: nil )
                         self.saveUser(self.user)
                         print("Sign Up Successful")
-                        var alertVC = UIAlertController(title: "Welcome back log in success", message: "Welcome back log in success ", preferredStyle: .alert)
+                        var alertVC = UIAlertController(title: "Welcome", message: nil, preferredStyle: .alert)
                             alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                             self.present(alertVC, animated: true, completion: nil)
 //                       self.performSegue(withIdentifier: "GoToHomePage", sender: self)
@@ -78,8 +78,7 @@ class SignUpViewController: UIViewController {
                 "name": user.name,
                 "email": user.email,
                 "phoneNumber": user.phoneNumber,
-                "latitude":user.latitude,
-                "longitude":user.longitude,
+                "address":user.latitude! + user.longitude! ,
                 "time" : Date().timeIntervalSinceReferenceDate
         
                ]

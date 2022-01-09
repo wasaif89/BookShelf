@@ -12,14 +12,15 @@ import FirebaseFirestore
 class BasketTabelVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     let db = Firestore.firestore()
-    var basket = [Basket]()
-    
+        var basket = [Basket]()
+    var selectedOrder : Order?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-         readBasket()
-
+        print("Basket")
+        readBasket()
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return basket.count
@@ -31,20 +32,39 @@ class BasketTabelVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
         return cell
     }
     func readBasket(){
-        db.collection("Basket").addSnapshotListener { (querySnapshot, error) in
-                    guard let documents = querySnapshot?.documents else {
-                            print("Error fetching documents: \(error!)")
-                            return
-                }
-                    for doc in documents{
-                        if (doc.data()["userToken"] as? String == Auth.auth().currentUser?.uid) {
-                                let name = doc.data()["nameBook"] as? String
-                                let prices = doc.data()["priceBook"] as? String
-                            let baskets = Basket.init(bookName: name, prices: prices)
-                                self.basket.append(baskets)
-                            }
+        db.collection("Basket").whereField("userToken", isEqualTo: Auth.auth().currentUser?.uid).addSnapshotListener { (querySnapshot, error) in
+            self.basket = []
+            guard let documents = querySnapshot?.documents else {
+                print("Error fetching documents: \(error!)")
+                return
+            }
+            print("Fetch user books", documents.count)
+            for (index, doc) in documents.enumerated(){
+                print("Start decode book index:", index)
+                
+                do{
+                    
+                    let bookData = try doc.data(as: Basket.self)
+                    
+                    if let bookData = bookData {
+                        
+                        self.basket.append(bookData)
                     }
-            self.tableView.reloadData()
+                    self.tableView.reloadData()
+                    
+                    
+                }catch let error{
+                    print("Error\(error.localizedDescription)")
                 }
+                
+            }
         }
- }
+    }
+    let updateSegueIdentifier = "BuySegue"
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == updateSegueIdentifier {
+            let destination =  segue.destination as! BuyConfirmationVC
+            destination.order = selectedOrder
+        }
+    }
+}

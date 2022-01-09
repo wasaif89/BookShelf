@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "istockphoto-1016131800-170667a.jpg",
+      "idiom" : "universal"
+    },
+    {
+      "idiom" : "iphone"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

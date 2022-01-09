@@ -118,7 +118,7 @@ func shadow(){
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ComintCell") as! CommentCell
-        cell.userName.text = Auth.auth().currentUser?.email
+        cell.userName.text = Auth.auth().currentUser?.uid
         cell.comment.text = comments[indexPath.row].comment
         return cell
     }
@@ -130,20 +130,20 @@ func shadow(){
                             return
                 }
                     for doc in documents{
-//                        if (doc.data()["bookID"] as? String == "bookID" ){
-//                            let comment = doc.data()["comment"] as? String
+
                         let comment = try! doc.data(as: Comment.self)
-//                        comment?.user?.getDocument(completion: { userSnapshot, <#Error?#> in
-//                            // Show to UI
-//                            comment?.comment
-//                            let userProfile = try! userSnapshot?.data(as: User.self)
-//                            userProfile?.name
-//
-//                        })
-//                        comment?.book?.getDocument(completion: { <#DocumentSnapshot?#>, <#Error?#> in
-//                            <#code#>
-//                        })
-//                         let commints = Comment.init(comment: comment, bookID: nil)
+                        comment?.user?.getDocument(completion: { userSnapshot, error in
+                            // Show to UI
+                            comment?.comment
+                            let userProfile = try! userSnapshot?.data(as: User.self)
+                            userProfile?.name
+
+                        })
+                        comment?.book?.getDocument(completion: { bookSnapShot, error in
+                            comment?.comment
+                            let nameBook = try! bookSnapShot?.data(as:Book.self)
+                            nameBook?.name
+                        })
                         if let comment = comment {
                                  self.comments.append(comment)
                         }
@@ -156,12 +156,15 @@ func shadow(){
 
     @IBAction func addBasketPressed(_ sender: UIButton) {
         self.basket = Basket.init(bookName: self.bookName.text!, prices: self.bookPrices.text!)
+        self.saveBasket(self.basket)
+        var alertVC = UIAlertController(title: "added to the basket", message: nil, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+        
     }
 
     @IBAction func sendPressed(_ sender: UIButton) {
-//        self.comment  =  Comment.init(comment: self.comintTF.text!, bookID: nil)
         self.comment  =  Comment(id: nil, comment: self.comintTF.text!, date: Timestamp(date: Date()), book: nil, user: nil)
-
         self.addComment(self.comment)
 
     }
