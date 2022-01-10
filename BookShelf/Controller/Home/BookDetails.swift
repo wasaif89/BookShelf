@@ -27,7 +27,8 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
     var basket:Basket!
     var comment:Comment!
     var comments = [Comment]()
-
+    var bookReference: DocumentReference!
+    var userReference: DocumentReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,12 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
         bookDescripiton.text = book?.description
         bookStatus.text = book?.bookStatus
         bookPrices.text = book?.price
-
+        guard let bookID = book?.id else {
+            return
+        }
+        bookReference = db.collection("Book").document(bookID)
+        userReference = db.collection("Users").document(Auth.auth().currentUser!.uid)
+        
         cornerRadius()
         shadow()
         readComment()
@@ -87,32 +93,18 @@ func shadow(){
     sendBtn.layer.masksToBounds = false
 }
     func saveBasket(_ basket: Basket) {
-           let docData: [String: Any] = [
-            "bookName":basket.bookName ,
-            "prices":basket.prices ,
-            "userToken":Auth.auth().currentUser!.uid
-           ]
-        db.collection("Basket").document().setData(docData) { err in
-               if let err = err {
-                   print("Error writing document: \(err)")
-               } else {
-                   print("Document successfully written!")
-               }
-           }
+
+        try! db.collection("Basket").addDocument(from: basket, completion: { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        })
+        
        }
 
     func addComment(_ comment: Comment) {
-//           let docData: [String: Any] = [
-//            "comment":comment.comment,
-//            "userToken":Auth.auth().currentUser!.uid
-//           ]
-//        db.collection("comment").document().setData(docData) { err in
-//               if let err = err {
-//                   print("Error writing document: \(err)")
-//               } else {
-//                   print("Document successfully written!")
-//               }
-//           }
         do {
             try db.collection("comment").document().setData(from: comment) { err in
                 if err != nil {
@@ -137,8 +129,6 @@ func shadow(){
     }
   
     func readComment(){
-        guard let bookID = book?.id else {return}
-        let bookReference = db.collection("Book").document(bookID)
         
         self.db.collection("comment").whereField("book", isEqualTo: bookReference).addSnapshotListener { commentsDocs, err in
             self.comments.removeAll()
@@ -174,46 +164,11 @@ func shadow(){
             }
         }
 
-
-//        db.collection("comment").addSnapshotListener { (querySnapshot, error) in
-//                    guard let documents = querySnapshot?.documents else {
-//                            print("Error fetching documents: \(error!)")
-//                            return
-//                }
-//            print("total comments", documents.count)
-//                    for doc in documents{
-//
-//                        var comment = try! doc.data(as: Comment.self)
-//                        comment?.user?.getDocument(completion: { userSnapshot, error in
-//                            print(userSnapshot?.exists)
-//                            // Show to UI
-//                            //comment?.comment
-//                            let userProfile = try! userSnapshot?.data(as: User.self)
-//                            //userProfile?.name
-//                            if let commentByUser = userProfile?.name {
-//                            comment?.byUser = commentByUser
-//                                print("Comment ",comment)
-//                                self.comments.append(comment!)
-//                            }
-//
-//                        })
-//
-//                        // No need to fetch book again
-//                        comment?.book?.getDocument(completion: { bookSnapShot, error in
-//                            //comment?.comment
-//                            let nameBook = try! bookSnapShot?.data(as:Book.self)
-//                           // nameBook?.name
-//                        })
-//
-////                        }
-//                    }
-//
-//            self.tableView.reloadData()
-//                }
     }
 
     @IBAction func addBasketPressed(_ sender: UIButton) {
-        self.basket = Basket.init(bookName: self.bookName.text!, prices: self.bookPrices.text!)
+        
+        self.basket = Basket.init(bookName: self.bookName.text!, prices: self.bookPrices.text!,bookRef: bookReference ,userRef: userReference)
         self.saveBasket(self.basket)
         var alertVC = UIAlertController(title: "added to the basket", message: nil, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -221,14 +176,11 @@ func shadow(){
         
     }
 
-    @IBAction func sendPressed(_ sender: UIButton) {
-        guard let bookID = book?.id else {return}
-        let bookReference = db.collection("Book").document(bookID)
-        let userReference = db.collection("Users").document(Auth.auth().currentUser!.uid)
-        
-        self.comment  =  Comment(id: nil, comment: self.comintTF.text!, date: Timestamp(date: Date()), book: bookReference, user: userReference)
-        self.addComment(self.comment)
+        @IBAction func sendPressed(_ sender: UIButton) {
+            
+            self.comment  =  Comment(id: nil, comment: self.comintTF.text!, date: Timestamp(date: Date()), book: bookReference, user: userReference)
+            self.addComment(self.comment)
 
+        }
     }
-}
 

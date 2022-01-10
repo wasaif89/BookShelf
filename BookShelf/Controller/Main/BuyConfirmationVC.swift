@@ -20,6 +20,9 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
     var basket = [Basket]()
     var order:Order!
     var baskets:Basket!
+    //
+    var book :Book?
+    //
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +32,7 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
         readUsers()
         cornerRadius()
         shadow()
-
-
-
-    }
+  }
     func cornerRadius(){
         buyBtn.layer.cornerRadius = 20
         buyBtn.layer.borderWidth = 1
@@ -55,9 +55,9 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
         return cell
     }
     func readBasket(){
-        let userReference = db.collection("Basket").document(Auth.auth().currentUser!.uid)
-        db.collection("Basket").whereField("userToken", isEqualTo: Auth.auth().currentUser?.uid).getDocuments { (querySnapshot, error) in
-            self.basket = []
+        let userReference = db.collection("Users").document(Auth.auth().currentUser!.uid)
+        db.collection("Basket").whereField("userRef", isEqualTo: userReference).addSnapshotListener { (querySnapshot, error) in
+            self.basket.removeAll()
             guard let documents = querySnapshot?.documents else {
                 print("Error fetching documents: \(error!)")
                 return
@@ -85,8 +85,6 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
         }
         
     }
-    
-    
     func readUsers(){
         if  let user = Auth.auth().currentUser?.uid{
             let docRef = db.collection("Users").document(user)
@@ -96,7 +94,7 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
                     self.name.text = document.data()?["name"] as? String
                     self.phoneNumber.text = document.data()?["phoneNumber"] as? String
                     self.date.text = document.data()? ["date"] as? String
-                    //                     self.address.text = document.data()? ["latitude"] as? String
+                //  self.address.text = document.data()? ["latitude"] as? String
                     _ = User(name:  self.name.text, email:nil, phoneNumber:  self.phoneNumber.text, latitude:  nil,longitude: nil)
                     print("Document data")
                 } else {
@@ -109,7 +107,7 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
     func saveOrder(_ order: Order) {
         let documentID = UUID().uuidString
         try! db.collection("Order").document(documentID).setData(from: order) { err in
-            if let err = err {
+            if err != nil {
                 print("Error writing document: \(err)")
             } else {
                 print("Document successfully written!")
@@ -117,9 +115,6 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
             }
         }
     }
-    
-
-   
     @IBAction func buyPressed(_ sender: Any) {
         let date = Date()
         let date2 = DateFormatter()
@@ -127,26 +122,20 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
         date2.timeStyle = .full
         let dateTime =  date2.string(from: date)
         print(dateTime)
+        var userRef: DocumentReference?
+        
         basket.forEach { basketOrder in
-            let newOrder = Order(id: nil, orderNumber: Int.random(in: 0..<10000), customerID: Auth.auth().currentUser?.email, bookName: basketOrder.bookName, prices: basketOrder.prices, date: dateTime, userToken: Auth.auth().currentUser?.uid, address: addressTF.text!, user: nil)
+            let newOrder = Order(id: nil, orderNumber: Int.random(in: 0..<10000), customerID: Auth.auth().currentUser?.email, bookName: basketOrder.bookName, prices: basketOrder.prices, date: dateTime, userToken: Auth.auth().currentUser?.uid, address: addressTF.text!, userRef: basketOrder.userRef, bookRef: basketOrder.bookRef)
+
             self.saveOrder(newOrder)
-            let basketIndex = self.basket.firstIndex { basket in
-                return basket.bookName == basketOrder.bookName
-            }
-            guard let basketIndex = basketIndex else {
-                return
-            }
-            // Add book reference to Order custom type
-            
-//            basket.book.delete()
-            self.tableView.deleteRows(at: [IndexPath(row: basketIndex, section: 0)], with: .bottom)
-            self.basket.remove(at: basketIndex)
 
-//            tableView.reloadData()
-
+//            basketOrder.bookRef?.delete()
             
         }
-        db.collection("Basket").whereField("userToken", isEqualTo: Auth.auth().currentUser?.uid).getDocuments { querySnapshot, err in
+        
+        let userReference = db.collection("Users").document(Auth.auth().currentUser!.uid)
+
+        db.collection("Basket").whereField("userRef", isEqualTo: userReference).getDocuments { querySnapshot, err in
             if err == nil {
                 querySnapshot?.documents.forEach({ basket in
                     self.db.collection("Basket").document(basket.documentID).delete()
@@ -155,8 +144,11 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
         }
 
 //        self.order = Order.init(orderNumber: Int.random(in: 0..<10000) , customerID: Auth.auth().currentUser?.email, bookName:nil , prices:"baskets.prices", date: dateTime,userToken: Auth.auth().currentUser?.uid,address: addressTF.text! )
-        let alert = UIAlertController(title: "Your request has been successfully sent", message: "Your request has been sent successfully, we will contact you to verify the data and send the request", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        let alert = UIAlertController(title: "Thank you", message: "Your request has been sent successfully, we will contact you to verify the data and send the request", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            self.navigationController?.popViewController(animated: true)
+        })
         self.present(alert, animated: true, completion: nil)
     }
 }
+

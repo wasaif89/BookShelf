@@ -14,11 +14,11 @@ struct Order: Codable {
     let orderNumber:Int?
     let customerID:String?
     let bookName:String?
-//    let bookRef:DocumentReference?
     let prices:String?
     let date:String
     let userToken:String?
     let address:String?
-    var user: DocumentReference? = nil
+    var userRef: DocumentReference?
+    let bookRef:DocumentReference?
 }
 

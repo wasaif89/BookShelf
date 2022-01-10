@@ -1712,7 +1712,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic1" translatesAutoresizingMaskIntoConstraints="NO" id="FZl-o3-wbz">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic1" translatesAutoresizingMaskIntoConstraints="NO" id="FZl-o3-wbz">
                                 <rect key="frame" x="0.0" y="418" width="414" height="339"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default" weight="light"/>
                             </imageView>
@@ -1774,7 +1774,7 @@
                                 <rect key="frame" x="40" y="458" width="334" height="269"/>
                                 <string key="text">You can sell and buy books from bookshelf app, it gives you the facility the ability to put all the books that you no longer use and find the books which are not available in the libraries.  In many cases, people no longer want to keep them willing to sell it at a lower cost.  It also helps you sell books that you no longer want to have.  And make money from unusual books.</string>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.12105407899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.29183828951132418" green="0.083633175496142867" blue="0.14567313403960894" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

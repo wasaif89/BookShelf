@@ -78,7 +78,7 @@ class SignUpViewController: UIViewController {
                 "name": user.name,
                 "email": user.email,
                 "phoneNumber": user.phoneNumber,
-                "address":user.latitude! + user.longitude! ,
+//                "address":user.latitude! + user.longitude! ,
                 "time" : Date().timeIntervalSinceReferenceDate
         
                ]
