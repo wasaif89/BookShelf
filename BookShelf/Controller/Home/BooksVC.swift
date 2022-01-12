@@ -70,9 +70,16 @@ class BooksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BooksCell") as! BooksCell
         cell.titleBookLabel.text = book[indexPath.row].name
-        cell.bookStatusLabel.text = book[indexPath.row].bookStatus
+        cell.bookStatusLabel.text = "  \(book[indexPath.row].bookStatus)"
         cell.priceBookLabel.text = book[indexPath.row].price
         cell.setionLabel.text = book[indexPath.row].section
+        
+        if (book[indexPath.row].bookStatus == "New") {
+            cell.bookStatusLabel.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.5)
+        } else {
+            cell.bookStatusLabel.backgroundColor = UIColor(named: "Primary")!.withAlphaComponent(0.5)
+        }
+        
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

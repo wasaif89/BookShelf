@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var forgetBtn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var signUpBtn: UIButton!
     let locationManager = CLLocationManager()
     override func viewDidLoad() {
             super.viewDidLoad()
@@ -37,6 +38,9 @@ class LoginViewController: UIViewController {
                 loginBtn.layer.cornerRadius = 20
                 loginBtn.layer.borderWidth = 1
                 loginBtn.layer.borderColor = UIColor.red.cgColor
+                signUpBtn.layer.cornerRadius = 20
+                signUpBtn.layer.borderWidth = 1
+                signUpBtn.layer.borderColor = UIColor.red.cgColor
           }
         func shadow(){
             loginBtn.layer.shadowColor = UIColor.black.cgColor
@@ -49,7 +53,13 @@ class LoginViewController: UIViewController {
             forgetBtn.layer.shadowRadius = 8
             forgetBtn.layer.shadowOpacity = 0.5
             forgetBtn.layer.masksToBounds = false
+            signUpBtn.layer.shadowColor = UIColor.black.cgColor
+            signUpBtn.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
+            signUpBtn.layer.shadowRadius = 8
+            signUpBtn.layer.shadowOpacity = 0.5
+            signUpBtn.layer.masksToBounds = false
         }
+    
     
     @IBAction func loginPreesed(_ sender: UIButton) {
             Auth.auth().signIn(withEmail: emailTextField.text!
@@ -69,35 +79,9 @@ class LoginViewController: UIViewController {
                       alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                       self.present(alertVC, animated: true, completion: nil)
 
-
-
-
-                  //             }
-//       var alertVC = UIAlertController(title: "Welcome back log in success", message: error?.localizedDescription, preferredStyle: .alert)
-//                    alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-//                                      self.present(alertVC, animated: true, completion: nil)
-//                                      }else{
-//                                      var alertVC = UIAlertController(title: "Alert", message: "error", preferredStyle: .alert)
-//                                          alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-//                                                            self.present(alertVC, animated: true, completion: nil)
-//
-                    }
+             }
         }
     }
-        
-//        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!){
-//            result , error in
-//            if (error == nil) {
-//
-//                print(result?.user.email ?? "")
-//                print("Login Successful")
-//            }else{
-//                print(error?.localizedDescription ?? "")
-//                print("Error\(error?.localizedDescription)")
-//            }
-//
-//            }
-//        }
 }
 extension  LoginViewController:CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

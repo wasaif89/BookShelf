@@ -56,6 +56,7 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
                     print("Document successfully removed!")
                     self.book.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .fade)
+                   
                 }
             }
         } else  {

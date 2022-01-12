@@ -20,11 +20,11 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
             super.viewDidLoad()
             readUsers()
-            conerReduis()
+            //conerReduis()
 //        overrideUserInterfaceStyle = .light
         }
         func conerReduis(){
-            nameLabel.layer.cornerRadius = 15
+            nameLabel.layer.cornerRadius = 8
             nameLabel.layer.borderWidth = 1
             nameLabel.layer.borderColor =  UIColor(red:208/255, green:44/255, blue:166/255, alpha: 100).cgColor
             emailLabel.layer.cornerRadius =  15
@@ -56,8 +56,8 @@ class ProfileViewController: UIViewController {
                  }
              }
          }
-    
-    @IBAction func signOutPressed(_ sender: UIButton) {
+ 
+   @IBAction func signOutPressed(_ sender: UIButton) {
        
         let firebaseAuth = Auth.auth()
             do {

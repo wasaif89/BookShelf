@@ -19,10 +19,8 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
     let db = Firestore.firestore()
     var basket = [Basket]()
     var order:Order!
-    var baskets:Basket!
-    //
-    var book :Book?
-    //
+   // var baskets:Basket!
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,11 +55,13 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
     func readBasket(){
         let userReference = db.collection("Users").document(Auth.auth().currentUser!.uid)
         db.collection("Basket").whereField("userRef", isEqualTo: userReference).addSnapshotListener { (querySnapshot, error) in
-            self.basket.removeAll()
             guard let documents = querySnapshot?.documents else {
                 print("Error fetching documents: \(error!)")
                 return
             }
+            if (documents.count <= 0) { return }
+            
+            self.basket.removeAll()
             print("Fetch user books", documents.count)
             for (index, doc) in documents.enumerated(){
                 print("Start decode book index:", index)
@@ -74,7 +74,7 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
                         
                         self.basket.append(bookData)
                     }
-                    self.tableView.reloadData()
+                    
                     
                     
                 }catch let error{
@@ -82,6 +82,7 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
                 }
                 
             }
+            self.tableView.reloadData()
         }
         
     }
@@ -139,11 +140,11 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
             if err == nil {
                 querySnapshot?.documents.forEach({ basket in
                     self.db.collection("Basket").document(basket.documentID).delete()
+                    self.readBasket()
                 })
             }
         }
 
-//        self.order = Order.init(orderNumber: Int.random(in: 0..<10000) , customerID: Auth.auth().currentUser?.email, bookName:nil , prices:"baskets.prices", date: dateTime,userToken: Auth.auth().currentUser?.uid,address: addressTF.text! )
         let alert = UIAlertController(title: "Thank you", message: "Your request has been sent successfully, we will contact you to verify the data and send the request", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
             self.navigationController?.popViewController(animated: true)

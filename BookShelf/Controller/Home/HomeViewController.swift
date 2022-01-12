@@ -17,8 +17,17 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     var currentCellIndex = 0
     var arrPic = [UIImage(named: "pic1"),UIImage(named: "pic2"),UIImage(named: "pic3"),UIImage(named: "pic4")]
 
+    func configureAppearance() {
+        self.title = "Book Shelf"
+        self.navigationController?.navigationBar.prefersLargeTitles = true 
+        self.navigationController?.navigationBar.backgroundColor = UIColor(named: "Secondary")
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "Secondary")
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureAppearance()
         collectionView.delegate = self
             collectionView.dataSource = self
             pageControl.numberOfPages = arrPic.count
@@ -63,7 +72,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     @IBAction func LoginCheck(_ sender: UIBarButtonItem) {
    
         if (Auth.auth().currentUser?.uid != nil){
-          let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
+          let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
             self.navigationController?.show(vc, sender: self)
             print("User Login")
             
