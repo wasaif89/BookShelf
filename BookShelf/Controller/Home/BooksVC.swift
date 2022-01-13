@@ -35,6 +35,7 @@ class BooksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     func getBookByCategory(category: String){
         self.book.removeAll()
+        self.tabelView.reloadData()
         if category == "All" {
             db.collection("Book").getDocuments { snapshot,error  in
                 let alldocs = snapshot?.documents
@@ -68,11 +69,14 @@ class BooksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "BooksCell") as! BooksCell
+
         cell.titleBookLabel.text = book[indexPath.row].name
-        cell.bookStatusLabel.text = "  \(book[indexPath.row].bookStatus)"
+        cell.bookStatusLabel.text = "  " + book[indexPath.row].bookStatus!
         cell.priceBookLabel.text = book[indexPath.row].price
         cell.setionLabel.text = book[indexPath.row].section
+        cell.bookImage.downloadFromURL(book[indexPath.row].image)
         
         if (book[indexPath.row].bookStatus == "New") {
             cell.bookStatusLabel.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.5)

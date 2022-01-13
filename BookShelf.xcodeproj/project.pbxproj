@@ -538,6 +538,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8NQVZ55D4C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookShelf/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Used to access the Camera";
@@ -569,6 +570,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8NQVZ55D4C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookShelf/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Used to access the Camera";

@@ -15,7 +15,7 @@ struct Book : Codable {
     let name:String?
     let description:String?
     let section:String?
-    let bookStatus:String?
+    var bookStatus:String?
     let image:String?
     let price:String?
     let user: DocumentReference?

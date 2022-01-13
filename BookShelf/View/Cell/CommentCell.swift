@@ -10,6 +10,8 @@ import UIKit
 class CommentCell: UITableViewCell {
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var comment: UILabel!
+    @IBOutlet weak var commentDate: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

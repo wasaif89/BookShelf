@@ -34,7 +34,7 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
         cell.nameBook.text = book[indexPath.row].name
         cell.descriptonBook.text = book[indexPath.row].description
         cell.priceBook.text = book[indexPath.row].price
-       // cell.bookImage.downloadFromURL(url: URL(string: book[indexPath.row].image!))
+        cell.bookImage.downloadFromURL(book[indexPath.row].image)
         return cell
    }
    
@@ -54,9 +54,10 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
                     print("Error removing document: \(err.localizedDescription)")
                 } else {
                     print("Document successfully removed!")
-                    self.book.remove(at: indexPath.row)
-                    tableView.deleteRows(at: [indexPath], with: .fade)
-                   
+                    tableView.reloadData()
+//                    self.book.remove(at: indexPath.row)
+//                    tableView.deleteRows(at: [indexPath], with: .fade)
+//                   
                 }
             }
         } else  {
@@ -118,3 +119,27 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
 //                        }
 //
 //                    }
+
+
+private var imageCache = NSCache<NSString, UIImage>()
+extension UIImageView {
+    
+    func downloadFromURL(_ urlString: String?) {
+        
+        if let image = imageCache.object(forKey: urlString! as NSString) {
+            self.image = image
+            return
+        }
+        
+        guard let urlString = urlString else { return }
+        guard let url = URL(string: urlString) else { return }
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if (error == nil) {
+                DispatchQueue.main.async {
+                    self.image = UIImage(data: data!)
+                    imageCache.setObject(self.image!, forKey: urlString as NSString)
+                }
+            }
+        }.resume()
+    }
+}

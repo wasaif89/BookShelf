@@ -20,6 +20,7 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
     @IBOutlet weak var comintTF: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var bookImage: UIImageView!
 
     let db = Firestore.firestore()
     var user:User!
@@ -38,15 +39,20 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
         bookDescripiton.text = book?.description
         bookStatus.text = book?.bookStatus
         bookPrices.text = book?.price
+        bookImage.downloadFromURL(book?.image)
+        
         guard let bookID = book?.id else {
             return
         }
         bookReference = db.collection("Book").document(bookID)
-        userReference = db.collection("Users").document(Auth.auth().currentUser!.uid)
-        
         cornerRadius()
         shadow()
         readComment()
+        
+        guard let userID = Auth.auth().currentUser?.uid else {
+            return
+        }
+        userReference = db.collection("Users").document(userID)
 
     }
 
@@ -125,6 +131,7 @@ func shadow(){
         let cell = tableView.dequeueReusableCell(withIdentifier: "ComintCell") as! CommentCell
         cell.userName.text = comments[indexPath.row].byUser
         cell.comment.text = comments[indexPath.row].comment
+        cell.commentDate.text = comments[indexPath.row].date?.description
         return cell
     }
   

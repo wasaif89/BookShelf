@@ -39,24 +39,23 @@ class BasketTabelVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//       if editingStyle == .delete {
-//           
-//           let bookDoc = db.collection("Basket").document(basket[indexPath.row].id!)
-//
-//           bookDoc.delete() { err in
-//               if let err = err {
-//                   print("Error removing document: \(err.localizedDescription)")
-//               } else {
-//                   print("Document successfully removed!")
-//                   self.basket.remove(at: indexPath.row)
-//                   tableView.deleteRows(at: [indexPath], with: .fade)
-//               }
-//           }
-//       } else  {
-//           print("error")
-//       }
-//   }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+       if editingStyle == .delete {
+           
+           let bookDoc = db.collection("Basket").document(basket[indexPath.row].id!)
+
+           bookDoc.delete() { err in
+               if let err = err {
+                   print("Error removing document: \(err.localizedDescription)")
+               } else {
+                   print("Document successfully removed!")
+
+               }
+           }
+       } else  {
+           print("error")
+       }
+   }
 
     func readBasket(){
         

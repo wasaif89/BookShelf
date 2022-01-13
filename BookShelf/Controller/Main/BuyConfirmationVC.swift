@@ -48,6 +48,7 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BuyConfirmationCell") as! BuyConfirmationCell
+//        if basket.indices.contains(0)
         cell.bookName.text = basket[indexPath.row].bookName
         cell.prices.text = basket[indexPath.row].prices
         return cell
