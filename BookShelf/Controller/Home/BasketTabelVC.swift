@@ -59,8 +59,8 @@ class BasketTabelVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
 
     func readBasket(){
         
-    let userReference = db.collection("Users").document(Auth.auth().currentUser!.uid)
-        
+        guard let user = Auth.auth().currentUser else { return }
+        let userReference = db.collection("Users").document(user.uid)
         db.collection("Basket").whereField("userRef", isEqualTo: userReference).addSnapshotListener { (querySnapshot, error) in
             self.basket.removeAll()
             guard let documents = querySnapshot?.documents else {

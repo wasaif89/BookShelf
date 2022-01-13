@@ -131,7 +131,8 @@ func shadow(){
         let cell = tableView.dequeueReusableCell(withIdentifier: "ComintCell") as! CommentCell
         cell.userName.text = comments[indexPath.row].byUser
         cell.comment.text = comments[indexPath.row].comment
-        cell.commentDate.text = comments[indexPath.row].date?.description
+//        cell.commentDate.text = NSDate(timeIntervalSince1970: comments[indexPath.row].date)
+        cell.commentDate.text = ""
         return cell
     }
   

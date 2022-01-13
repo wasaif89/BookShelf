@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -37,7 +38,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.95916650943495274" green="0.99759401082284238" blue="0.81953469137585233" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="btp-CE-G8A" secondAttribute="trailing" constant="20" id="HGx-M3-7Eg"/>
                             <constraint firstItem="WVr-qe-vll" firstAttribute="top" secondItem="btp-CE-G8A" secondAttribute="bottom" constant="20" id="Hk7-qm-O50"/>
@@ -57,6 +58,9 @@
     </scenes>
     <resources>
         <image name="book-open" width="343" height="343"/>
+        <namedColor name="background">
+            <color red="0.96078431372549022" green="0.99607843137254903" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
