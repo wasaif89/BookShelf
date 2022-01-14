@@ -20,23 +20,10 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
             super.viewDidLoad()
             readUsers()
-            //conerReduis()
+    
 //        overrideUserInterfaceStyle = .light
         }
-        func conerReduis(){
-            nameLabel.layer.cornerRadius = 8
-            nameLabel.layer.borderWidth = 1
-            nameLabel.layer.borderColor =  UIColor(red:208/255, green:44/255, blue:166/255, alpha: 100).cgColor
-            emailLabel.layer.cornerRadius =  15
-            emailLabel.layer.borderWidth = 1
-            emailLabel.layer.borderColor =  UIColor(red:208/255, green:44/255, blue:166/255, alpha: 100).cgColor
-            phoneNumberLabel.layer.cornerRadius = 15
-            phoneNumberLabel.layer.borderWidth = 1
-            phoneNumberLabel.layer.borderColor =  UIColor(red:208/255, green:44/255, blue:166/255, alpha: 100).cgColor
-            addressLabel.layer.cornerRadius = 15
-            addressLabel.layer.borderWidth = 1
-            addressLabel.layer.borderColor =  UIColor(red:208/255, green:44/255, blue:166/255, alpha: 100).cgColor
-        }
+
     // get infrmation data user from firebase
         func readUsers(){
              if  let user = Auth.auth().currentUser?.uid{

@@ -34,8 +34,7 @@ class UpdateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cornerRadius()
-        shadow()
+        updateBtn.cmShadow()
         sectionTextField.optionArray = ["Islmic Book","Childern Book","Cook Book","Educational Book","Other Book"]
         bookStatusTextField.optionArray = ["New","Used"]
         
@@ -47,34 +46,6 @@ class UpdateViewController: UIViewController {
         print("Selected book \(book?.id)")
 
       }
-        func cornerRadius(){
-           
-            nameLabelTextField.layer.cornerRadius = 10
-            nameLabelTextField.layer.borderWidth = 1
-            nameLabelTextField.layer.borderColor = UIColor.red.cgColor
-           
-            descriptionTextView.layer.cornerRadius = 10
-            descriptionTextView.layer.borderWidth = 1
-            descriptionTextView.layer.borderColor = UIColor.red.cgColor
-           
-            sectionTextField.layer.cornerRadius = 10
-            sectionTextField.layer.borderWidth = 1
-            sectionTextField.layer.borderColor = UIColor.red.cgColor
-           
-            bookStatusTextField.layer.cornerRadius = 10
-            bookStatusTextField.layer.borderWidth = 1
-            bookStatusTextField.layer.borderColor = UIColor.red.cgColor
-            updateBtn.layer.cornerRadius = 10
-            updateBtn.layer.borderWidth = 1
-            updateBtn.layer.borderColor = UIColor.red.cgColor
-      }
-    func shadow(){
-        updateBtn.layer.shadowColor = UIColor.black.cgColor
-        updateBtn.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
-        updateBtn.layer.shadowRadius = 8
-        updateBtn.layer.shadowOpacity = 0.5
-        updateBtn.layer.masksToBounds = false
-    }
     @IBAction func addImage(_ sender: UIButton) {
       setupImage()
       }

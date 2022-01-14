@@ -8,8 +8,9 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import CoreLocation
 
-class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewDataSource{
+class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewDataSource,CLLocationManagerDelegate{
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addressTF: UITextField!
     @IBOutlet weak var name: UILabel!
@@ -19,7 +20,8 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
     let db = Firestore.firestore()
     var basket = [Basket]()
     var order:Order!
-   // var baskets:Basket!
+    let locationManger = CLLocationManager()
+
   
     
     override func viewDidLoad() {
@@ -28,30 +30,50 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         readBasket()
         readUsers()
-        cornerRadius()
-        shadow()
+        buyBtn.cmShadow()
+        locationManger.requestAlwaysAuthorization()
+        locationManger.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled(){
+            locationManger.delegate = self
+            locationManger.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManger.startUpdatingHeading()
+        }
   }
-    func cornerRadius(){
-        buyBtn.layer.cornerRadius = 20
-        buyBtn.layer.borderWidth = 1
-        buyBtn.layer.borderColor = UIColor.red.cgColor
-    }
-    func shadow(){
-        buyBtn.layer.shadowColor = UIColor.black.cgColor
-        buyBtn.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
-        buyBtn.layer.shadowRadius = 8
-        buyBtn.layer.shadowOpacity = 0.5
-        buyBtn.layer.masksToBounds = false
-    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return basket.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BuyConfirmationCell") as! BuyConfirmationCell
-//        if basket.indices.contains(0)
+
         cell.bookName.text = basket[indexPath.row].bookName
         cell.prices.text = basket[indexPath.row].prices
         return cell
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue:CLLocationCoordinate2D =  manager.location?.coordinate else{
+            return
+        }
+        print("location = \(locValue.latitude) + \(locValue.longitude)")
+        guard let location:CLLocation = manager.location else{
+            return
+        }
+        fetchCityAndCountry(from: location) { city, country, error in
+            guard let city = city,let country = country, let error = error else {
+                return
+            }
+            print(city + "locationlocation" + country)
+            print("\(error.localizedDescription)")
+        }
+                
+    }
+    func fetchCityAndCountry(from location:CLLocation,completion:@escaping (_ city:String?,_ country:String?,_ error:Error?) -> ()) {
+        CLGeocoder().reverseGeocodeLocation(location) { placemark, error in
+            completion(placemark?.first?.locality,
+                       placemark?.first?.country,
+            error)
+        }
+        
     }
     func readBasket(){
         let userReference = db.collection("Users").document(Auth.auth().currentUser!.uid)

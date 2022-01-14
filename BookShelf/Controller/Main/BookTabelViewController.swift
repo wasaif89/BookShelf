@@ -22,7 +22,6 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
         tabelView.dataSource = self
         tabelView.delegate = self
         readBook()
-//        UIImage(data: <#T##Data#>)
     }
     
 

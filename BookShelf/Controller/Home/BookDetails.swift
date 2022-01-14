@@ -45,8 +45,8 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
             return
         }
         bookReference = db.collection("Book").document(bookID)
-        cornerRadius()
-        shadow()
+        addBasketBtn.cmShadow()
+        sendBtn.cmShadow()
         readComment()
         
         guard let userID = Auth.auth().currentUser?.uid else {
@@ -56,48 +56,7 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
 
     }
 
-    func cornerRadius(){
 
-        bookName.layer.cornerRadius = 10
-        bookName.layer.borderWidth = 1
-        bookName.layer.borderColor = UIColor.red.cgColor
-
-        bookDescripiton.layer.cornerRadius = 10
-        bookDescripiton.layer.borderWidth = 1
-        bookDescripiton.layer.borderColor = UIColor.red.cgColor
-
-        bookStatus.layer.cornerRadius = 10
-        bookStatus.layer.borderWidth = 1
-        bookStatus.layer.borderColor = UIColor.red.cgColor
-
-        bookPrices.layer.cornerRadius = 10
-        bookPrices.layer.borderWidth = 1
-        bookPrices.layer.borderColor = UIColor.red.cgColor
-        addBasketBtn.layer.cornerRadius = 10
-        addBasketBtn.layer.borderWidth = 1
-        addBasketBtn.layer.borderColor = UIColor.red.cgColor
-
-        comintTF.layer.cornerRadius = 10
-        comintTF.layer.borderWidth = 1
-        comintTF.layer.borderColor = UIColor.red.cgColor
-
-        sendBtn.layer.cornerRadius = 10
-        sendBtn.layer.borderWidth = 1
-        sendBtn.layer.borderColor = UIColor.red.cgColor
-  }
-func shadow(){
-    addBasketBtn.layer.shadowColor = UIColor.black.cgColor
-    addBasketBtn.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
-    addBasketBtn.layer.shadowRadius = 8
-    addBasketBtn.layer.shadowOpacity = 0.5
-    addBasketBtn.layer.masksToBounds = false
-
-    sendBtn.layer.shadowColor = UIColor.black.cgColor
-    sendBtn.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
-    sendBtn.layer.shadowRadius = 8
-    sendBtn.layer.shadowOpacity = 0.5
-    sendBtn.layer.masksToBounds = false
-}
     func saveBasket(_ basket: Basket) {
 
         try! db.collection("Basket").addDocument(from: basket, completion: { err in

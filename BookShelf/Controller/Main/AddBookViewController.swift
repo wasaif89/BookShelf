@@ -33,37 +33,12 @@ class AddBookViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        cornerRadius()
-        shadow()
+        addBtn.cmShadow()
         sectionTF.optionArray = ["Islmic Book","Childern Book","Cook Book","Educational Book","Other Book"]
         bookStatusTF.optionArray = ["New","Used"]
 
     }
-        func cornerRadius(){
-           
-            nameLabelTextField.layer.cornerRadius = 10
-            nameLabelTextField.layer.borderWidth = 1
-            nameLabelTextField.layer.borderColor = UIColor.red.cgColor
-            
-            descriptionTextView.layer.cornerRadius = 10
-            descriptionTextView.layer.borderWidth = 1
-            descriptionTextView.layer.borderColor = UIColor.red.cgColor
-            
-           pricesTextField.layer.cornerRadius = 10
-            pricesTextField.layer.borderWidth = 1
-           pricesTextField.layer.borderColor = UIColor.red.cgColor
-            
-            addBtn.layer.cornerRadius = 10
-            addBtn.layer.borderWidth = 1
-            addBtn.layer.borderColor = UIColor.red.cgColor
-      }
-    func shadow(){
-        addBtn.layer.shadowColor = UIColor.black.cgColor
-        addBtn.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
-        addBtn.layer.shadowRadius = 8
-        addBtn.layer.shadowOpacity = 0.5
-        addBtn.layer.masksToBounds = false
-    }
+
    
     @IBAction func addImage(_ sender: UIButton) {
         setupImage()
