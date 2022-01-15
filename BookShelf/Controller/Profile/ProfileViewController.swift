@@ -20,6 +20,10 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
             super.viewDidLoad()
             readUsers()
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
+        leftSwipe.direction = UISwipeGestureRecognizer.Direction.left
+        self.view.addGestureRecognizer(leftSwipe)
+        
     
 //        overrideUserInterfaceStyle = .light
         }
@@ -61,3 +65,16 @@ class ProfileViewController: UIViewController {
             }
 }
 
+extension UIViewController{
+    @objc func swipeAction(swipe:UISwipeGestureRecognizer){
+        switch swipe.direction.rawValue {
+        case 1:
+            performSegue(withIdentifier: "goLeft", sender: self)
+            
+        case 2:
+            performSegue(withIdentifier: "goRight", sender: self)
+            
+        default:
+            break
+        }    }
+}

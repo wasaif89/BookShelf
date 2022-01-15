@@ -577,6 +577,7 @@
                         <outlet property="updateNameTF" destination="UbL-S2-aFC" id="yaw-Gn-eUn"/>
                         <outlet property="updatePasswordTF" destination="lwH-XD-n0F" id="u99-Vf-ZXw"/>
                         <outlet property="updatePhoneNumberTF" destination="GS1-LF-Yka" id="CUM-5E-UnO"/>
+                        <segue destination="ZHM-FD-Htt" kind="show" identifier="goLeft" id="c14-tR-MZM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ay3-0p-dhG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1420,6 +1421,7 @@
                         <outlet property="emailLabel" destination="TmZ-Di-UkF" id="EpB-oQ-DCv"/>
                         <outlet property="nameLabel" destination="nsU-Qo-zAa" id="zEN-rA-jkC"/>
                         <outlet property="phoneNumberLabel" destination="Nhd-tR-ljy" id="GZQ-30-mff"/>
+                        <segue destination="mTL-Dg-v4a" kind="show" identifier="goRight" id="dEa-w2-FCc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IyH-Hb-mpV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1653,7 +1655,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BUI-4I-Xb2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1916" y="-77"/>
+            <point key="canvasLocation" x="1916" y="-60"/>
         </scene>
         <!--Home-->
         <scene sceneID="ttf-Ex-CJi">
@@ -2041,6 +2043,10 @@
             <point key="canvasLocation" x="-152" y="-816"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="oBR-vV-vtM"/>
+        <segue reference="HwE-DP-6C7"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="book" catalog="system" width="128" height="99"/>
         <image name="book.fill" catalog="system" width="128" height="95"/>

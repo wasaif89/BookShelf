@@ -19,7 +19,9 @@ class UpdateProfileVC: UIViewController {
     let locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
+        rightSwipe.direction = UISwipeGestureRecognizer.Direction.right
+        self.view.addGestureRecognizer(rightSwipe)
 
      
     }
