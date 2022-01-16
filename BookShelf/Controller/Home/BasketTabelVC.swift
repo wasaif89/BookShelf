@@ -11,25 +11,35 @@ import FirebaseFirestore
 
 class BasketTabelVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var buttonBuy: UIButton!
+    
     let db = Firestore.firestore()
     var basket = [Basket]()
     var selectedOrder : Order?
-   
+    
     override func viewWillAppear(_ animated: Bool) {
+        buttonBuy.isHidden = basket.count == 0
         tableView.reloadData()
+        
+        //        if basket.count == 0 {
+        //            buttonBuy.isHidden = true
+        //        } else {
+        //            buttonBuy.isHidden = false
+        //        }
+        
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        print("Basket")
+        self.title = "Basket"
+//        print("Basket")
         readBasket()
-        }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        tableView.reloadData()
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        buttonBuy.isHidden = basket.count == 0
         return basket.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -40,23 +50,23 @@ class BasketTabelVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-       if editingStyle == .delete {
-           
-           let bookDoc = db.collection("Basket").document(basket[indexPath.row].id!)
-
-           bookDoc.delete() { err in
-               if let err = err {
-                   print("Error removing document: \(err.localizedDescription)")
-               } else {
-                   print("Document successfully removed!")
-
-               }
-           }
-       } else  {
-           print("error")
-       }
-   }
-
+        if editingStyle == .delete {
+            
+            let bookDoc = db.collection("Basket").document(basket[indexPath.row].id!)
+            bookDoc.delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err.localizedDescription)")
+                } else {
+                    print("Document successfully removed!")
+                    tableView.reloadData()
+                    
+                }
+            }
+        } else  {
+            print("error")
+        }
+    }
+    
     func readBasket(){
         
         guard let user = Auth.auth().currentUser else { return }
@@ -64,32 +74,27 @@ class BasketTabelVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
         db.collection("Basket").whereField("userRef", isEqualTo: userReference).addSnapshotListener { (querySnapshot, error) in
             self.basket.removeAll()
             guard let documents = querySnapshot?.documents else {
-                           print("Error fetching documents: \(error!)")
-                           return
-                       }
-                       print("Fetch user books", documents.count)
-                       for (index, doc) in documents.enumerated(){
-                           print("Start decode book index:", index)
-           
-                           do{
-           
-                               let bookData = try doc.data(as: Basket.self)
-           
-                               if let bookData = bookData {
-           
-                                   self.basket.append(bookData)
-                               }
-                               self.tableView.reloadData()
-           
-           
-                           }catch let error{
-                               print("Error\(error.localizedDescription)")
-                           }
-           
-                       }
-                   }
-               }
-  
+                print("Error fetching documents: \(error!)")
+                return
+            }
+            print("Fetch user books", documents.count)
+            for (index, doc) in documents.enumerated(){
+                print("Start decode book index:", index)
+                
+                do{
+                    let bookData = try doc.data(as: Basket.self)
+                    if let bookData = bookData {
+                        self.basket.append(bookData)
+                    }
+                    self.tableView.reloadData()
+                }catch let error{
+                    print("Error\(error.localizedDescription)")
+                }
+                
+            }
+        }
+    }
+    
     let buySegueIdentifier = "BuySegue"
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == buySegueIdentifier {

@@ -36,13 +36,20 @@ class UpdateViewController: UIViewController {
         super.viewDidLoad()
         updateBtn.cmShadow()
         sectionTextField.optionArray = ["Islmic Book","Childern Book","Cook Book","Educational Book","Other Book"]
+        sectionTextField.backgroundColor = .secondarySystemBackground
+        sectionTextField.rowBackgroundColor = .secondarySystemBackground
+        
         bookStatusTextField.optionArray = ["New","Used"]
+        bookStatusTextField.backgroundColor = .secondarySystemBackground
+        bookStatusTextField.rowBackgroundColor = .secondarySystemBackground
         
         nameLabelTextField.text = book?.name
         descriptionTextView.text = book?.description
         sectionTextField.text = book?.section
         bookStatusTextField.text = book?.bookStatus
         pricesTF.text = book?.price
+        updateImageBook.downloadFromURL(book?.image)
+      
         print("Selected book \(book?.id)")
 
       }
@@ -90,9 +97,9 @@ class UpdateViewController: UIViewController {
                     storgeProfileRef.downloadURL(completion:  { [self] (url, error) in
                         if let metaImageUrl = url?.absoluteString{
                            print(metaImageUrl)
+                            
                             let bookRef = db.collection("Book").document((book?.id)!)
-
-                            bookRef.updateData([
+                                bookRef.updateData([
                                 "name":nameLabelTextField.text,
                                 "description":descriptionTextView.text ,
                                 "section":sectionTextField.text ,
@@ -100,7 +107,7 @@ class UpdateViewController: UIViewController {
                                 "price":pricesTF.text,
                                 "image":metaImageUrl,
                                 "BookID": book?.id
-                            ])
+                                 ])
                             { err in
                                 if let err = err {
                                     print("Error updating document: \(err)")
@@ -112,15 +119,10 @@ class UpdateViewController: UIViewController {
                             
                         }
                     })
-                })
-        
-    
-        
+            })
+      }
 
-
-    }
-
-  }
+   }
 extension UpdateViewController:UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

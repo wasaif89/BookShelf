@@ -26,6 +26,8 @@ class BooksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         tabelView.dataSource = self
         tabelView.delegate = self
         categoriesTF.optionArray = ["All","Islmic Book","Childern Book","Cook Book","Educational Book","Other Book"]
+        categoriesTF.backgroundColor = .secondarySystemBackground
+        categoriesTF.rowBackgroundColor = .secondarySystemBackground
         readBook()
         categoriesTF.didSelect { selectedText, index, id in
             print(selectedText, index, id)

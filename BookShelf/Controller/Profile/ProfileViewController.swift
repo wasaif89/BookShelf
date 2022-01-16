@@ -16,7 +16,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     var user = [User]()
     let db = Firestore.firestore()
-   
+    var selectedUser : User?
     override func viewDidLoad() {
             super.viewDidLoad()
             readUsers()
@@ -63,6 +63,19 @@ class ProfileViewController: UIViewController {
             }
                 
             }
+    let updateSegueIdentifier = "UpdateProfile"
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == updateSegueIdentifier {
+            let email = emailLabel.text ?? ""
+            let name = nameLabel.text ?? ""
+            let phone = phoneNumberLabel.text ?? ""
+            let destination =  segue.destination as! UpdateProfileVC
+            destination.email = email
+            destination.name = name
+            destination.phone = phone
+        }
+    }
+
 }
 
 extension UIViewController{
@@ -72,7 +85,7 @@ extension UIViewController{
             performSegue(withIdentifier: "goLeft", sender: self)
             
         case 2:
-            performSegue(withIdentifier: "goRight", sender: self)
+            performSegue(withIdentifier: "UpdateProfile", sender: self)
             
         default:
             break

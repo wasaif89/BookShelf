@@ -9,4 +9,6 @@ import UIKit
 
 class HomeCell: UICollectionViewCell {
     @IBOutlet weak var imageCollection:UIImageView!
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var widthConstraint: NSLayoutConstraint!
 }

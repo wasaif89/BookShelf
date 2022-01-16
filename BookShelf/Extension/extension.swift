@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-extension UIButton{
+extension UIButton {
 
     func cmShadow(cornerRadius: CGFloat = 15,
                      borderWidth: CGFloat = 1,

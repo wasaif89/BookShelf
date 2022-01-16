@@ -35,7 +35,12 @@ class AddBookViewController: UIViewController {
         super.viewDidLoad()
         addBtn.cmShadow()
         sectionTF.optionArray = ["Islmic Book","Childern Book","Cook Book","Educational Book","Other Book"]
+        sectionTF.backgroundColor = .secondarySystemBackground
+        sectionTF.rowBackgroundColor = .secondarySystemBackground
+
         bookStatusTF.optionArray = ["New","Used"]
+        bookStatusTF.backgroundColor = .secondarySystemBackground
+        bookStatusTF.rowBackgroundColor = .secondarySystemBackground
 
     }
 

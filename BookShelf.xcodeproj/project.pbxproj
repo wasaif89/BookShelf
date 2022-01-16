@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3EB22EF70DC6D5A69C106E1C /* Pods_BookShelf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FB71187F4E56358D96ADE2 /* Pods_BookShelf.framework */; };
+		6D30B58D279351F000A09E41 /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30B58C279351EF00A09E41 /* ForgetPasswordVC.swift */; };
 		6D4BB432276DE1C200534E6D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB431276DE1C200534E6D /* HomeViewController.swift */; };
 		6D4BB434276DF9AF00534E6D /* BooksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB433276DF9AF00534E6D /* BooksCell.swift */; };
 		6D4BB43C276DFE8400534E6D /* BooksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BB43B276DFE8400534E6D /* BooksVC.swift */; };
@@ -18,7 +19,6 @@
 		6D7B52E0276642A3000AF939 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7B52DF276642A3000AF939 /* AppDelegate.swift */; };
 		6D7B52E2276642A3000AF939 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7B52E1276642A3000AF939 /* SceneDelegate.swift */; };
 		6D7B52E7276642A3000AF939 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D7B52E5276642A3000AF939 /* Main.storyboard */; };
-		6D7B52EA276642A3000AF939 /* BookShelf.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D7B52E8276642A3000AF939 /* BookShelf.xcdatamodeld */; };
 		6D7B52EC276642AD000AF939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D7B52EB276642AD000AF939 /* Assets.xcassets */; };
 		6D7B52EF276642AD000AF939 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D7B52ED276642AD000AF939 /* LaunchScreen.storyboard */; };
 		6D7B5305276662D4000AF939 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7B5304276662D3000AF939 /* LoginViewController.swift */; };
@@ -46,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		50F497B80592EA02D73C2EBC /* Pods-BookShelf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookShelf.release.xcconfig"; path = "Target Support Files/Pods-BookShelf/Pods-BookShelf.release.xcconfig"; sourceTree = "<group>"; };
+		6D30B58C279351EF00A09E41 /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
 		6D4BB431276DE1C200534E6D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6D4BB433276DF9AF00534E6D /* BooksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksCell.swift; sourceTree = "<group>"; };
 		6D4BB43B276DFE8400534E6D /* BooksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksVC.swift; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		6D7B52DF276642A3000AF939 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D7B52E1276642A3000AF939 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6D7B52E6276642A3000AF939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6D7B52E9276642A3000AF939 /* BookShelf.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookShelf.xcdatamodel; sourceTree = "<group>"; };
 		6D7B52EB276642AD000AF939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D7B52EE276642AD000AF939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D7B52F0276642AD000AF939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,6 +122,7 @@
 			children = (
 				6D7B5304276662D3000AF939 /* LoginViewController.swift */,
 				6D7B5306276662F2000AF939 /* SignUpViewController.swift */,
+				6D30B58C279351EF00A09E41 /* ForgetPasswordVC.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -185,11 +186,12 @@
 			children = (
 				6D7B52F727665027000AF939 /* Model */,
 				6D7B52F62766500B000AF939 /* View */,
+				6DEDA2FC2791C3910031D752 /* Extension */,
+				6D4BB446276DFF2400534E6D /* Delegate */,
 				6D7B52F827665040000AF939 /* Controller */,
 				6D7B52EB276642AD000AF939 /* Assets.xcassets */,
 				6D7B52F0276642AD000AF939 /* Info.plist */,
 				6D7B53082766715A000AF939 /* GoogleService-Info.plist */,
-				6D7B52E8276642A3000AF939 /* BookShelf.xcdatamodeld */,
 			);
 			path = BookShelf;
 			sourceTree = "<group>";
@@ -219,11 +221,9 @@
 		6D7B52F827665040000AF939 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6DEDA2FC2791C3910031D752 /* Extension */,
-				6D4BB446276DFF2400534E6D /* Delegate */,
 				6D955659277A35750089FF1C /* Profile */,
-				6D4BB445276DFF1B00534E6D /* Main */,
 				6D4BB444276DFF1100534E6D /* Auth */,
+				6D4BB445276DFF1B00534E6D /* Main */,
 				6D4BB443276DFF0200534E6D /* Home */,
 			);
 			path = Controller;
@@ -379,6 +379,7 @@
 				6DA5D7F927778CC700725B13 /* BuyConfirmationVC.swift in Sources */,
 				6D7B5307276662F2000AF939 /* SignUpViewController.swift in Sources */,
 				6DA1B4C5276E568400F8936F /* Basket.swift in Sources */,
+				6D30B58D279351F000A09E41 /* ForgetPasswordVC.swift in Sources */,
 				6D7B52E0276642A3000AF939 /* AppDelegate.swift in Sources */,
 				6DA1B4BF276E174100F8936F /* BasketTabelVC.swift in Sources */,
 				6D4BB432276DE1C200534E6D /* HomeViewController.swift in Sources */,
@@ -390,7 +391,6 @@
 				6D95565B277A35B30089FF1C /* UpdateProfileVC.swift in Sources */,
 				6D830C472767C0A80098C828 /* ProfileViewController.swift in Sources */,
 				6DA5D7FB27778D0500725B13 /* BuyConfirmationCell.swift in Sources */,
-				6D7B52EA276642A3000AF939 /* BookShelf.xcdatamodeld in Sources */,
 				6DA1B4C7276E62B800F8936F /* Comment.swift in Sources */,
 				6D4BB43C276DFE8400534E6D /* BooksVC.swift in Sources */,
 				6DEDA2FE2791C3C70031D752 /* extension.swift in Sources */,
@@ -559,7 +559,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -592,7 +592,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -630,19 +630,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		6D7B52E8276642A3000AF939 /* BookShelf.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				6D7B52E9276642A3000AF939 /* BookShelf.xcdatamodel */,
-			);
-			currentVersion = 6D7B52E9276642A3000AF939 /* BookShelf.xcdatamodel */;
-			path = BookShelf.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 6D7B52D4276642A3000AF939 /* Project object */;
 }

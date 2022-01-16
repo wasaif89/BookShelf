@@ -13,15 +13,16 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     
     @IBOutlet weak var pageControl:UIPageControl!
     @IBOutlet weak var collectionView:UICollectionView!
+    
     var timer:Timer?
     var currentCellIndex = 0
-    var arrPic = [UIImage(named: "pic1"),UIImage(named: "pic2"),UIImage(named: "pic3"),UIImage(named: "pic4")]
+    var arrPic = [UIImage(named: "1"),UIImage(named: "2"),UIImage(named: "3"),UIImage(named: "4")]
 
     func configureAppearance() {
         self.title = "Book Shelf"
         self.navigationController?.navigationBar.prefersLargeTitles = true 
-        self.navigationController?.navigationBar.backgroundColor = UIColor(named: "Secondary")
-        self.navigationController?.navigationBar.barTintColor = UIColor(named: "Secondary")
+//        self.navigationController?.navigationBar.backgroundColor = UIColor(named: "Secondary")
+        //self.navigationController?.navigationBar.barTintColor = UIColor(named: "Secondary")
         
     }
     
@@ -55,9 +56,10 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
       
       
       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCell", for: indexPath) as! HomeCell
-        
-        cell.imageCollection.image = arrPic[indexPath.row]
+          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCell", for: indexPath) as! HomeCell
+          cell.imageCollection.image = arrPic[indexPath.row]
+          cell.heightConstraint.constant = collectionView.frame.height
+          cell.widthConstraint.constant = collectionView.frame.width
         return cell
       }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -83,4 +85,17 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         }
     }
     
+    @IBAction func basket(_ sender: UIBarButtonItem) {
+        
+             if (Auth.auth().currentUser?.uid != nil){
+               let vc = self.storyboard?.instantiateViewController(withIdentifier: "BasketID") as! BasketTabelVC
+                 self.navigationController?.show(vc, sender: self)
+                 print("User Login")
+                 
+             }else{
+                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+                   self.navigationController?.show(vc, sender: self)
+                 print("User Not Login")
+             }
+         }
 }
