@@ -20,21 +20,14 @@ class BasketTabelVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
     override func viewWillAppear(_ animated: Bool) {
         buttonBuy.isHidden = basket.count == 0
         tableView.reloadData()
-        
-        //        if basket.count == 0 {
-        //            buttonBuy.isHidden = true
-        //        } else {
-        //            buttonBuy.isHidden = false
-        //        }
-        
-        
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         self.title = "Basket"
-//        print("Basket")
+
         readBasket()
     }
     

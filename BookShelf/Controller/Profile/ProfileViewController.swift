@@ -24,8 +24,6 @@ class ProfileViewController: UIViewController {
         leftSwipe.direction = UISwipeGestureRecognizer.Direction.left
         self.view.addGestureRecognizer(leftSwipe)
         
-    
-//        overrideUserInterfaceStyle = .light
         }
 
     // get infrmation data user from firebase

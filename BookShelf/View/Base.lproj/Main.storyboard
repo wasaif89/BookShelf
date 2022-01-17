@@ -146,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2934.7826086956525" y="-816.29464285714278"/>
+            <point key="canvasLocation" x="4373.913043478261" y="-816.29464285714278"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="Ycd-R9-7tX">
@@ -268,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Dy-iW-mpN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3717" y="-816"/>
+            <point key="canvasLocation" x="5202.898550724638" y="-816.29464285714278"/>
         </scene>
         <!--Buy ConfirmationVC-->
         <scene sceneID="JhX-Bg-25T">
@@ -503,18 +503,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhz-L4-VB3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="644.92753623188412" y="1336.6071428571429"/>
+            <point key="canvasLocation" x="229" y="1294"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Vcg-cR-Jhe">
             <objects>
                 <viewController id="mTL-Dg-v4a" customClass="UpdateProfileVC" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D8P-li-X2Q">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="MT5-YP-brw">
-                                <rect key="frame" x="40" y="188" width="334" height="290"/>
+                                <rect key="frame" x="40" y="100" width="334" height="290"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Update Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UbL-S2-aFC">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
@@ -576,18 +576,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ay3-0p-dhG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2901" y="660"/>
+            <point key="canvasLocation" x="3464" y="629"/>
         </scene>
         <!--My Books For Sale-->
         <scene sceneID="QvY-c4-v7H">
             <objects>
                 <viewController id="Esr-21-5mb" customClass="BookTabelViewController" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BIj-Jh-u3V">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SB9-sd-AYM">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookCell" rowHeight="300" id="QNJ-Mz-OLy" customClass="BookCell" customModule="BookShelf" customModuleProvider="target">
@@ -682,7 +682,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lEa-r8-lo0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1570" y="1373"/>
+            <point key="canvasLocation" x="2480" y="1343"/>
         </scene>
         <!--My Order-->
         <scene sceneID="7hh-pl-MkR">
@@ -838,7 +838,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pz7-MX-Wdk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2275" y="1373"/>
+            <point key="canvasLocation" x="977" y="-113"/>
         </scene>
         <!--Book Store-->
         <scene sceneID="PnJ-c4-89t">
@@ -967,7 +967,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvC-wB-bnC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-152.17391304347828" y="-113.16964285714285"/>
+            <point key="canvasLocation" x="-571" y="-113"/>
         </scene>
         <!--Book Details-->
         <scene sceneID="hqQ-jA-xT6">
@@ -1263,7 +1263,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXA-m3-MMJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-152.17391304347828" y="745.3125"/>
+            <point key="canvasLocation" x="-570" y="745"/>
         </scene>
         <!--Basket TabelVC-->
         <scene sceneID="8pb-7e-ceZ">
@@ -1350,18 +1350,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tai-Zf-rtO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="646" y="609"/>
+            <point key="canvasLocation" x="229" y="609"/>
         </scene>
         <!--Profile-->
         <scene sceneID="hnq-Cg-gF1">
             <objects>
                 <viewController storyboardIdentifier="ProfileViewController" id="ZHM-FD-Htt" customClass="ProfileViewController" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZKI-f1-zi2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="a4y-TC-XnC">
-                                <rect key="frame" x="182" y="118.5" width="50" height="49"/>
+                                <rect key="frame" x="182" y="30.5" width="50" height="49"/>
                                 <color key="tintColor" name="Primary"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="GRl-Bk-jlA"/>
@@ -1369,7 +1369,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="f48-bX-Y5j">
-                                <rect key="frame" x="40" y="198" width="334" height="348.5"/>
+                                <rect key="frame" x="40" y="110" width="334" height="268.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsU-Qo-zAa">
                                         <rect key="frame" x="127.5" y="0.0" width="79.5" height="37"/>
@@ -1411,26 +1411,10 @@
                                             <segue destination="Esr-21-5mb" kind="show" id="axL-5L-zgF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUQ-bc-1U7">
-                                        <rect key="frame" x="0.0" y="298.5" width="334" height="50"/>
-                                        <color key="backgroundColor" name="Primary"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Sf5-WM-PuT"/>
-                                            <constraint firstAttribute="width" constant="334" id="a7S-qr-4i7"/>
-                                        </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="My Order">
-                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle2"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <segue destination="fKP-h2-Kgs" kind="show" id="k35-i0-dx0"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fd-4y-sSb">
-                                <rect key="frame" x="40" y="772" width="334" height="50"/>
+                                <rect key="frame" x="40" y="718" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="24k-Ze-ie9"/>
                                 </constraints>
@@ -1475,18 +1459,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IyH-Hb-mpV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1916" y="646"/>
+            <point key="canvasLocation" x="2480" y="629"/>
         </scene>
         <!--Add-->
         <scene sceneID="0M9-ed-g56">
             <objects>
                 <viewController id="4XD-Qq-7rL" customClass="AddBookViewController" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TYY-J3-Mwy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zkg-rL-GCt">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMm-HP-yqK">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="860"/>
@@ -1687,7 +1671,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="747-Vh-SXk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1257" y="2109"/>
+            <point key="canvasLocation" x="2138" y="2072"/>
         </scene>
         <!--Personal informaiton-->
         <scene sceneID="E2A-R1-ORs">
@@ -1704,7 +1688,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BUI-4I-Xb2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1916" y="-60"/>
+            <point key="canvasLocation" x="2481" y="-78"/>
         </scene>
         <!--Forget PasswordVC-->
         <scene sceneID="T5J-lh-BXY">
@@ -1756,7 +1740,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bXd-YQ-bFZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2935" y="-128"/>
+            <point key="canvasLocation" x="3464" y="-113"/>
         </scene>
         <!--Home-->
         <scene sceneID="ttf-Ex-CJi">
@@ -1879,18 +1863,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M1g-Pe-oUd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="650.72463768115949" y="-113.16964285714285"/>
+            <point key="canvasLocation" x="229" y="-113"/>
         </scene>
         <!--Edit-->
         <scene sceneID="UaM-T5-6FU">
             <objects>
                 <viewController storyboardIdentifier="UpdateViewController" id="2jJ-h0-MPr" customClass="UpdateViewController" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hPq-rZ-uuQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLR-Sf-bsh">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ayh-l9-9Au">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
@@ -2068,7 +2052,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E5u-z0-gY2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1916" y="2109"/>
+            <point key="canvasLocation" x="2804" y="2072"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bfc-Zu-wCC">
@@ -2082,6 +2066,7 @@
                     <connections>
                         <segue destination="a3l-HN-6VR" kind="relationship" relationship="viewControllers" id="tc4-VP-F2a"/>
                         <segue destination="r6Y-Dq-AGR" kind="relationship" relationship="viewControllers" id="Chj-C3-qmX"/>
+                        <segue destination="S7D-JV-Y5b" kind="relationship" relationship="viewControllers" id="ijF-Pi-ibv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LY0-zE-889" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2110,7 +2095,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2oA-W1-C8a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="651" y="-816"/>
+            <point key="canvasLocation" x="229" y="-816"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zCw-Ot-xDu">
@@ -2129,7 +2114,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hAS-bF-bSP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1916" y="-816"/>
+            <point key="canvasLocation" x="3555.072463768116" y="-816.29464285714278"/>
         </scene>
         <!--BookStore-->
         <scene sceneID="ASu-QN-LVR">
@@ -2153,11 +2138,33 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="alx-jE-lZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-152" y="-816"/>
+            <point key="canvasLocation" x="-571" y="-816"/>
+        </scene>
+        <!--Order-->
+        <scene sceneID="EQk-Xy-Mkt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S7D-JV-Y5b" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Order" image="list.bullet.rectangle.fill" catalog="system" id="N6u-Kv-vn2"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="h0z-5S-OTz">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance" backgroundEffect="regular">
+                            <color key="backgroundColor" name="Secondary"/>
+                        </navigationBarAppearance>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fKP-h2-Kgs" kind="relationship" relationship="rootViewController" id="5px-I5-hh3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iXS-Mb-L8i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="976.81159420289862" y="-816.29464285714278"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="oBR-vV-vtM"/>
+        <segue reference="c14-tR-MZM"/>
         <segue reference="HwE-DP-6C7"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -2166,6 +2173,7 @@
         <image name="bookshelf" width="48" height="48"/>
         <image name="cart.fill" catalog="system" width="128" height="102"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
+        <image name="list.bullet.rectangle.fill" catalog="system" width="128" height="93"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
