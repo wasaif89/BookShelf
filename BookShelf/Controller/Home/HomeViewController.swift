@@ -19,7 +19,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     var arrPic = [UIImage(named: "1"),UIImage(named: "2"),UIImage(named: "3"),UIImage(named: "4")]
 
     func configureAppearance() {
-        self.title = "Book Shelf"
+        self.title = "BookShelf"
         self.navigationController?.navigationBar.prefersLargeTitles = true 
 //        self.navigationController?.navigationBar.backgroundColor = UIColor(named: "Secondary")
         //self.navigationController?.navigationBar.barTintColor = UIColor(named: "Secondary")

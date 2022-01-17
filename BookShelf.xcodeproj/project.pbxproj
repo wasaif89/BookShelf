@@ -75,6 +75,10 @@
 		6DA1B4C2276E19AF00F8936F /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		6DA1B4C4276E568400F8936F /* Basket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
 		6DA1B4C6276E62B800F8936F /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		6DA4BFAF2795C96E00978A03 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
+		6DA4BFB02795C96F00978A03 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		6DA4BFB22795C9BE00978A03 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		6DA4BFB42795D3B200978A03 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		6DA5D7F827778CC700725B13 /* BuyConfirmationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyConfirmationVC.swift; sourceTree = "<group>"; };
 		6DA5D7FA27778D0500725B13 /* BuyConfirmationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyConfirmationCell.swift; sourceTree = "<group>"; };
 		6DA5D7FC277792B500725B13 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
@@ -109,10 +113,16 @@
 		6D4BB443276DFF0200534E6D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				6DC9A2F42775FCE000E21F7A /* TabBarVC.swift */,
 				6D4BB431276DE1C200534E6D /* HomeViewController.swift */,
 				6D4BB43B276DFE8400534E6D /* BooksVC.swift */,
 				6DA1B4BE276E174100F8936F /* BasketTabelVC.swift */,
 				6DA1B4C0276E197800F8936F /* BookDetails.swift */,
+				6D7A3507276914BC001521BC /* BookTabelViewController.swift */,
+				6D830C482767CABE0098C828 /* AddBookViewController.swift */,
+				6D7A35092769159C001521BC /* UpdateViewController.swift */,
+				6DA5D7F827778CC700725B13 /* BuyConfirmationVC.swift */,
+				6DC9A2F627764A4500E21F7A /* OrderVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -125,19 +135,6 @@
 				6D30B58C279351EF00A09E41 /* ForgetPasswordVC.swift */,
 			);
 			path = Auth;
-			sourceTree = "<group>";
-		};
-		6D4BB445276DFF1B00534E6D /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				6D7A3507276914BC001521BC /* BookTabelViewController.swift */,
-				6D830C482767CABE0098C828 /* AddBookViewController.swift */,
-				6D7A35092769159C001521BC /* UpdateViewController.swift */,
-				6DC9A2F42775FCE000E21F7A /* TabBarVC.swift */,
-				6DC9A2F627764A4500E21F7A /* OrderVC.swift */,
-				6DA5D7F827778CC700725B13 /* BuyConfirmationVC.swift */,
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 		6D4BB446276DFF2400534E6D /* Delegate */ = {
@@ -221,9 +218,8 @@
 		6D7B52F827665040000AF939 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6D955659277A35750089FF1C /* Profile */,
 				6D4BB444276DFF1100534E6D /* Auth */,
-				6D4BB445276DFF1B00534E6D /* Main */,
+				6D955659277A35750089FF1C /* Profile */,
 				6D4BB443276DFF0200534E6D /* Home */,
 			);
 			path = Controller;
@@ -299,6 +295,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = 6D7B52D3276642A3000AF939;
 			productRefGroup = 6D7B52DD276642A3000AF939 /* Products */;
@@ -411,6 +408,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				6D7B52E6276642A3000AF939 /* Base */,
+				6DA4BFAF2795C96E00978A03 /* ar */,
+				6DA4BFB22795C9BE00978A03 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -419,6 +418,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				6D7B52EE276642AD000AF939 /* Base */,
+				6DA4BFB02795C96F00978A03 /* ar */,
+				6DA4BFB42795D3B200978A03 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -430,6 +431,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -491,6 +493,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
