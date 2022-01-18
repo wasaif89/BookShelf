@@ -14,7 +14,6 @@ struct User: Codable {
     let name : String?
     let email: String?
     let phoneNumber:String?
-//  let address: String?
     let latitude: Double?
     let longitude: Double?
     

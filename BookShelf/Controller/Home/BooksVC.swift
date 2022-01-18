@@ -14,9 +14,6 @@ class BooksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     let categories = ["All","Islmic Book","Childern Book","Cook Book","Educational Book","Other Book"]
     var selectedBook : Book?
     
-        //
-    
-
     @IBOutlet weak var categoriesTF: DropDown!
     
     let db = Firestore.firestore()

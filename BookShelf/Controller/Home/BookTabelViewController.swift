@@ -54,9 +54,7 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
                 } else {
                     print("Document successfully removed!")
                     tableView.reloadData()
-//                    self.book.remove(at: indexPath.row)
-//                    tableView.deleteRows(at: [indexPath], with: .fade)
-//                   
+                 
                 }
             }
         } else  {
@@ -78,7 +76,7 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
                     print("Start decode book index:", index)
 
                    do{
-                       //???
+
                        print("Book document \(doc.documentID)")
                     let bookData = try doc.data(as: Book.self)
                        print("User book", bookData?.name)
@@ -105,21 +103,6 @@ class BookTabelViewController: UIViewController,UITableViewDelegate,UITableViewD
         }
     }
 }
-
-//if let image =  document.data()?["image"] as? String {
-//                        let storageRef = self.storage.reference()
-//                        let imageref =   storageRef.child(image)
-//                        imageref.getData(maxSize: 100 * 1024 * 1024) { data, error in
-//                          if let error = error {
-//                            print("error")
-//                          } else {
-//                            self.img.image = UIImage(data: data!)
-//                          }
-//                        }
-//
-//                    }
-
-
 private var imageCache = NSCache<NSString, UIImage>()
 extension UIImageView {
     

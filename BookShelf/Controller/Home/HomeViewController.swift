@@ -8,11 +8,15 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import CoreLocation
+
 class HomeViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
 
     
     @IBOutlet weak var pageControl:UIPageControl!
     @IBOutlet weak var collectionView:UICollectionView!
+    let locationManager = CLLocationManager()
+
     
     var timer:Timer?
     var currentCellIndex = 0
@@ -21,13 +25,18 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     func configureAppearance() {
         self.title = "BookShelf"
         self.navigationController?.navigationBar.prefersLargeTitles = true 
-//        self.navigationController?.navigationBar.backgroundColor = UIColor(named: "Secondary")
-        //self.navigationController?.navigationBar.barTintColor = UIColor(named: "Secondary")
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        
+        
         configureAppearance()
         collectionView.delegate = self
             collectionView.dataSource = self
@@ -98,4 +107,21 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
                  print("User Not Login")
              }
          }
+}
+extension  HomeViewController:CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        print("loacation : \(location!.coordinate.latitude)")
+        print("loacation : \(location!.coordinate.longitude)")
+     
+        let db = Firestore.firestore()
+        let docRef = db.collection("Users").document(Auth.auth().currentUser!.uid)
+        
+        docRef.updateData(["longitude": location!.coordinate.longitude,
+                           "latitude": location!.coordinate.latitude])
+        
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
+    }
 }

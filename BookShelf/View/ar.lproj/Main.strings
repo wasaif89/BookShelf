@@ -1,6 +1,6 @@
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "12k-7T-0pa"; */
-"12k-7T-0pa.placeholder" = "الرقم السري";
+"12k-7T-0pa.placeholder" = "كلمه السر";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "1CE-mG-WCc"; */
 "1CE-mG-WCc.text" = "Label";

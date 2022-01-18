@@ -102,15 +102,19 @@ class AddBookViewController: UIViewController {
     }
     func saveBook(_ book: Book) {
         let documentID = UUID().uuidString
-        try! db.collection("Book").document(documentID).setData(from: book) { err in
-            if let err = err {
-              print("Error writing document: \(err)")
-            } else {
-              print("Document successfully written!")
-                self.navigationController?.popViewController(animated: true)
+        do {
+            try db.collection("Book").document(documentID).setData(from: book) { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
+        } catch {
+            print (error.localizedDescription)
         }
-      }
+    }
  }
   extension AddBookViewController:UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 

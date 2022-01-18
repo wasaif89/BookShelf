@@ -37,7 +37,7 @@ class SignUpViewController: UIViewController {
                 var alertVC = UIAlertController(title: "Welcome", message: nil, preferredStyle: .alert)
                 alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self.present(alertVC, animated: true, completion: nil)
-                //                       self.performSegue(withIdentifier: "GoToHomePage", sender: self)
+               
             }else{
                 print("Error\(error?.localizedDescription)")
                 var alertVC = UIAlertController(title: "error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -52,9 +52,12 @@ class SignUpViewController: UIViewController {
             "name": user.name,
             "email": user.email,
             "phoneNumber": user.phoneNumber,
-            "time" : Date().timeIntervalSinceReferenceDate
+            "time" : Date().timeIntervalSinceReferenceDate,
+            "longitude":user.longitude,
+            "latitude": user.latitude
             
         ]
+        
         db.collection("Users").document(Auth.auth().currentUser!.uid).setData(docData) { err in
             if let err = err {
                 print("Error writing document: \(err)")

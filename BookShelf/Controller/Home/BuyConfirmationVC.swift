@@ -15,7 +15,6 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
     @IBOutlet weak var addressTF: UITextField!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
-    @IBOutlet weak var date: UILabel!
     @IBOutlet weak var buyBtn: UIButton!
     let db = Firestore.firestore()
     var basket = [Basket]()
@@ -26,6 +25,7 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Payment"
         tableView.delegate = self
         tableView.dataSource = self
         readBasket()
@@ -34,9 +34,9 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
         locationManger.requestAlwaysAuthorization()
         locationManger.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled(){
-            locationManger.delegate = self
-            locationManger.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManger.startUpdatingHeading()
+        locationManger.delegate = self
+        locationManger.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManger.startUpdatingHeading()
         }
   }
 
@@ -117,8 +117,7 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
                     let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                     self.name.text = document.data()?["name"] as? String
                     self.phoneNumber.text = document.data()?["phoneNumber"] as? String
-                    self.date.text = document.data()? ["date"] as? String
-                //  self.address.text = document.data()? ["latitude"] as? String
+
                     _ = User(name:  self.name.text, email:nil, phoneNumber:  self.phoneNumber.text, latitude:  nil,longitude: nil)
                     print("Document data")
                 } else {
@@ -152,8 +151,6 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
             let newOrder = Order(id: nil, orderNumber: Int.random(in: 0..<10000), customerID: Auth.auth().currentUser?.email, bookName: basketOrder.bookName, prices: basketOrder.prices, date: dateTime, userToken: Auth.auth().currentUser?.uid, address: addressTF.text!, userRef: basketOrder.userRef, bookRef: basketOrder.bookRef)
 
             self.saveOrder(newOrder)
-
-//            basketOrder.bookRef?.delete()
             
         }
         
@@ -176,3 +173,27 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
     }
 }
 
+//LocationManager.shared.getAddressFromLatLon(pdblLatitude:
+//"\(location.coordinate.latitude)", withLongitude:
+//"\(location.coordinate.longitude)") { status, msg, country in
+//self.eventCurrentLocation.text = msg ?? "no clear address"
+//self.currentAddress = msg ?? "no clear address"
+//}
+
+
+//___________________________________
+
+
+//LocationManager.shared.getLocation { (location:CLLocation?, error:NSError?) in
+//if let _ = error
+//return
+//}
+//if let location = location {
+//print("Latitude: \(location.coordinate.latitude) Longitude:\(location.coordinate.longitude)")
+//  } else
+//self.showAlert(title: "Location Permission Required", message: "You should activate your location"
+//confirmBtnTitle:"OK",cancelBtnTitle:"" ,hideCancelBtn: true) { (action) in
+//    UIApplication.shared.open (URL (string:UIApplication.openSettingsURLString)!)
+//}
+//return
+//}

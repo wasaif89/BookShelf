@@ -33,6 +33,7 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Book Details"
         tableView.dataSource = self
         tableView.dataSource = self
         bookName.text = book?.name
@@ -55,19 +56,18 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
         userReference = db.collection("Users").document(userID)
 
     }
-
-
+    
     func saveBasket(_ basket: Basket) {
-
-        try! db.collection("Basket").addDocument(from: basket, completion: { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
-            }
-        })
-        
-       }
+        do {
+            try db.collection("Basket").addDocument(from: basket, completion: { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                }
+            })
+        } catch { }
+    }
 
     func addComment(_ comment: Comment) {
         do {
@@ -87,11 +87,9 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
        return comments.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ComintCell") as! CommentCell
-        cell.userName.text = comments[indexPath.row].byUser
-        cell.comment.text = comments[indexPath.row].comment
-//        cell.commentDate.text = NSDate(timeIntervalSince1970: comments[indexPath.row].date)
-        cell.commentDate.text = ""
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        cell.textLabel!.text = comments[indexPath.row].byUser
+        cell.detailTextLabel!.text = comments[indexPath.row].comment
         return cell
     }
   
