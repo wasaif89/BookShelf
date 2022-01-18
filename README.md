@@ -12,12 +12,11 @@ You can sell and buy books from bookshelf app, it gives you the facility the abi
 - As user I am able change language.
 - As user I am able I can reset the password if I forget it.
 # Usage :
-- editor : Xcode 
-- ER_Diagram: Visual Paradigm
+- editor: Xcode 
 - Programming language: Swift
 - DataBase: FireBase,FireStore, Storage
 - ERD: Visual Paradigm
-- mockflow (Wireframe)
+- Wireframe: mockflow
 - Powerpoint
 # Upcoming Features :
 - google map
