@@ -18,16 +18,13 @@ You can sell and buy books from bookshelf app, it gives you the facility the abi
 - ERD: Visual Paradigm
 - Wireframe: mockflow
 - Powerpoint
+- Github
 # Upcoming Features :
 - google map
 - electronic payment
 - Convert from Firebase to Api
-- Notifications
 - Chat
-- Delivery Service
-# Issues :
-- doucment in FireStore (used a new library FirebaseFirestoreSwift)
-- display image in the tableView
+
 
 
 
