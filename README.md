@@ -1,23 +1,24 @@
 # BookShelf
 # OverView :
 You can sell and buy books from bookshelf app, it gives you the facility the ability to put all the books that you no longer use and find the books which are not available in the libraries.  In many cases, people no longer want to keep them willing to sell it at a lower cost. 
+# User Stories :
+- As user I am able to Creat Account.
+- As user I am able visit profile.
+- As user I am able select Book to show more details.
+- As user I am able Add Comment.
+- As user I am able buying or selling books.
+- As user I am able Add Book for sale as well as delete it or edit it (CRUD).
+- As user I am able choose the dark mood.
+- As user I am able change language.
 # Usage :
 - editor : Xcode 
 - ER_Diagram: Visual Paradigm
 - Programming language: Swift
 - DataBase: FireBase,FireStore, Storage
-- ER_Diagram: Visual Paradigm
-- GitHub
-- powerpoint
-- mockflow
-# User Stories :
-- As user I am able to Creat Accunt.
-- As user I am able visit profile.
-- As user Iam able select Book to show more details.
-- As user Iam able Add Comment.
-- As user I am able can buy a book.
-- As user Iam able Add Book for sale as well as delete it or edit it (CRUD).
-# UpComing Features :
+- ERD: Visual Paradigm
+- mockflow (Wireframe)
+- Powerpoint
+# Upcoming Features :
 - google map
 - electronic payment
 - Convert from Firebase to Api
