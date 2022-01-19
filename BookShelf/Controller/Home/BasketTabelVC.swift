@@ -27,7 +27,6 @@ class BasketTabelVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
         tableView.delegate = self
         tableView.dataSource = self
         self.title = "Basket"
-
         readBasket()
     }
     

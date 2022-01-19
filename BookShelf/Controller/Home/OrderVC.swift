@@ -45,10 +45,7 @@ class OrderVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             self.tableView.reloadData()
             return
         }
-        
-//        let userReference = db.collection("Users").document(Auth.auth().currentUser!.uid)
-//        db.collection("Order").whereField("userRef", isEqualTo:userReference).addSnapshotListener {
-            db.collection("Order").whereField("userToken", isEqualTo:Auth.auth().currentUser!.uid).addSnapshotListener {(querySnapshot, error) in
+       db.collection("Order").whereField("userToken", isEqualTo:Auth.auth().currentUser!.uid).addSnapshotListener {(querySnapshot, error) in
             self.order = []
             guard let documents = querySnapshot?.documents else {
                 print("Error fetching documents: \(error!)")

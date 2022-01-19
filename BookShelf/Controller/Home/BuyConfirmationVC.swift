@@ -19,9 +19,7 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
     let db = Firestore.firestore()
     var basket = [Basket]()
     var order:Order!
-    let locationManger = CLLocationManager()
 
-  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +29,8 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
         readBasket()
         readUsers()
         buyBtn.cmShadow()
-        locationManger.requestAlwaysAuthorization()
-        locationManger.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled(){
-        locationManger.delegate = self
-        locationManger.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManger.startUpdatingHeading()
         }
-  }
+  
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return basket.count
@@ -50,31 +42,7 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
         cell.prices.text = basket[indexPath.row].prices
         return cell
     }
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue:CLLocationCoordinate2D =  manager.location?.coordinate else{
-            return
-        }
-        print("location = \(locValue.latitude) + \(locValue.longitude)")
-        guard let location:CLLocation = manager.location else{
-            return
-        }
-        fetchCityAndCountry(from: location) { city, country, error in
-            guard let city = city,let country = country, let error = error else {
-                return
-            }
-            print(city + "locationlocation" + country)
-            print("\(error.localizedDescription)")
-        }
-                
-    }
-    func fetchCityAndCountry(from location:CLLocation,completion:@escaping (_ city:String?,_ country:String?,_ error:Error?) -> ()) {
-        CLGeocoder().reverseGeocodeLocation(location) { placemark, error in
-            completion(placemark?.first?.locality,
-                       placemark?.first?.country,
-            error)
-        }
-        
-    }
+
     func readBasket(){
         let userReference = db.collection("Users").document(Auth.auth().currentUser!.uid)
         db.collection("Basket").whereField("userRef", isEqualTo: userReference).addSnapshotListener { (querySnapshot, error) in
@@ -97,9 +65,7 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
                         
                         self.basket.append(bookData)
                     }
-                    
-                    
-                    
+     
                 }catch let error{
                     print("Error\(error.localizedDescription)")
                 }
@@ -173,27 +139,3 @@ class BuyConfirmationVC: UIViewController , UITableViewDelegate, UITableViewData
     }
 }
 
-//LocationManager.shared.getAddressFromLatLon(pdblLatitude:
-//"\(location.coordinate.latitude)", withLongitude:
-//"\(location.coordinate.longitude)") { status, msg, country in
-//self.eventCurrentLocation.text = msg ?? "no clear address"
-//self.currentAddress = msg ?? "no clear address"
-//}
-
-
-//___________________________________
-
-
-//LocationManager.shared.getLocation { (location:CLLocation?, error:NSError?) in
-//if let _ = error
-//return
-//}
-//if let location = location {
-//print("Latitude: \(location.coordinate.latitude) Longitude:\(location.coordinate.longitude)")
-//  } else
-//self.showAlert(title: "Location Permission Required", message: "You should activate your location"
-//confirmBtnTitle:"OK",cancelBtnTitle:"" ,hideCancelBtn: true) { (action) in
-//    UIApplication.shared.open (URL (string:UIApplication.openSettingsURLString)!)
-//}
-//return
-//}

@@ -29,8 +29,7 @@ class UpdateProfileVC: UIViewController {
         rightSwipe.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(rightSwipe)
 
-     
-    }
+     }
     
     @IBAction func updatePressed(_ sender: UIButton) {
         Auth.auth().currentUser?.updateEmail(to: updateEmailTF.text!) { error in
@@ -48,7 +47,7 @@ class UpdateProfileVC: UIViewController {
             "name": updateNameTF.text,
             "phoneNumber": updatePhoneNumberTF.text,
             "email": updateEmailTF.text
-        ]) { err in
+            ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")
             } else {
@@ -56,7 +55,7 @@ class UpdateProfileVC: UIViewController {
                 print("Document successfully updated")
             }
         }
-}
+  }
     
  }
 

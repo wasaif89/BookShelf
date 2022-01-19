@@ -56,7 +56,11 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
                     print("Document successfully written!")
                 }
             })
-        } catch { }
+        } catch {
+            //
+            print (error.localizedDescription)
+            
+        }
     }
 
     func addComment(_ comment: Comment) {
@@ -69,6 +73,8 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
             }
         }
         } catch {
+            //
+            print (error.localizedDescription)
             
         }
     }

@@ -5,7 +5,6 @@
 
 import UIKit
 import Firebase
-//import CoreLocation
 import FirebaseAuth
 import FirebaseFirestore
 
@@ -15,16 +14,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var forgetBtn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var signUpBtn: UIButton!
-//    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loginBtn.cmShadow()
 
     }
-    
-    
-    
-    
+ 
     @IBAction func loginPreesed(_ sender: UIButton) {
         Auth.auth().signIn(withEmail: emailTextField.text!
                            , password: passwordTextField.text!) { [weak self] authResult, error in
@@ -47,20 +43,3 @@ class LoginViewController: UIViewController {
         }
     }
 }
-//extension  LoginViewController:CLLocationManagerDelegate {
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        let location = locations.last
-//        print("loacation : \(location!.coordinate.latitude)")
-//        print("loacation : \(location!.coordinate.longitude)")
-//     
-//        let db = Firestore.firestore()
-//        let docRef = db.collection("Users").document(Auth.auth().currentUser!.uid)
-//        
-//        docRef.updateData(["longitude": location!.coordinate.longitude,
-//                           "latitude": location!.coordinate.latitude])
-//        
-//    }
-//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-//        print(error.localizedDescription)
-//    }
-//}

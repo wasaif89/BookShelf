@@ -36,12 +36,11 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
         
-        
         configureAppearance()
         collectionView.delegate = self
-            collectionView.dataSource = self
-            pageControl.numberOfPages = arrPic.count
-            startTimer()
+        collectionView.dataSource = self
+        pageControl.numberOfPages = arrPic.count
+        startTimer()
                 navigationItem.setHidesBackButton(true, animated: true)
         }
     func startTimer(){

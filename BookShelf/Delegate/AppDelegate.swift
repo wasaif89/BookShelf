@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 import CoreData
-import IQKeyboardManagerSwift
+//import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         // Only for debug: Wait Launchscreen for 5 seconds
 //        Thread.sleep(forTimeInterval: 5)
-        IQKeyboardManager.shared.enable = true
+//        IQKeyboardManager.shared.enable = true
         return true
     }
 
