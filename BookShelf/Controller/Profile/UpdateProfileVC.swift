@@ -8,14 +8,12 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
-import CoreLocation
 
 class UpdateProfileVC: UIViewController {
     @IBOutlet weak var updateNameTF: UITextField!
     @IBOutlet weak var updateEmailTF: UITextField!
     @IBOutlet weak var updatePhoneNumberTF: UITextField!
     let db = Firestore.firestore()
-    let locationManager = CLLocationManager()
     var user:User?
     var email:String = ""
     var name:String = ""
@@ -59,17 +57,6 @@ class UpdateProfileVC: UIViewController {
     
  }
 
-extension  UpdateProfileVC:CLLocationManagerDelegate{
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let loacation = locations.last
-        print("loacation : \(locationManager.location!.coordinate.latitude)")
-        print("loacation : \(locationManager.location!.coordinate.longitude)")
-
-    }
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error.localizedDescription)
-    }
-}
 
 
 

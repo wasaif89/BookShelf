@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loginBtn.cmShadow()
-
+        signUpBtn.cmShadow()
     }
  
     @IBAction func loginPreesed(_ sender: UIButton) {

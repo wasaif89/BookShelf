@@ -107,13 +107,15 @@ private var imageCache = NSCache<NSString, UIImage>()
 extension UIImageView {
     
     func downloadFromURL(_ urlString: String?) {
-        
-        if let image = imageCache.object(forKey: urlString! as NSString) {
+        guard let urlString = urlString else {
+            return
+        }
+
+        if let image = imageCache.object(forKey: urlString as NSString) {
             self.image = image
             return
         }
         
-        guard let urlString = urlString else { return }
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if (error == nil) {

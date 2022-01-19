@@ -29,7 +29,6 @@ class UpdateViewController: UIViewController {
     var image: UIImage? = nil
     let db = Firestore.firestore()
     var user:User!
-   
     var book:Book?
     
     override func viewDidLoad() {
@@ -76,13 +75,66 @@ class UpdateViewController: UIViewController {
         picker.delegate = self
         self.present(picker, animated: true, completion: nil)
     }
-
-    @IBAction func updatePressed(_ sender: UIButton) {
-        let userReference = db.collection("User").document(Auth.auth().currentUser!.uid)
-        guard let imageSelected = self.image else{
-            print("image is nil")
+    func updateDocumentData(newImageURL: String?){
+        let bookRef = db.collection("Book").document((book?.id)!)
+//        bookRef.updateData([
+//            "name":nameLabelTextField.text,
+//            "description":descriptionTextView.text ,
+//            "section":sectionTextField.text ,
+//            "bookStatus":bookStatusTextField.text,
+//            "price":pricesTF.text,
+//            "image":newImageURL,
+//            "BookID": book?.id
+//        ]
+        guard let newImageURL = newImageURL else {
+            bookRef.setData([
+                "name":nameLabelTextField.text,
+                "description":descriptionTextView.text ,
+                "section":sectionTextField.text ,
+                "bookStatus":bookStatusTextField.text,
+                "price":pricesTF.text,
+                "BookID": book?.id
+            ], merge: true) { err in
+                if let err = err {
+                    print("Error updating document without image: \(err)")
+                } else {
+                    print("Document successfully updated without image")
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
             return
         }
+
+                           bookRef.setData([
+                               "name":nameLabelTextField.text,
+                               "description":descriptionTextView.text ,
+                               "section":sectionTextField.text ,
+                               "bookStatus":bookStatusTextField.text,
+                               "price":pricesTF.text,
+                               "image": newImageURL,
+                               "BookID": book?.id
+                           ], merge: true
+        
+        
+        
+        ) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    @IBAction func updatePressed(_ sender: UIButton) {
+        
+        let userReference = db.collection("User").document(Auth.auth().currentUser!.uid)
+
+        if (image != nil) {
+            guard let imageSelected = self.image else{
+                print("image is nil")
+                return
+            }
         guard let imageData = imageSelected.jpegData(compressionQuality: 0.4)
         else{ return}
         let storage = Storage.storage().reference(forURL: "gs://book-29caa.appspot.com")
@@ -96,33 +148,19 @@ class UpdateViewController: UIViewController {
                     }
                     storgeProfileRef.downloadURL(completion:  { [self] (url, error) in
                         if let metaImageUrl = url?.absoluteString{
-                           print(metaImageUrl)
+                            print(metaImageUrl)
                             
-                            let bookRef = db.collection("Book").document((book?.id)!)
-                                bookRef.updateData([
-                                "name":nameLabelTextField.text,
-                                "description":descriptionTextView.text ,
-                                "section":sectionTextField.text ,
-                                "bookStatus":bookStatusTextField.text,
-                                "price":pricesTF.text,
-                                "image":metaImageUrl,
-                                "BookID": book?.id
-                                 ])
-                            { err in
-                                if let err = err {
-                                    print("Error updating document: \(err)")
-                                } else {
-                                    print("Document successfully updated")
-                                    self.navigationController?.popViewController(animated: true)
-                                }
-                            }
-                            
-                        }
-                    })
-            })
-      }
+                            updateDocumentData(newImageURL: metaImageUrl)
 
+                        }
+                     })
+            })
+       } else {
+        //"No image"
+        updateDocumentData(newImageURL: nil)
+    }
    }
+}
 extension UpdateViewController:UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

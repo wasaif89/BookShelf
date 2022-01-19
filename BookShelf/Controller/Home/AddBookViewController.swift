@@ -43,8 +43,6 @@ class AddBookViewController: UIViewController {
         bookStatusTF.rowBackgroundColor = .secondarySystemBackground
 
     }
-
-   
     @IBAction func addImage(_ sender: UIButton) {
         setupImage()
       }
@@ -68,16 +66,18 @@ class AddBookViewController: UIViewController {
         picker.delegate = self
         self.present(picker, animated: true, completion: nil)
     }
-    
+    func addToDatabase(ref: DocumentReference, image: String?){
+            self.book = Book.init(name: self.nameLabelTextField.text!, description: self.descriptionTextView.text!, section: self.sectionTF.text!, bookStatus: self.bookStatusTF.text!, image: image ?? "", price: self.pricesTextField.text!, user: ref)
+        self.saveBook(self.book)
+    }
     @IBAction func addPressed(_ sender: UIButton) {
-        
         let userReference = db.collection("Users").document(Auth.auth().currentUser!.uid)
         guard let imageSelected = self.image else{
             print("image is nil")
+            self.addToDatabase(ref: userReference, image: nil)
             return
         }
-        guard let imageData = imageSelected.jpegData(compressionQuality: 0.4)
-        else{ return}
+        guard let imageData = imageSelected.jpegData(compressionQuality: 0.4) else{ return }
         let storage = Storage.storage().reference(forURL: "gs://book-29caa.appspot.com")
           let storgeProfileRef = storage.child(UUID().uuidString)
           let metadata = StorageMetadata()
@@ -86,19 +86,18 @@ class AddBookViewController: UIViewController {
                     if error != nil {
                         print("erorr: \(error?.localizedDescription)")
                         return
-                    }
+                    } else {
+                        print("Error upload image to cloud storage ", error?.localizedDescription)
                     storgeProfileRef.downloadURL(completion:  { [self] (url, error) in
                         if let metaImageUrl = url?.absoluteString{
                            print(metaImageUrl)
-                            self.book = Book.init(name: self.nameLabelTextField.text!, description: self.descriptionTextView.text!, section: self.sectionTF.text!, bookStatus: self.bookStatusTF.text!, image: metaImageUrl, price: self.pricesTextField.text!, user: userReference)
-                            self.saveBook(self.book)
-                            
+                            /// Add to db
+                            self.addToDatabase(ref: userReference, image: metaImageUrl)
+
                         }
                     })
+                    }
                 })
-        
-    
-
     }
     func saveBook(_ book: Book) {
         let documentID = UUID().uuidString
@@ -122,11 +121,13 @@ class AddBookViewController: UIViewController {
           if let imageSelected = info[UIImagePickerController.InfoKey.editedImage] as? UIImage{
               image = imageSelected
               addImageBook.image = imageSelected
-        }
-          if let imageOriginal = info[UIImagePickerController.InfoKey.editedImage] as? UIImage{
-              image = imageOriginal
-              addImageBook.image = imageOriginal
-        }
+          } else {
+              if let imageOriginal = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+                  image = imageOriginal
+                  addImageBook.image = imageOriginal
+            }
+          }
+          
 
           picker.dismiss(animated: true, completion: nil)
     }

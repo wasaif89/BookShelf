@@ -30,12 +30,7 @@ class ForgetPasswordVC: UIViewController {
                     let alert = UIAlertController(title: "Successfully", message: "The Email has been sent", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                     self.present(alert, animated: true, completion: nil)
-
-
             }
         }
     }
-    
-
-
 }

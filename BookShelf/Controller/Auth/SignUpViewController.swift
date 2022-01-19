@@ -35,7 +35,12 @@ class SignUpViewController: UIViewController {
                 self.saveUser(self.user)
                 print("Sign Up Successful")
                 var alertVC = UIAlertController(title: "Welcome", message: nil, preferredStyle: .alert)
-                alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { action in
+                    let vc =
+                    self.storyboard?.instantiateViewController(withIdentifier: "homePageID") as! HomeViewController
+                    vc.navigationItem.hidesBackButton = true
+                    self.navigationController?.show(vc, sender: self)
+                }))
                 self.present(alertVC, animated: true, completion: nil)
                
             }else{
