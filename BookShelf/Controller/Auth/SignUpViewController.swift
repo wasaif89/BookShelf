@@ -51,6 +51,7 @@ class SignUpViewController: UIViewController {
             }
         }
     }
+    //
     // save user data in firestore
     func saveUser(_ user: User) {
         let docData: [String: Any] = [
