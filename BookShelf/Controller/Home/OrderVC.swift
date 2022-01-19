@@ -13,7 +13,7 @@ class OrderVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     let db = Firestore.firestore()
     var order = [Order]()
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         readOrder()
@@ -45,7 +45,7 @@ class OrderVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             self.tableView.reloadData()
             return
         }
-       db.collection("Order").whereField("userToken", isEqualTo:Auth.auth().currentUser!.uid).addSnapshotListener {(querySnapshot, error) in
+        db.collection("Order").whereField("userToken", isEqualTo:Auth.auth().currentUser!.uid).addSnapshotListener {(querySnapshot, error) in
             self.order = []
             guard let documents = querySnapshot?.documents else {
                 print("Error fetching documents: \(error!)")

@@ -77,15 +77,6 @@ class UpdateViewController: UIViewController {
     }
     func updateDocumentData(newImageURL: String?){
         let bookRef = db.collection("Book").document((book?.id)!)
-//        bookRef.updateData([
-//            "name":nameLabelTextField.text,
-//            "description":descriptionTextView.text ,
-//            "section":sectionTextField.text ,
-//            "bookStatus":bookStatusTextField.text,
-//            "price":pricesTF.text,
-//            "image":newImageURL,
-//            "BookID": book?.id
-//        ]
         guard let newImageURL = newImageURL else {
             bookRef.setData([
                 "name":nameLabelTextField.text,

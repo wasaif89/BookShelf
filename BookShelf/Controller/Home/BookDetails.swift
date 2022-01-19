@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
-
+    
     @IBOutlet weak var comintTF: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -25,7 +25,7 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
     var comments = [Comment]()
     var bookReference: DocumentReference!
     var userReference: DocumentReference!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Book Details"
@@ -37,14 +37,13 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
         }
         bookReference = db.collection("Book").document(bookID)
         addBasketBtn.cmShadow()
-       
         readComment()
         
         guard let userID = Auth.auth().currentUser?.uid else {
             return
         }
         userReference = db.collection("Users").document(userID)
-
+        
     }
     
     func saveBasket(_ basket: Basket) {
@@ -57,28 +56,28 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
                 }
             })
         } catch {
-            //
+            
             print (error.localizedDescription)
             
         }
     }
-
+    
     func addComment(_ comment: Comment) {
         do {
             try db.collection("comment").document().setData(from: comment) { err in
                 if err != nil {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                }
             }
-        }
         } catch {
-            //
+            
             print (error.localizedDescription)
             
         }
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         2
     }
@@ -109,7 +108,7 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
             return cell
         }
     }
-  
+    
     func readComment(){
         
         self.db.collection("comment").whereField("book", isEqualTo: bookReference).addSnapshotListener { commentsDocs, err in
@@ -144,9 +143,9 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
                 
             }
         }
-
+        
     }
-
+    
     @IBAction func addBasketPressed(_ sender: UIButton) {
         if ((Auth.auth().currentUser?.uid) != nil){
             self.basket = Basket.init(bookName: book?.name,
@@ -165,31 +164,31 @@ class BookDetails: UIViewController,UITableViewDelegate,UITableViewDataSource{
             print("User Not Login")
         }
     }
-
-        @IBAction func sendPressed(_ sender: UIButton) {
-           if (Auth.auth().currentUser?.uid != nil){
-                self.comment  =  Comment(id: nil, comment: self.comintTF.text!, date: Timestamp(date: Date()), book: bookReference, user: userReference)
-                self.addComment(self.comment)
-           }
-            else{
-                let alert = UIAlertController(title: "User Not Login", message: "Please Login to Add Comment", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert,animated: true,completion: nil)
-
-                print("User Not Login")
-            }
-
+    
+    @IBAction func sendPressed(_ sender: UIButton) {
+        if (Auth.auth().currentUser?.uid != nil){
+            self.comment  =  Comment(id: nil, comment: self.comintTF.text!, date: Timestamp(date: Date()), book: bookReference, user: userReference)
+            self.addComment(self.comment)
         }
+        else{
+            let alert = UIAlertController(title: "User Not Login", message: "Please Login to Add Comment", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert,animated: true,completion: nil)
+            
+            print("User Not Login")
+        }
+        
+    }
     
     @IBAction func checkBasket(_ sender: UIBarButtonItem) {
         if (Auth.auth().currentUser?.uid != nil){
-          let vc = self.storyboard?.instantiateViewController(withIdentifier: "BasketID") as! BasketTabelVC
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "BasketID") as! BasketTabelVC
             self.navigationController?.show(vc, sender: self)
             print("User Login")
             
         }else{
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "Login") as! LoginViewController
-              self.navigationController?.show(vc, sender: self)
+            self.navigationController?.show(vc, sender: self)
             print("User Not Login")
         }
     }

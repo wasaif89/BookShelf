@@ -29,7 +29,7 @@ class BooksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         categoriesTF.didSelect { selectedText, index, id in
             print(selectedText, index, id)
             self.getBookByCategory(category:selectedText)
-
+            
         }
     }
     func getBookByCategory(category: String){
@@ -62,7 +62,7 @@ class BooksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 })
             }
         }
-        }
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return book.count
         
@@ -70,7 +70,7 @@ class BooksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "BooksCell") as! BooksCell
-
+        
         cell.titleBookLabel.text = book[indexPath.row].name
         cell.bookStatusLabel.text = "  " + book[indexPath.row].bookStatus!
         cell.priceBookLabel.text = book[indexPath.row].price
@@ -86,7 +86,7 @@ class BooksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
         tabelView.deselectRow(at: indexPath, animated: true)
         selectedBook = book[indexPath.row]
         performSegue(withIdentifier: "BookSgeue", sender: nil)

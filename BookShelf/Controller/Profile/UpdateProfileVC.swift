@@ -26,26 +26,26 @@ class UpdateProfileVC: UIViewController {
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
         rightSwipe.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(rightSwipe)
-
-     }
+        
+    }
     
     @IBAction func updatePressed(_ sender: UIButton) {
         Auth.auth().currentUser?.updateEmail(to: updateEmailTF.text!) { error in
             if error == nil{
-               print("Email Successful")
-            
-          }else{
-               print("error\(error?.localizedDescription)")
+                print("Email Successful")
+                
+            }else{
+                print("error\(error?.localizedDescription)")
+            }
         }
-    }
-     
+        
         let washingtonRef = db.collection("Users").document(Auth.auth().currentUser!.uid)
-
+        
         washingtonRef.updateData([
             "name": updateNameTF.text,
             "phoneNumber": updatePhoneNumberTF.text,
             "email": updateEmailTF.text
-            ]) { err in
+        ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")
             } else {
@@ -53,9 +53,9 @@ class UpdateProfileVC: UIViewController {
                 print("Document successfully updated")
             }
         }
-  }
+    }
     
- }
+}
 
 
 
